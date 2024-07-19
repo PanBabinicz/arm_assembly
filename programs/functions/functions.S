@@ -54,8 +54,7 @@ blink_count:
   bl blink_delay
   subs r5, #1
   bne blink_count
-  pop { lr }
-  bx lr
+  pop { pc }
 blink_delay:
   subs r4, #1
   bne blink_delay
