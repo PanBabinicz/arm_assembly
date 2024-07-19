@@ -24,7 +24,7 @@ BLINK_LOOP_SIZE = 1000000
 _RESET_HANDLER:
   bl turn_on_gpio_clock
   bl set_gpio_mode_output
-  ldr r5, =10
+  ldr r0, =10
   bl blink
   b .
 turn_on_gpio_clock:
@@ -40,22 +40,22 @@ set_gpio_mode_output:
   str r1, [r0]
   bx lr
 blink:
-  push { lr }
-  ldr r0, =STM32_GPIOx_BSRR_BASE
-  ldr r1, =STM32_GPIOx_BSRR_BS5
-  ldr r2, =STM32_GPIOx_BSRR_BR5
-  ldr r3, =BLINK_LOOP_SIZE
+  push { r4-r7, lr }
+  ldr r4, =STM32_GPIOx_BSRR_BASE
+  ldr r5, =STM32_GPIOx_BSRR_BS5
+  ldr r6, =STM32_GPIOx_BSRR_BR5
+  mov r7, r0
 blink_count:
-  str r1, [r0]
-  mov r4, r3
+  str r5, [r4]
+  ldr r0, =BLINK_LOOP_SIZE
   bl blink_delay
-  str r2, [r0]
-  mov r4, r3
+  str r6, [r4]
+  ldr r0, =BLINK_LOOP_SIZE
   bl blink_delay
-  subs r5, #1
+  subs r7, #1
   bne blink_count
-  pop { pc }
+  pop { r4-r7, pc }
 blink_delay:
-  subs r4, #1
+  subs r0, #1
   bne blink_delay
   bx lr
