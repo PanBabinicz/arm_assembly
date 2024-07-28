@@ -5,4 +5,6 @@
 .section ._VECTOR_TABLE, "a"
 .word _STACK_END
 .word _RESET_HANDLER
-.space 0xe4
+.space 0x34
+.word _SYSTICK_HANDLER
+.space 0xa4
