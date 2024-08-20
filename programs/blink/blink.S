@@ -1,52 +1,38 @@
-.syntax unified
-.cpu cortex-m4
-.thumb
+    .syntax unified
+    .cpu cortex-m4
+    .thumb
 
-STM32_RCC_AHB1ENR_BASE = 0x40023830
-STM32_RCC_AHB1ENR_GPIOAEN = 0x1
+    .include "stm32f446re_constants.inc"
 
-STM32_GPIOx_MODER_BASE = 0x40020000
-STM32_GPIOx_MODER_INPUT_5 = 0x0 << 10
-STM32_GPIOx_MODER_OUTPUT_5 = 0x1 << 10
-STM32_GPIOx_MODER_AF_5 = 0x2 << 10
-STM32_GPIOx_MODER_ANALOG_5 = 0x3 << 10
+    blink_loop_size = 1000000
 
-STM32_GPIOx_BSRR_BASE = 0x40020018
-STM32_GPIOx_BSRR_BS5 = 0x1 << 5
-STM32_GPIOx_BSRR_BR5 = 0x1 << 21
-
-BLINK_LOOP_SIZE = 1000000
-
-.text
-.type _RESET_HANDLER, %function
-.global _RESET_HANDLER
-_RESET_HANDLER:
-  @ RCC enable for GPIOA
-  ldr r0, =STM32_RCC_AHB1ENR_BASE
-  ldr r1, [r0]
-  orr r1, #STM32_RCC_AHB1ENR_GPIOAEN
-  str r1, [r0]
-  @ Set GPIOA pin5 to output
-  ldr r0, =STM32_GPIOx_MODER_BASE
-  ldr r1, [r0]
-  orr r1, #STM32_GPIOx_MODER_OUTPUT_5
-  str r1, [r0]
-  @ Store the constant values for setting leds on/off
-  ldr r0, =STM32_GPIOx_BSRR_BASE
-  ldr r1, =STM32_GPIOx_BSRR_BS5
-  ldr r2, =STM32_GPIOx_BSRR_BR5
-  ldr r3, =BLINK_LOOP_SIZE
+    .text
+    .type _reset_handler, %function
+    .global _reset_handler
+_reset_handler:
+    ldr r0, =stm32_rcc_ahb1enr_base       @ RCC enable for GPIOA.
+    ldr r1, [r0]
+    orr r1, #stm32_rcc_ahb1enr_gpioaen
+    str r1, [r0]
+    ldr r0, =stm32_gpiox_moder_base       @ Set GPIOA pin5 to output.
+    ldr r1, [r0]
+    orr r1, #stm32_gpiox_moder_output_5
+    str r1, [r0]
+    ldr r0, =stm32_gpiox_bsrr_base        @ Store the constant values for setting leds on/off.
+    ldr r1, =stm32_gpiox_bsrr_bs5
+    ldr r2, =stm32_gpiox_bsrr_br5
+    ldr r3, =blink_loop_size
 blink_loop:
-  @ Set GPIOA pin5 output high
-  str r1, [r0]
-  mov r4, r3
+    str r1, [r0]                          @ Set GPIOA pin5 output high.
+    mov r4, r3
 delay_on:
-  subs r4, #1
-  bne delay_on
-  @ Set GPIOA pin5 output low
-  str r2, [r0]
-  mov r4, r3
+    subs r4, #1
+    bne delay_on
+    str r2, [r0]                          @ Set GPIOA pin5 output low.
+    mov r4, r3
 delay_off:
-  subs r4, #1
-  bne delay_off
-  b blink_loop
+    subs r4, #1
+    bne delay_off
+    b blink_loop
+
+    .end
