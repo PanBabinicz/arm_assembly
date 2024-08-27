@@ -7,7 +7,6 @@
     @---------------------------------- RCC registers offsets ----------------------------------@
     @-------------------------------------------------------------------------------------------@
 
-
     .equ rcc_ahb1enr_base,      (0x40023830)    @ RCC register boundary address
 
     .equ rcc_cr_offset,         (0x00)          @ RCC Clock control register
@@ -57,7 +56,7 @@
     
 
     @-------------------------------------------------------------------------------------------@
-    @---------------------------------- RCC registers fields -----------------------------------@
+    @---------------------------------- RCC CR register fields ---------------------------------@
     @-------------------------------------------------------------------------------------------@
 
     .equ rcc_cr_hsion_position,     (0x00)
@@ -128,6 +127,61 @@
     .equ rcc_cr_pllsairdy_position, (0x1d)
     .equ rcc_cr_pllsairdy_mask,     (0x01 << rcc_cr_pllsairdy_position)
     .equ rcc_cr_pllsairdy,          (rcc_cr_pllsairdy_mask)
+
+
+    @-------------------------------------------------------------------------------------------@
+    @------------------------------- RCC AHB1RST register fields -------------------------------@
+    @-------------------------------------------------------------------------------------------@
+
+    .equ rcc_ahb1rstr_gpioarst_position,    (0x00)
+    .equ rcc_ahb1rstr_gpioarst_mask,        (0x01 << rcc_ahb1rstr_gpioarst_position)
+    .equ rcc_ahb1rstr_gpioarst,             (rcc_ahb1rstr_gpioarst_mask)
+
+    .equ rcc_ahb1rstr_gpiobrst_position,    (0x01)
+    .equ rcc_ahb1rstr_gpiobrst_mask,        (0x01 << rcc_ahb1rstr_gpiobrst_position)
+    .equ rcc_ahb1rstr_gpiobrst,             (rcc_ahb1rstr_gpiobrst_mask)
+
+    .equ rcc_ahb1rstr_gpiocrst_position,    (0x02)
+    .equ rcc_ahb1rstr_gpiocrst_mask,        (0x01 << rcc_ahb1rstr_gpiocrst_position)
+    .equ rcc_ahb1rstr_gpiocrst,             (rcc_ahb1rstr_gpiocrst_mask)
+
+    .equ rcc_ahb1rstr_gpiodrst_position,    (0x03)
+    .equ rcc_ahb1rstr_gpiodrst_mask,        (0x01 << rcc_ahb1rstr_gpiodrst_position)
+    .equ rcc_ahb1rstr_gpiodrst,             (rcc_ahb1rstr_gpiodrst_mask)
+
+    .equ rcc_ahb1rstr_gpioerst_position,    (0x04)
+    .equ rcc_ahb1rstr_gpioerst_mask,        (0x01 << rcc_ahb1rstr_gpioerst_position)
+    .equ rcc_ahb1rstr_gpioerst,             (rcc_ahb1rstr_gpioerst_mask)
+
+    .equ rcc_ahb1rstr_gpiofrst_position,    (0x05)
+    .equ rcc_ahb1rstr_gpiofrst_mask,        (0x01 << rcc_ahb1rstr_gpiofrst_position)
+    .equ rcc_ahb1rstr_gpiofrst,             (rcc_ahb1rstr_gpiofrst_mask)
+
+    .equ rcc_ahb1rstr_gpiogrst_position,    (0x06)
+    .equ rcc_ahb1rstr_gpiogrst_mask,        (0x01 << rcc_ahb1rstr_gpiogrst_position)
+    .equ rcc_ahb1rstr_gpiogrst,             (rcc_ahb1rstr_gpiogrst_mask)
+
+    .equ rcc_ahb1rstr_gpiohrst_position,    (0x07)
+    .equ rcc_ahb1rstr_gpiohrst_mask,        (0x01 << rcc_ahb1rstr_gpiohrst_position)
+    .equ rcc_ahb1rstr_gpiohrst,             (rcc_ahb1rstr_gpiohrst_mask)
+
+    .equ rcc_ahb1rstr_crcrst_position,      (0x0c)
+    .equ rcc_ahb1rstr_crcrst_mask,          (0x01 << rcc_ahb1rstr_crcrst_position)
+    .equ rcc_ahb1rstr_crcrst,               (rcc_ahb1rstr_crcrst_mask)
+
+    .equ rcc_ahb1rstr_dma1rst_position,     (0x15)
+    .equ rcc_ahb1rstr_dma1rst_mask,         (0x01 << rcc_ahb1rstr_dma1rst_position)
+    .equ rcc_ahb1rstr_dma1rst,              (rcc_ahb1rstr_dma1rst_mask)
+
+    .equ rcc_ahb1rstr_dma2rst_position,     (0x16)
+    .equ rcc_ahb1rstr_dma2rst_mask,         (0x01 << rcc_ahb1rstr_dma2rst_position)
+    .equ rcc_ahb1rstr_dma2rst,              (rcc_ahb1rstr_dma2rst_mask)
+
+    .equ rcc_ahb1rstr_otghsrst_position,    (0x1d)
+    .equ rcc_ahb1rstr_otghsrst_mask,        (0x01 << rcc_ahb1rstr_otghsrst_position)
+    .equ rcc_ahb1rstr_otghsrst,             (rcc_ahb1rstr_otghsrst_mask)
+
+
 
     TODO:
     rcc_ahb1enr_gpioaen = 0x01
