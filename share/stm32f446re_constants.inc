@@ -208,6 +208,67 @@
     .equ rcc_ahb3rstr_qspirst,          (rcc_ahb3rstr_qspirst_mask)
 
 
+    @-------------------------------------------------------------------------------------------@
+    @------------------------------- RCC AHB1EN register fields --------------------------------@
+    @-------------------------------------------------------------------------------------------@
+
+    .equ rcc_ahb1enr_gpioaen_position,      (0x00)
+    .equ rcc_ahb1enr_gpioaen_mask,          (0x01 << rcc_ahb1enr_gpioaen_position)
+    .equ rcc_ahb1enr_gpioaen,               (rcc_ahb1enr_gpioaen_mask)
+
+    .equ rcc_ahb1enr_gpioben_position,      (0x01)
+    .equ rcc_ahb1enr_gpioben_mask,          (0x01 << rcc_ahb1enr_gpioben_position)
+    .equ rcc_ahb1enr_gpioben,               (rcc_ahb1enr_gpioben_mask)
+
+    .equ rcc_ahb1enr_gpiocen_position,      (0x02)
+    .equ rcc_ahb1enr_gpiocen_mask,          (0x01 << rcc_ahb1enr_gpiocen_position)
+    .equ rcc_ahb1enr_gpiocen,               (rcc_ahb1enr_gpiocen_mask)
+
+    .equ rcc_ahb1enr_gpioden_position,      (0x03)
+    .equ rcc_ahb1enr_gpioden_mask,          (0x01 << rcc_ahb1enr_gpioden_position)
+    .equ rcc_ahb1enr_gpioden,               (rcc_ahb1enr_gpioden_mask)
+
+    .equ rcc_ahb1enr_gpioeen_position,      (0x04)
+    .equ rcc_ahb1enr_gpioeen_mask,          (0x01 << rcc_ahb1enr_gpioeen_position)
+    .equ rcc_ahb1enr_gpioeen,               (rcc_ahb1enr_gpioeen_mask)
+
+    .equ rcc_ahb1enr_gpiofen_position,      (0x05)
+    .equ rcc_ahb1enr_gpiofen_mask,          (0x01 << rcc_ahb1enr_gpiofen_position)
+    .equ rcc_ahb1enr_gpiofen,               (rcc_ahb1enr_gpiofen_mask)
+
+    .equ rcc_ahb1enr_gpiogen_position,      (0x06)
+    .equ rcc_ahb1enr_gpiogen_mask,          (0x01 << rcc_ahb1enr_gpiogen_position)
+    .equ rcc_ahb1enr_gpiogen,               (rcc_ahb1enr_gpiogen_mask)
+
+    .equ rcc_ahb1enr_gpiohen_position,      (0x07)
+    .equ rcc_ahb1enr_gpiohen_mask,          (0x01 << rcc_ahb1enr_gpiohen_position)
+    .equ rcc_ahb1enr_gpiohen,               (rcc_ahb1enr_gpiohen_mask)
+
+    .equ rcc_ahb1enr_crcen_position,        (0x0c)
+    .equ rcc_ahb1enr_crcen_mask,            (0x01 << rcc_ahb1enr_crcen_position)
+    .equ rcc_ahb1enr_crcen,                 (rcc_ahb1enr_crcen_mask)
+
+    .equ rcc_ahb1enr_bkpsramen_position,    (0x12)
+    .equ rcc_ahb1enr_bkpsramen_mask,        (0x01 << rcc_ahb1enr_bkpsramen_position)
+    .equ rcc_ahb1enr_bkpsramen,             (rcc_ahb1enr_bkpsramen_mask)
+
+    .equ rcc_ahb1enr_dma1en_position,       (0x15)
+    .equ rcc_ahb1enr_dma1en_mask,           (0x01 << rcc_ahb1enr_dma1en_position)
+    .equ rcc_ahb1enr_dma1en,                (rcc_ahb1enr_dma1en_mask)
+
+    .equ rcc_ahb1enr_dma2en_position,       (0x16)
+    .equ rcc_ahb1enr_dma2en_mask,           (0x01 << rcc_ahb1enr_dma2en_position)
+    .equ rcc_ahb1enr_dma2en,                (rcc_ahb1enr_dma2en_mask)
+
+    .equ rcc_ahb1enr_otghsen_position,      (0x1d)
+    .equ rcc_ahb1enr_otghsen_mask,          (0x01 << rcc_ahb1enr_otghsen_position)
+    .equ rcc_ahb1enr_otghsen,               (rcc_ahb1enr_otghsen_mask)
+
+    .equ rcc_ahb1enr_otghsulpien_position,  (0x1e)
+    .equ rcc_ahb1enr_otghsulpien_mask,      (0x01 << rcc_ahb1enr_otghsulpien_position)
+    .equ rcc_ahb1enr_otghsulpien,           (rcc_ahb1enr_otghsulpien_mask)
+
+
 
     TODO:
     rcc_ahb1enr_gpioaen = 0x01
