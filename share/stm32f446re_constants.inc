@@ -61,18 +61,73 @@
     @-------------------------------------------------------------------------------------------@
 
     .equ rcc_cr_hsion_position,     (0x00)
-    .equ rcc_cr_hsion_mask,         (1 << rcc_cr_hsion_position)
+    .equ rcc_cr_hsion_mask,         (0x01 << rcc_cr_hsion_position)
+    .equ rcc_cr_hsion,              (rcc_cr_hsion_mask)
 
     .equ rcc_cr_hsirdy_position,    (0x01)
-    .equ rcc_cr_hsirdy_mask,        (1 << rcc_cr_hsirdy_position)
+    .equ rcc_cr_hsirdy_mask,        (0x01 << rcc_cr_hsirdy_position)
+    .equ rcc_cr_hsirdy,             (rcc_cr_hsirdy_mask)
 
     .equ rcc_cr_hsitrim_position,   (0x03)
     .equ rcc_cr_hsitrim_mask,       (0x1f << rcc_cr_hsitrim_position)
+    .equ rcc_cr_hsitrim,            (rcc_cr_hsitrim_mask)
     .equ rcc_cr_hsitrim_bit0,       (0x01 << rcc_cr_hsitrim_position)
     .equ rcc_cr_hsitrim_bit1,       (0x02 << rcc_cr_hsitrim_position)
     .equ rcc_cr_hsitrim_bit2,       (0x04 << rcc_cr_hsitrim_position)
     .equ rcc_cr_hsitrim_bit3,       (0x08 << rcc_cr_hsitrim_position)
     .equ rcc_cr_hsitrim_bit4,       (0x10 << rcc_cr_hsitrim_position)
+
+    .equ rcc_cr_hsical_position,    (0x08)
+    .equ rcc_cr_hsical_mask,        (0xff << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical,             (rcc_cr_hsical_mask)
+    .equ rcc_cr_hsical_bit0,        (0x01 << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical_bit1,        (0x02 << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical_bit2,        (0x04 << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical_bit3,        (0x08 << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical_bit4,        (0x10 << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical_bit5,        (0x20 << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical_bit6,        (0x40 << rcc_cr_hsical_position)
+    .equ rcc_cr_hsical_bit7,        (0x80 << rcc_cr_hsical_position)
+
+    .equ rcc_cr_hseon_position,     (0x10)
+    .equ rcc_cr_hseon_mask,         (0x01 << rcc_cr_hseon_position)
+    .equ rcc_cr_hseon,              (rcc_cr_hseon_mask)
+
+    .equ rcc_cr_hserdy_position,    (0x11)
+    .equ rcc_cr_hserdy_mask,        (0x01 << rcc_cr_hserdy_position)
+    .equ rcc_cr_hserdy,             (rcc_cr_hserdy_mask)
+
+    .equ rcc_cr_hsebyp_position,    (0x12)
+    .equ rcc_cr_hsebyp_mask,        (0x01 << rcc_cr_hsebyp_position)
+    .equ rcc_cr_hsebyp,             (rcc_cr_hsebyp_mask)
+
+    .equ rcc_cr_csson_position,     (0x13)
+    .equ rcc_cr_csson_mask,         (0x01 << rcc_cr_csson_position)
+    .equ rcc_cr_csson,              (rcc_cr_csson_mask)
+
+    .equ rcc_cr_pllon_position,     (0x18)
+    .equ rcc_cr_pllon_mask,         (0x01 << rcc_cr_pllon_position)
+    .equ rcc_cr_pllon,              (rcc_cr_pllon_mask)
+
+    .equ rcc_cr_pllrdy_position,    (0x19)
+    .equ rcc_cr_pllrdy_mask,        (0x01 << rcc_cr_pllrdy_position)
+    .equ rcc_cr_pllrdy,             (rcc_cr_pllrdy_mask)
+
+    .equ rcc_cr_plli2son_position,  (0x1a)
+    .equ rcc_cr_plli2son_mask,      (0x01 << rcc_cr_plli2son_position)
+    .equ rcc_cr_plli2son,           (rcc_cr_plli2son_mask)
+
+    .equ rcc_cr_plli2srdy_position, (0x1b)
+    .equ rcc_cr_plli2srdy_mask,     (0x01 << rcc_cr_plli2srdy_position)
+    .equ rcc_cr_plli2srdy,          (rcc_cr_plli2srdy_mask)
+
+    .equ rcc_cr_pllsaion_position,  (0x1c)
+    .equ rcc_cr_pllsaion_mask,      (0x01 << rcc_cr_pllsaion_position)
+    .equ rcc_cr_pllsaion,           (rcc_cr_pllsaion_mask)
+
+    .equ rcc_cr_pllsairdy_position, (0x1d)
+    .equ rcc_cr_pllsairdy_mask,     (0x01 << rcc_cr_pllsairdy_position)
+    .equ rcc_cr_pllsairdy,          (rcc_cr_pllsairdy_mask)
 
     TODO:
     rcc_ahb1enr_gpioaen = 0x01
