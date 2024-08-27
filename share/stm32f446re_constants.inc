@@ -195,6 +195,19 @@
     .equ rcc_ahb2rstr_otgfsrst,             (rcc_ahb2rstr_otgfsrst_mask)
 
 
+    @-------------------------------------------------------------------------------------------@
+    @------------------------------- RCC AHB3RST register fields -------------------------------@
+    @-------------------------------------------------------------------------------------------@
+
+    .equ rcc_ahb3rstr_fmcrst_position,  (0x00)
+    .equ rcc_ahb3rstr_fmcrst_mask,      (0x01 << rcc_ahb3rstr_fmcrst_position)
+    .equ rcc_ahb3rstr_fmcrst,           (rcc_ahb3rstr_fmcrst_mask)
+
+    .equ rcc_ahb3rstr_qspirst_position, (0x01)
+    .equ rcc_ahb3rstr_qspirst_mask,     (0x01 << rcc_ahb3rstr_qspirst_position)
+    .equ rcc_ahb3rstr_qspirst,          (rcc_ahb3rstr_qspirst_mask)
+
+
 
     TODO:
     rcc_ahb1enr_gpioaen = 0x01
