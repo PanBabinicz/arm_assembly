@@ -465,6 +465,115 @@
     .equ rcc_apb2rstr_sai2rst,              (rcc_apb2rstr_sai2rst_mask)
 
 
+    @-------------------------------------------------------------------------------------------@
+    @------------------------------- RCC APB1EN register fields --------------------------------@
+    @-------------------------------------------------------------------------------------------@
+
+    .equ rcc_apb1enr_tim2en_position,       (0x00)
+    .equ rcc_apb1enr_tim2en_mask,           (0x01 << rcc_apb1enr_tim2en_position)
+    .equ rcc_apb1enr_tim2en,                (rcc_apb1enr_tim2en_mask)
+
+    .equ rcc_apb1enr_tim3en_position,       (0x01)
+    .equ rcc_apb1enr_tim3en_mask,           (0x01 << rcc_apb1enr_tim3en_position)
+    .equ rcc_apb1enr_tim3en,                (rcc_apb1enr_tim3en_mask)
+
+    .equ rcc_apb1enr_tim4en_position,       (0x02)
+    .equ rcc_apb1enr_tim4en_mask,           (0x01 << rcc_apb1enr_tim4en_position)
+    .equ rcc_apb1enr_tim4en,                (rcc_apb1enr_tim4en_mask)
+
+    .equ rcc_apb1enr_tim5en_position,       (0x03)
+    .equ rcc_apb1enr_tim5en_mask,           (0x01 << rcc_apb1enr_tim5en_position)
+    .equ rcc_apb1enr_tim5en,                (rcc_apb1enr_tim5en_mask)
+
+    .equ rcc_apb1enr_tim6en_position,       (0x04)
+    .equ rcc_apb1enr_tim6en_mask,           (0x01 << rcc_apb1enr_tim6en_position)
+    .equ rcc_apb1enr_tim6en,                (rcc_apb1enr_tim6en_mask)
+
+    .equ rcc_apb1enr_tim7en_position,       (0x05)
+    .equ rcc_apb1enr_tim7en_mask,           (0x01 << rcc_apb1enr_tim7en_position)
+    .equ rcc_apb1enr_tim7en,                (rcc_apb1enr_tim7en_mask)
+
+    .equ rcc_apb1enr_tim12en_position,      (0x06)
+    .equ rcc_apb1enr_tim12en_mask,          (0x01 << rcc_apb1enr_tim12en_position)
+    .equ rcc_apb1enr_tim12en,               (rcc_apb1enr_tim12en_mask)
+
+    .equ rcc_apb1enr_tim13en_position,      (0x07)
+    .equ rcc_apb1enr_tim13en_mask,          (0x01 << rcc_apb1enr_tim13en_position)
+    .equ rcc_apb1enr_tim13en,               (rcc_apb1enr_tim13en_mask)
+
+    .equ rcc_apb1enr_tim14en_position,      (0x08)
+    .equ rcc_apb1enr_tim14en_mask,          (0x01 << rcc_apb1enr_tim14en_position)
+    .equ rcc_apb1enr_tim14en,               (rcc_apb1enr_tim14en_mask)
+
+    .equ rcc_apb1enr_wwdgen_position,       (0x0b)
+    .equ rcc_apb1enr_wwdgen_mask,           (0x01 << rcc_apb1enr_wwdgen_position)
+    .equ rcc_apb1enr_wwdgen,                (rcc_apb1enr_wwdgen_mask)
+
+    .equ rcc_apb1enr_spi2en_position,       (0x0e)
+    .equ rcc_apb1enr_spi2en_mask,           (0x01 << rcc_apb1enr_spi2en_position)
+    .equ rcc_apb1enr_spi2en,                (rcc_apb1enr_spi2en_mask)
+
+    .equ rcc_apb1enr_spi3en_position,       (0x0f)
+    .equ rcc_apb1enr_spi3en_mask,           (0x01 << rcc_apb1enr_spi3en_position)
+    .equ rcc_apb1enr_spi3en,                (rcc_apb1enr_spi3en_mask)
+
+    .equ rcc_apb1enr_spdifrxen_position,    (0x10)
+    .equ rcc_apb1enr_spdifrxen_mask,        (0x01 << rcc_apb1enr_spdifrxen_position)
+    .equ rcc_apb1enr_spdifrxen,             (rcc_apb1enr_spdifrxen_mask)
+
+    .equ rcc_apb1enr_usart2en_position,     (0x11)
+    .equ rcc_apb1enr_usart2en_mask,         (0x01 << rcc_apb1enr_usart2en_position)
+    .equ rcc_apb1enr_usart2en,              (rcc_apb1enr_usart2en_mask)
+
+    .equ rcc_apb1enr_usart3en_position,     (0x12)
+    .equ rcc_apb1enr_usart3en_mask,         (0x01 << rcc_apb1enr_usart3en_position)
+    .equ rcc_apb1enr_usart3en,              (rcc_apb1enr_usart3en_mask)
+
+    .equ rcc_apb1enr_usart4en_position,     (0x13)
+    .equ rcc_apb1enr_usart4en_mask,         (0x01 << rcc_apb1enr_usart4en_position)
+    .equ rcc_apb1enr_usart4en,              (rcc_apb1enr_usart4en_mask)
+
+    .equ rcc_apb1enr_usart5en_position,     (0x14)
+    .equ rcc_apb1enr_usart5en_mask,         (0x01 << rcc_apb1enr_usart5en_position)
+    .equ rcc_apb1enr_usart5en,              (rcc_apb1enr_usart5en_mask)
+
+    .equ rcc_apb1enr_i2c1en_position,       (0x15)
+    .equ rcc_apb1enr_i2c1en_mask,           (0x01 << rcc_apb1enr_i2c1en_position)
+    .equ rcc_apb1enr_i2c1en,                (rcc_apb1enr_i2c1en_mask)
+
+    .equ rcc_apb1enr_i2c2en_position,       (0x16)
+    .equ rcc_apb1enr_i2c2en_mask,           (0x01 << rcc_apb1enr_i2c2en_position)
+    .equ rcc_apb1enr_i2c2en,                (rcc_apb1enr_i2c2en_mask)
+
+    .equ rcc_apb1enr_i2c3en_position,       (0x17)
+    .equ rcc_apb1enr_i2c3en_mask,           (0x01 << rcc_apb1enr_i2c3en_position)
+    .equ rcc_apb1enr_i2c3en,                (rcc_apb1enr_i2c3en_mask)
+
+    .equ rcc_apb1enr_fmpi2c1en_position,    (0x18)
+    .equ rcc_apb1enr_fmpi2c1en_mask,        (0x01 << rcc_apb1enr_fmpi2c1en_position)
+    .equ rcc_apb1enr_fmpi2c1en,             (rcc_apb1enr_fmpi2c1en_mask)
+
+    .equ rcc_apb1enr_can1en_position,       (0x19)
+    .equ rcc_apb1enr_can1en_mask,           (0x01 << rcc_apb1enr_can1en_position)
+    .equ rcc_apb1enr_can1en,                (rcc_apb1enr_can1en_mask)
+
+    .equ rcc_apb1enr_can2en_position,       (0x1a)
+    .equ rcc_apb1enr_can2en_mask,           (0x01 << rcc_apb1enr_can2en_position)
+    .equ rcc_apb1enr_can2en,                (rcc_apb1enr_can2en_mask)
+
+    .equ rcc_apb1enr_cecen_position,        (0x1b)
+    .equ rcc_apb1enr_cecen_mask,            (0x01 << rcc_apb1enr_cecen_position)
+    .equ rcc_apb1enr_cecen,                 (rcc_apb1enr_cecen_mask)
+
+    .equ rcc_apb1enr_pwren_position,        (0x1c)
+    .equ rcc_apb1enr_pwren_mask,            (0x01 << rcc_apb1enr_pwren_position)
+    .equ rcc_apb1enr_pwren,                 (rcc_apb1enr_pwren_mask)
+
+    .equ rcc_apb1enr_dacen_position,        (0x1d)
+    .equ rcc_apb1enr_dacen_mask,            (0x01 << rcc_apb1enr_dacen_position)
+    .equ rcc_apb1enr_dacen,                 (rcc_apb1enr_dacen_mask)
+
+
 
     TODO:
     rcc_ahb1enr_gpioaen = 0x01
