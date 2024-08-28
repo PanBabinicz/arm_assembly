@@ -282,6 +282,19 @@
     .equ rcc_ahb2enr_otgfsen,               (rcc_ahb2enr_otgfsen_mask)
 
 
+    @-------------------------------------------------------------------------------------------@
+    @------------------------------- RCC AHB3EN register fields --------------------------------@
+    @-------------------------------------------------------------------------------------------@
+
+    .equ rcc_ahb3enr_fmcen_position,        (0x00)
+    .equ rcc_ahb3enr_fmcen_mask,            (0x01 << rcc_ahb3enr_fmcen_position)
+    .equ rcc_ahb3enr_fmcen,                 (rcc_ahb3enr_fmcen_mask)
+
+    .equ rcc_ahb3enr_qspien_position,       (0x01)
+    .equ rcc_ahb3enr_qspien_mask,           (0x01 << rcc_ahb3enr_qspien_position)
+    .equ rcc_ahb3enr_qspien,                (rcc_ahb3enr_qspien_mask)
+
+
     TODO:
     rcc_ahb1enr_gpioaen = 0x01
     rcc_ahb1enr_gpioaen = 0x01
