@@ -404,6 +404,67 @@
     .equ rcc_apb1rstr_dacrst,               (rcc_apb1rstr_dacrst_mask)
 
 
+    @-------------------------------------------------------------------------------------------@
+    @------------------------------- RCC APB2RST register fields -------------------------------@
+    @-------------------------------------------------------------------------------------------@
+
+    .equ rcc_apb2rstr_tim1rst_position,     (0x00)
+    .equ rcc_apb2rstr_tim1rst_mask,         (0x01 << rcc_apb2rstr_tim1rst_position)
+    .equ rcc_apb2rstr_tim1rst,              (rcc_apb2rstr_tim1rst_mask)
+
+    .equ rcc_apb2rstr_tim8rst_position,     (0x01)
+    .equ rcc_apb2rstr_tim8rst_mask,         (0x01 << rcc_apb2rstr_tim8rst_position)
+    .equ rcc_apb2rstr_tim8rst,              (rcc_apb2rstr_tim8rst_mask)
+
+    .equ rcc_apb2rstr_usart1rst_position,   (0x04)
+    .equ rcc_apb2rstr_usart1rst_mask,       (0x01 << rcc_apb2rstr_usart1rst_position)
+    .equ rcc_apb2rstr_usart1rst,            (rcc_apb2rstr_usart1rst_mask)
+
+    .equ rcc_apb2rstr_usart6rst_position,   (0x05)
+    .equ rcc_apb2rstr_usart6rst_mask,       (0x01 << rcc_apb2rstr_usart6rst_position)
+    .equ rcc_apb2rstr_usart6rst,            (rcc_apb2rstr_usart6rst_mask)
+
+    .equ rcc_apb2rstr_adcrst_position,      (0x08)
+    .equ rcc_apb2rstr_adcrst_mask,          (0x01 << rcc_apb2rstr_adcrst_position)
+    .equ rcc_apb2rstr_adcrst,               (rcc_apb2rstr_adcrst_mask)
+
+    .equ rcc_apb2rstr_sdiorst_position,     (0x0b)
+    .equ rcc_apb2rstr_sdiorst_mask,         (0x01 << rcc_apb2rstr_sdiorst_position)
+    .equ rcc_apb2rstr_sdiorst,              (rcc_apb2rstr_sdiorst_mask)
+
+    .equ rcc_apb2rstr_spi1rst_position,     (0x0c)
+    .equ rcc_apb2rstr_spi1rst_mask,         (0x01 << rcc_apb2rstr_spi1rst_position)
+    .equ rcc_apb2rstr_spi1rst,              (rcc_apb2rstr_spi1rst_mask)
+
+    .equ rcc_apb2rstr_spi4rst_position,     (0x0d)
+    .equ rcc_apb2rstr_spi4rst_mask,         (0x01 << rcc_apb2rstr_spi4rst_position)
+    .equ rcc_apb2rstr_spi4rst,              (rcc_apb2rstr_spi4rst_mask)
+
+    .equ rcc_apb2rstr_syscfgrst_position,   (0x0e)
+    .equ rcc_apb2rstr_syscfgrst_mask,       (0x01 << rcc_apb2rstr_syscfgrst_position)
+    .equ rcc_apb2rstr_syscfgrst,            (rcc_apb2rstr_syscfgrst_mask)
+
+    .equ rcc_apb2rstr_tim9rst_position,     (0x10)
+    .equ rcc_apb2rstr_tim9rst_mask,         (0x01 << rcc_apb2rstr_tim9rst_position)
+    .equ rcc_apb2rstr_tim9rst,              (rcc_apb2rstr_tim9rst_mask)
+
+    .equ rcc_apb2rstr_tim10rst_position,    (0x11)
+    .equ rcc_apb2rstr_tim10rst_mask,        (0x01 << rcc_apb2rstr_tim10rst_position)
+    .equ rcc_apb2rstr_tim10rst,             (rcc_apb2rstr_tim10rst_mask)
+
+    .equ rcc_apb2rstr_tim11rst_position,    (0x12)
+    .equ rcc_apb2rstr_tim11rst_mask,        (0x01 << rcc_apb2rstr_tim11rst_position)
+    .equ rcc_apb2rstr_tim11rst,             (rcc_apb2rstr_tim11rst_mask)
+
+    .equ rcc_apb2rstr_sai1rst_position,     (0x16)
+    .equ rcc_apb2rstr_sai1rst_mask,         (0x01 << rcc_apb2rstr_sai1rst_position)
+    .equ rcc_apb2rstr_sai1rst,              (rcc_apb2rstr_sai1rst_mask)
+
+    .equ rcc_apb2rstr_sai2rst_position,     (0x17)
+    .equ rcc_apb2rstr_sai2rst_mask,         (0x01 << rcc_apb2rstr_sai2rst_position)
+    .equ rcc_apb2rstr_sai2rst,              (rcc_apb2rstr_sai2rst_mask)
+
+
 
     TODO:
     rcc_ahb1enr_gpioaen = 0x01
