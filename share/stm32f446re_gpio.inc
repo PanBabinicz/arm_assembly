@@ -193,9 +193,110 @@
     .equ gpiox_otyper_ot14_mask,            (0x01 << gpiox_otyper_ot14_position)
     .equ gpiox_otyper_ot14,                 (gpiox_otyper_ot14_mask)
 
-    .equ gpiox_otyper_ot15_position,    (0x0f)
-    .equ gpiox_otyper_ot15_mask,        (0x01 << gpiox_otyper_ot15_position)
-    .equ gpiox_otyper_ot15,             (gpiox_otyper_ot15_mask)
+    .equ gpiox_otyper_ot15_position,        (0x0f)
+    .equ gpiox_otyper_ot15_mask,            (0x01 << gpiox_otyper_ot15_position)
+    .equ gpiox_otyper_ot15,                 (gpiox_otyper_ot15_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
+@-------------------------------- GPIOx OSPEEDR register fields --------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+    .equ gpiox_ospeedr_ospeedr0_position,   (0x00)
+    .equ gpiox_ospeedr_ospeedr0_mask,       (0x03 << gpiox_ospeedr_ospeedr0_position)
+    .equ gpiox_ospeedr_ospeedr0,            (gpiox_ospeedr_ospeedr0_mask)
+    .equ gpiox_ospeedr_ospeedr0_bit0,       (0x01 << gpiox_ospeedr_ospeedr0_position)
+    .equ gpiox_ospeedr_ospeedr0_bit1,       (0x02 << gpiox_ospeedr_ospeedr0_position)
+
+    .equ gpiox_ospeedr_ospeedr1_position,   (0x02)
+    .equ gpiox_ospeedr_ospeedr1_mask,       (0x03 << gpiox_ospeedr_ospeedr1_position)
+    .equ gpiox_ospeedr_ospeedr1,            (gpiox_ospeedr_ospeedr1_mask)
+    .equ gpiox_ospeedr_ospeedr1_bit0,       (0x01 << gpiox_ospeedr_ospeedr1_position)
+    .equ gpiox_ospeedr_ospeedr1_bit1,       (0x02 << gpiox_ospeedr_ospeedr1_position)
+
+    .equ gpiox_ospeedr_ospeedr2_position,   (0x04)
+    .equ gpiox_ospeedr_ospeedr2_mask,       (0x03 << gpiox_ospeedr_ospeedr2_position)
+    .equ gpiox_ospeedr_ospeedr2,            (gpiox_ospeedr_ospeedr2_mask)
+    .equ gpiox_ospeedr_ospeedr2_bit0,       (0x01 << gpiox_ospeedr_ospeedr2_position)
+    .equ gpiox_ospeedr_ospeedr2_bit1,       (0x02 << gpiox_ospeedr_ospeedr2_position)
+
+    .equ gpiox_ospeedr_ospeedr3_position,   (0x06)
+    .equ gpiox_ospeedr_ospeedr3_mask,       (0x03 << gpiox_ospeedr_ospeedr3_position)
+    .equ gpiox_ospeedr_ospeedr3,            (gpiox_ospeedr_ospeedr3_mask)
+    .equ gpiox_ospeedr_ospeedr3_bit0,       (0x01 << gpiox_ospeedr_ospeedr3_position)
+    .equ gpiox_ospeedr_ospeedr3_bit1,       (0x02 << gpiox_ospeedr_ospeedr3_position)
+
+    .equ gpiox_ospeedr_ospeedr4_position,   (0x08)
+    .equ gpiox_ospeedr_ospeedr4_mask,       (0x03 << gpiox_ospeedr_ospeedr4_position)
+    .equ gpiox_ospeedr_ospeedr4,            (gpiox_ospeedr_ospeedr4_mask)
+    .equ gpiox_ospeedr_ospeedr4_bit0,       (0x01 << gpiox_ospeedr_ospeedr4_position)
+    .equ gpiox_ospeedr_ospeedr4_bit1,       (0x02 << gpiox_ospeedr_ospeedr4_position)
+
+    .equ gpiox_ospeedr_ospeedr5_position,   (0x0a)
+    .equ gpiox_ospeedr_ospeedr5_mask,       (0x03 << gpiox_ospeedr_ospeedr5_position)
+    .equ gpiox_ospeedr_ospeedr5,            (gpiox_ospeedr_ospeedr5_mask)
+    .equ gpiox_ospeedr_ospeedr5_bit0,       (0x01 << gpiox_ospeedr_ospeedr5_position)
+    .equ gpiox_ospeedr_ospeedr5_bit1,       (0x02 << gpiox_ospeedr_ospeedr5_position)
+
+    .equ gpiox_ospeedr_ospeedr6_position,   (0x0c)
+    .equ gpiox_ospeedr_ospeedr6_mask,       (0x03 << gpiox_ospeedr_ospeedr6_position)
+    .equ gpiox_ospeedr_ospeedr6,            (gpiox_ospeedr_ospeedr6_mask)
+    .equ gpiox_ospeedr_ospeedr6_bit0,       (0x01 << gpiox_ospeedr_ospeedr6_position)
+    .equ gpiox_ospeedr_ospeedr6_bit1,       (0x02 << gpiox_ospeedr_ospeedr6_position)
+
+    .equ gpiox_ospeedr_ospeedr7_position,   (0x0e)
+    .equ gpiox_ospeedr_ospeedr7_mask,       (0x03 << gpiox_ospeedr_ospeedr7_position)
+    .equ gpiox_ospeedr_ospeedr7,            (gpiox_ospeedr_ospeedr7_mask)
+    .equ gpiox_ospeedr_ospeedr7_bit0,       (0x01 << gpiox_ospeedr_ospeedr7_position)
+    .equ gpiox_ospeedr_ospeedr7_bit1,       (0x02 << gpiox_ospeedr_ospeedr7_position)
+
+    .equ gpiox_ospeedr_ospeedr8_position,   (0x10)
+    .equ gpiox_ospeedr_ospeedr8_mask,       (0x03 << gpiox_ospeedr_ospeedr8_position)
+    .equ gpiox_ospeedr_ospeedr8,            (gpiox_ospeedr_ospeedr8_mask)
+    .equ gpiox_ospeedr_ospeedr8_bit0,       (0x01 << gpiox_ospeedr_ospeedr8_position)
+    .equ gpiox_ospeedr_ospeedr8_bit1,       (0x02 << gpiox_ospeedr_ospeedr8_position)
+
+    .equ gpiox_ospeedr_ospeedr9_position,   (0x12)
+    .equ gpiox_ospeedr_ospeedr9_mask,       (0x03 << gpiox_ospeedr_ospeedr9_position)
+    .equ gpiox_ospeedr_ospeedr9,            (gpiox_ospeedr_ospeedr9_mask)
+    .equ gpiox_ospeedr_ospeedr9_bit0,       (0x01 << gpiox_ospeedr_ospeedr9_position)
+    .equ gpiox_ospeedr_ospeedr9_bit1,       (0x02 << gpiox_ospeedr_ospeedr9_position)
+
+    .equ gpiox_ospeedr_ospeedr10_position,  (0x14)
+    .equ gpiox_ospeedr_ospeedr10_mask,      (0x03 << gpiox_ospeedr_ospeedr10_position)
+    .equ gpiox_ospeedr_ospeedr10,           (gpiox_ospeedr_ospeedr10_mask)
+    .equ gpiox_ospeedr_ospeedr10_bit0,      (0x01 << gpiox_ospeedr_ospeedr10_position)
+    .equ gpiox_ospeedr_ospeedr10_bit1,      (0x02 << gpiox_ospeedr_ospeedr10_position)
+
+    .equ gpiox_ospeedr_ospeedr11_position,  (0x16)
+    .equ gpiox_ospeedr_ospeedr11_mask,      (0x03 << gpiox_ospeedr_ospeedr11_position)
+    .equ gpiox_ospeedr_ospeedr11,           (gpiox_ospeedr_ospeedr11_mask)
+    .equ gpiox_ospeedr_ospeedr11_bit0,      (0x01 << gpiox_ospeedr_ospeedr11_position)
+    .equ gpiox_ospeedr_ospeedr11_bit1,      (0x02 << gpiox_ospeedr_ospeedr11_position)
+
+    .equ gpiox_ospeedr_ospeedr12_position,  (0x18)
+    .equ gpiox_ospeedr_ospeedr12_mask,      (0x03 << gpiox_ospeedr_ospeedr12_position)
+    .equ gpiox_ospeedr_ospeedr12,           (gpiox_ospeedr_ospeedr12_mask)
+    .equ gpiox_ospeedr_ospeedr12_bit0,      (0x01 << gpiox_ospeedr_ospeedr12_position)
+    .equ gpiox_ospeedr_ospeedr12_bit1,      (0x02 << gpiox_ospeedr_ospeedr12_position)
+
+    .equ gpiox_ospeedr_ospeedr13_position,  (0x1a)
+    .equ gpiox_ospeedr_ospeedr13_mask,      (0x03 << gpiox_ospeedr_ospeedr13_position)
+    .equ gpiox_ospeedr_ospeedr13,           (gpiox_ospeedr_ospeedr13_mask)
+    .equ gpiox_ospeedr_ospeedr13_bit0,      (0x01 << gpiox_ospeedr_ospeedr13_position)
+    .equ gpiox_ospeedr_ospeedr13_bit1,      (0x02 << gpiox_ospeedr_ospeedr13_position)
+
+    .equ gpiox_ospeedr_ospeedr14_position,  (0x1c)
+    .equ gpiox_ospeedr_ospeedr14_mask,      (0x03 << gpiox_ospeedr_ospeedr14_position)
+    .equ gpiox_ospeedr_ospeedr14,           (gpiox_ospeedr_ospeedr14_mask)
+    .equ gpiox_ospeedr_ospeedr14_bit0,      (0x01 << gpiox_ospeedr_ospeedr14_position)
+    .equ gpiox_ospeedr_ospeedr14_bit1,      (0x02 << gpiox_ospeedr_ospeedr14_position)
+
+    .equ gpiox_ospeedr_ospeedr15_position,  (0x1e)
+    .equ gpiox_ospeedr_ospeedr15_mask,      (0x03 << gpiox_ospeedr_ospeedr15_position)
+    .equ gpiox_ospeedr_ospeedr15,           (gpiox_ospeedr_ospeedr15_mask)
+    .equ gpiox_ospeedr_ospeedr15_bit0,      (0x01 << gpiox_ospeedr_ospeedr15_position)
+    .equ gpiox_ospeedr_ospeedr15_bit1,      (0x02 << gpiox_ospeedr_ospeedr15_position)
 
 
 @-----------------------------------------------------------------------------------------------@
