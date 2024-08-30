@@ -24,8 +24,8 @@
     .equ gpiox_odr_offset,      (0x14)          @ GPIO port output data register
     .equ gpiox_bsrr_offset,     (0x18)          @ GPIO port bit set/reset register
     .equ gpiox_lckr_offset,     (0x1c)          @ GPIO port configuration lock register
-    .equ gpiox_afrlr_offset,    (0x20)          @ GPIO port alternate function low register
-    .equ gpiox_afrhr_offset,    (0x24)          @ GPIO port alternate function high register
+    .equ gpiox_afrl_offset,     (0x20)          @ GPIO port alternate function low register
+    .equ gpiox_afrh_offset,     (0x24)          @ GPIO port alternate function high register
 
 
     @-------------------------------------------------------------------------------------------@
