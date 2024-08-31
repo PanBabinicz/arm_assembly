@@ -470,3 +470,72 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@-------------------------------- GPIOx ODR register fields ------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+    .equ gpiox_odr_odr0_position,   (0x00)
+    .equ gpiox_odr_odr0_mask,       (0x01 << gpiox_odr_odr0_position)
+    .equ gpiox_odr_odr0,            (gpiox_odr_odr0_mask)
+
+    .equ gpiox_odr_odr1_position,   (0x01)
+    .equ gpiox_odr_odr1_mask,       (0x01 << gpiox_odr_odr1_position)
+    .equ gpiox_odr_odr1,            (gpiox_odr_odr1_mask)
+
+    .equ gpiox_odr_odr2_position,   (0x02)
+    .equ gpiox_odr_odr2_mask,       (0x01 << gpiox_odr_odr2_position)
+    .equ gpiox_odr_odr2,            (gpiox_odr_odr2_mask)
+
+    .equ gpiox_odr_odr3_position,   (0x03)
+    .equ gpiox_odr_odr3_mask,       (0x01 << gpiox_odr_odr3_position)
+    .equ gpiox_odr_odr3,            (gpiox_odr_odr3_mask)
+
+    .equ gpiox_odr_odr4_position,   (0x04)
+    .equ gpiox_odr_odr4_mask,       (0x01 << gpiox_odr_odr4_position)
+    .equ gpiox_odr_odr4,            (gpiox_odr_odr4_mask)
+
+    .equ gpiox_odr_odr5_position,   (0x05)
+    .equ gpiox_odr_odr5_mask,       (0x01 << gpiox_odr_odr5_position)
+    .equ gpiox_odr_odr5,            (gpiox_odr_odr5_mask)
+
+    .equ gpiox_odr_odr6_position,   (0x06)
+    .equ gpiox_odr_odr6_mask,       (0x01 << gpiox_odr_odr6_position)
+    .equ gpiox_odr_odr6,            (gpiox_odr_odr6_mask)
+
+    .equ gpiox_odr_odr7_position,   (0x07)
+    .equ gpiox_odr_odr7_mask,       (0x01 << gpiox_odr_odr7_position)
+    .equ gpiox_odr_odr7,            (gpiox_odr_odr7_mask)
+
+    .equ gpiox_odr_odr8_position,   (0x08)
+    .equ gpiox_odr_odr8_mask,       (0x01 << gpiox_odr_odr8_position)
+    .equ gpiox_odr_odr8,            (gpiox_odr_odr8_mask)
+
+    .equ gpiox_odr_odr9_position,   (0x09)
+    .equ gpiox_odr_odr9_mask,       (0x01 << gpiox_odr_odr9_position)
+    .equ gpiox_odr_odr9,            (gpiox_odr_odr9_mask)
+
+    .equ gpiox_odr_odr10_position,  (0x0a)
+    .equ gpiox_odr_odr10_mask,      (0x01 << gpiox_odr_odr10_position)
+    .equ gpiox_odr_odr10,           (gpiox_odr_odr10_mask)
+
+    .equ gpiox_odr_odr11_position,  (0x0b)
+    .equ gpiox_odr_odr11_mask,      (0x01 << gpiox_odr_odr11_position)
+    .equ gpiox_odr_odr11,           (gpiox_odr_odr11_mask)
+
+    .equ gpiox_odr_odr12_position,  (0x0c)
+    .equ gpiox_odr_odr12_mask,      (0x01 << gpiox_odr_odr12_position)
+    .equ gpiox_odr_odr12,           (gpiox_odr_odr12_mask)
+
+    .equ gpiox_odr_odr13_position,  (0x0d)
+    .equ gpiox_odr_odr13_mask,      (0x01 << gpiox_odr_odr13_position)
+    .equ gpiox_odr_odr13,           (gpiox_odr_odr13_mask)
+
+    .equ gpiox_odr_odr14_position,  (0x0e)
+    .equ gpiox_odr_odr14_mask,      (0x01 << gpiox_odr_odr14_position)
+    .equ gpiox_odr_odr14,           (gpiox_odr_odr14_mask)
+
+    .equ gpiox_odr_odr15_position,  (0x0f)
+    .equ gpiox_odr_odr15_mask,      (0x01 << gpiox_odr_odr15_position)
+    .equ gpiox_odr_odr15,           (gpiox_odr_odr15_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
