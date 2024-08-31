@@ -810,3 +810,72 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@-------------------------------- GPIOx AFRH register fields -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+    .equ gpiox_afrh_afrh8_position,         (0x00)
+    .equ gpiox_afrh_afrh8_mask,             (0x0f << gpiox_afrh_afrh8_position)
+    .equ gpiox_afrh_afrh8,                  (gpiox_afrh_afrh8_mask)
+    .equ gpiox_afrh_afrh8_bit0,             (0x01 << gpiox_afrh_afrh8_position)
+    .equ gpiox_afrh_afrh8_bit1,             (0x02 << gpiox_afrh_afrh8_position)
+    .equ gpiox_afrh_afrh8_bit2,             (0x04 << gpiox_afrh_afrh8_position)
+    .equ gpiox_afrh_afrh8_bit3,             (0x08 << gpiox_afrh_afrh8_position)
+
+    .equ gpiox_afrh_afrh9_position,         (0x04)
+    .equ gpiox_afrh_afrh9_mask,             (0x0f << gpiox_afrh_afrh9_position)
+    .equ gpiox_afrh_afrh9,                  (gpiox_afrh_afrh9_mask)
+    .equ gpiox_afrh_afrh9_bit0,             (0x01 << gpiox_afrh_afrh9_position)
+    .equ gpiox_afrh_afrh9_bit1,             (0x02 << gpiox_afrh_afrh9_position)
+    .equ gpiox_afrh_afrh9_bit2,             (0x04 << gpiox_afrh_afrh9_position)
+    .equ gpiox_afrh_afrh9_bit3,             (0x08 << gpiox_afrh_afrh9_position)
+
+    .equ gpiox_afrh_afrh10_position,        (0x08)
+    .equ gpiox_afrh_afrh10_mask,            (0x0f << gpiox_afrh_afrh10_position)
+    .equ gpiox_afrh_afrh10,                 (gpiox_afrh_afrh10_mask)
+    .equ gpiox_afrh_afrh10_bit0,            (0x01 << gpiox_afrh_afrh10_position)
+    .equ gpiox_afrh_afrh10_bit1,            (0x02 << gpiox_afrh_afrh10_position)
+    .equ gpiox_afrh_afrh10_bit2,            (0x04 << gpiox_afrh_afrh10_position)
+    .equ gpiox_afrh_afrh10_bit3,            (0x08 << gpiox_afrh_afrh10_position)
+
+    .equ gpiox_afrh_afrh11_position,        (0x0c)
+    .equ gpiox_afrh_afrh11_mask,            (0x0f << gpiox_afrh_afrh11_position)
+    .equ gpiox_afrh_afrh11,                 (gpiox_afrh_afrh11_mask)
+    .equ gpiox_afrh_afrh11_bit0,            (0x01 << gpiox_afrh_afrh11_position)
+    .equ gpiox_afrh_afrh11_bit1,            (0x02 << gpiox_afrh_afrh11_position)
+    .equ gpiox_afrh_afrh11_bit2,            (0x04 << gpiox_afrh_afrh11_position)
+    .equ gpiox_afrh_afrh11_bit3,            (0x08 << gpiox_afrh_afrh11_position)
+
+    .equ gpiox_afrh_afrh12_position,        (0x10)
+    .equ gpiox_afrh_afrh12_mask,            (0x0f << gpiox_afrh_afrh12_position)
+    .equ gpiox_afrh_afrh12,                 (gpiox_afrh_afrh12_mask)
+    .equ gpiox_afrh_afrh12_bit0,            (0x01 << gpiox_afrh_afrh12_position)
+    .equ gpiox_afrh_afrh12_bit1,            (0x02 << gpiox_afrh_afrh12_position)
+    .equ gpiox_afrh_afrh12_bit2,            (0x04 << gpiox_afrh_afrh12_position)
+    .equ gpiox_afrh_afrh12_bit3,            (0x08 << gpiox_afrh_afrh12_position)
+
+    .equ gpiox_afrh_afrh13_position,        (0x14)
+    .equ gpiox_afrh_afrh13_mask,            (0x0f << gpiox_afrh_afrh13_position)
+    .equ gpiox_afrh_afrh13,                 (gpiox_afrh_afrh13_mask)
+    .equ gpiox_afrh_afrh13_bit0,            (0x01 << gpiox_afrh_afrh13_position)
+    .equ gpiox_afrh_afrh13_bit1,            (0x02 << gpiox_afrh_afrh13_position)
+    .equ gpiox_afrh_afrh13_bit2,            (0x04 << gpiox_afrh_afrh13_position)
+    .equ gpiox_afrh_afrh13_bit3,            (0x08 << gpiox_afrh_afrh13_position)
+
+    .equ gpiox_afrh_afrh14_position,        (0x18)
+    .equ gpiox_afrh_afrh14_mask,            (0x0f << gpiox_afrh_afrh14_position)
+    .equ gpiox_afrh_afrh14,                 (gpiox_afrh_afrh14_mask)
+    .equ gpiox_afrh_afrh14_bit0,            (0x01 << gpiox_afrh_afrh14_position)
+    .equ gpiox_afrh_afrh14_bit1,            (0x02 << gpiox_afrh_afrh14_position)
+    .equ gpiox_afrh_afrh14_bit2,            (0x04 << gpiox_afrh_afrh14_position)
+    .equ gpiox_afrh_afrh14_bit3,            (0x08 << gpiox_afrh_afrh14_position)
+
+    .equ gpiox_afrh_afrh15_position,        (0x1c)
+    .equ gpiox_afrh_afrh15_mask,            (0x0f << gpiox_afrh_afrh15_position)
+    .equ gpiox_afrh_afrh15,                 (gpiox_afrh_afrh15_mask)
+    .equ gpiox_afrh_afrh15_bit0,            (0x01 << gpiox_afrh_afrh15_position)
+    .equ gpiox_afrh_afrh15_bit1,            (0x02 << gpiox_afrh_afrh15_position)
+    .equ gpiox_afrh_afrh15_bit2,            (0x04 << gpiox_afrh_afrh15_position)
+    .equ gpiox_afrh_afrh15_bit3,            (0x08 << gpiox_afrh_afrh15_position)
+
+
+@-----------------------------------------------------------------------------------------------@
