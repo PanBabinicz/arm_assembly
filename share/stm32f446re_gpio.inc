@@ -401,3 +401,72 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@-------------------------------- GPIOx IDR register fields ------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+    .equ gpiox_idr_idr0_position,   (0x00)
+    .equ gpiox_idr_idr0_mask,       (0x01 << gpiox_idr_idr0_position)
+    .equ gpiox_idr_idr0,            (gpiox_idr_idr0_mask)
+
+    .equ gpiox_idr_idr1_position,   (0x01)
+    .equ gpiox_idr_idr1_mask,       (0x01 << gpiox_idr_idr1_position)
+    .equ gpiox_idr_idr1,            (gpiox_idr_idr1_mask)
+
+    .equ gpiox_idr_idr2_position,   (0x02)
+    .equ gpiox_idr_idr2_mask,       (0x01 << gpiox_idr_idr2_position)
+    .equ gpiox_idr_idr2,            (gpiox_idr_idr2_mask)
+
+    .equ gpiox_idr_idr3_position,   (0x03)
+    .equ gpiox_idr_idr3_mask,       (0x01 << gpiox_idr_idr3_position)
+    .equ gpiox_idr_idr3,            (gpiox_idr_idr3_mask)
+
+    .equ gpiox_idr_idr4_position,   (0x04)
+    .equ gpiox_idr_idr4_mask,       (0x01 << gpiox_idr_idr4_position)
+    .equ gpiox_idr_idr4,            (gpiox_idr_idr4_mask)
+
+    .equ gpiox_idr_idr5_position,   (0x05)
+    .equ gpiox_idr_idr5_mask,       (0x01 << gpiox_idr_idr5_position)
+    .equ gpiox_idr_idr5,            (gpiox_idr_idr5_mask)
+
+    .equ gpiox_idr_idr6_position,   (0x06)
+    .equ gpiox_idr_idr6_mask,       (0x01 << gpiox_idr_idr6_position)
+    .equ gpiox_idr_idr6,            (gpiox_idr_idr6_mask)
+
+    .equ gpiox_idr_idr7_position,   (0x07)
+    .equ gpiox_idr_idr7_mask,       (0x01 << gpiox_idr_idr7_position)
+    .equ gpiox_idr_idr7,            (gpiox_idr_idr7_mask)
+
+    .equ gpiox_idr_idr8_position,   (0x08)
+    .equ gpiox_idr_idr8_mask,       (0x01 << gpiox_idr_idr8_position)
+    .equ gpiox_idr_idr8,            (gpiox_idr_idr8_mask)
+
+    .equ gpiox_idr_idr9_position,   (0x09)
+    .equ gpiox_idr_idr9_mask,       (0x01 << gpiox_idr_idr9_position)
+    .equ gpiox_idr_idr9,            (gpiox_idr_idr9_mask)
+
+    .equ gpiox_idr_idr10_position,  (0x0a)
+    .equ gpiox_idr_idr10_mask,      (0x01 << gpiox_idr_idr10_position)
+    .equ gpiox_idr_idr10,           (gpiox_idr_idr10_mask)
+
+    .equ gpiox_idr_idr11_position,  (0x0b)
+    .equ gpiox_idr_idr11_mask,      (0x01 << gpiox_idr_idr11_position)
+    .equ gpiox_idr_idr11,           (gpiox_idr_idr11_mask)
+
+    .equ gpiox_idr_idr12_position,  (0x0c)
+    .equ gpiox_idr_idr12_mask,      (0x01 << gpiox_idr_idr12_position)
+    .equ gpiox_idr_idr12,           (gpiox_idr_idr12_mask)
+
+    .equ gpiox_idr_idr13_position,  (0x0d)
+    .equ gpiox_idr_idr13_mask,      (0x01 << gpiox_idr_idr13_position)
+    .equ gpiox_idr_idr13,           (gpiox_idr_idr13_mask)
+
+    .equ gpiox_idr_idr14_position,  (0x0e)
+    .equ gpiox_idr_idr14_mask,      (0x01 << gpiox_idr_idr14_position)
+    .equ gpiox_idr_idr14,           (gpiox_idr_idr14_mask)
+
+    .equ gpiox_idr_idr15_position,  (0x0f)
+    .equ gpiox_idr_idr15_mask,      (0x01 << gpiox_idr_idr15_position)
+    .equ gpiox_idr_idr15,           (gpiox_idr_idr15_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
