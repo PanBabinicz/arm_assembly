@@ -300,3 +300,104 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@-------------------------------- GPIOx PUPDR register fields ----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+    .equ gpiox_pupdr_pupdr0_position,   (0x00)
+    .equ gpiox_pupdr_pupdr0_mask,       (0x03 << gpiox_pupdr_pupdr0_position)
+    .equ gpiox_pupdr_pupdr0,            (gpiox_pupdr_pupdr0_mask)
+    .equ gpiox_pupdr_pupdr0_bit0,       (0x01 << gpiox_pupdr_pupdr0_position)
+    .equ gpiox_pupdr_pupdr0_bit1,       (0x02 << gpiox_pupdr_pupdr0_position)
+
+    .equ gpiox_pupdr_pupdr1_position,   (0x02)
+    .equ gpiox_pupdr_pupdr1_mask,       (0x03 << gpiox_pupdr_pupdr1_position)
+    .equ gpiox_pupdr_pupdr1,            (gpiox_pupdr_pupdr1_mask)
+    .equ gpiox_pupdr_pupdr1_bit0,       (0x01 << gpiox_pupdr_pupdr1_position)
+    .equ gpiox_pupdr_pupdr1_bit1,       (0x02 << gpiox_pupdr_pupdr1_position)
+
+    .equ gpiox_pupdr_pupdr2_position,   (0x04)
+    .equ gpiox_pupdr_pupdr2_mask,       (0x03 << gpiox_pupdr_pupdr2_position)
+    .equ gpiox_pupdr_pupdr2,            (gpiox_pupdr_pupdr2_mask)
+    .equ gpiox_pupdr_pupdr2_bit0,       (0x01 << gpiox_pupdr_pupdr2_position)
+    .equ gpiox_pupdr_pupdr2_bit1,       (0x02 << gpiox_pupdr_pupdr2_position)
+
+    .equ gpiox_pupdr_pupdr3_position,   (0x06)
+    .equ gpiox_pupdr_pupdr3_mask,       (0x03 << gpiox_pupdr_pupdr3_position)
+    .equ gpiox_pupdr_pupdr3,            (gpiox_pupdr_pupdr3_mask)
+    .equ gpiox_pupdr_pupdr3_bit0,       (0x01 << gpiox_pupdr_pupdr3_position)
+    .equ gpiox_pupdr_pupdr3_bit1,       (0x02 << gpiox_pupdr_pupdr3_position)
+
+    .equ gpiox_pupdr_pupdr4_position,   (0x08)
+    .equ gpiox_pupdr_pupdr4_mask,       (0x03 << gpiox_pupdr_pupdr4_position)
+    .equ gpiox_pupdr_pupdr4,            (gpiox_pupdr_pupdr4_mask)
+    .equ gpiox_pupdr_pupdr4_bit0,       (0x01 << gpiox_pupdr_pupdr4_position)
+    .equ gpiox_pupdr_pupdr4_bit1,       (0x02 << gpiox_pupdr_pupdr4_position)
+
+    .equ gpiox_pupdr_pupdr5_position,   (0x0a)
+    .equ gpiox_pupdr_pupdr5_mask,       (0x03 << gpiox_pupdr_pupdr5_position)
+    .equ gpiox_pupdr_pupdr5,            (gpiox_pupdr_pupdr5_mask)
+    .equ gpiox_pupdr_pupdr5_bit0,       (0x01 << gpiox_pupdr_pupdr5_position)
+    .equ gpiox_pupdr_pupdr5_bit1,       (0x02 << gpiox_pupdr_pupdr5_position)
+
+    .equ gpiox_pupdr_pupdr6_position,   (0x0c)
+    .equ gpiox_pupdr_pupdr6_mask,       (0x03 << gpiox_pupdr_pupdr6_position)
+    .equ gpiox_pupdr_pupdr6,            (gpiox_pupdr_pupdr6_mask)
+    .equ gpiox_pupdr_pupdr6_bit0,       (0x01 << gpiox_pupdr_pupdr6_position)
+    .equ gpiox_pupdr_pupdr6_bit1,       (0x02 << gpiox_pupdr_pupdr6_position)
+
+    .equ gpiox_pupdr_pupdr7_position,   (0x0e)
+    .equ gpiox_pupdr_pupdr7_mask,       (0x03 << gpiox_pupdr_pupdr7_position)
+    .equ gpiox_pupdr_pupdr7,            (gpiox_pupdr_pupdr7_mask)
+    .equ gpiox_pupdr_pupdr7_bit0,       (0x01 << gpiox_pupdr_pupdr7_position)
+    .equ gpiox_pupdr_pupdr7_bit1,       (0x02 << gpiox_pupdr_pupdr7_position)
+
+    .equ gpiox_pupdr_pupdr8_position,   (0x10)
+    .equ gpiox_pupdr_pupdr8_mask,       (0x03 << gpiox_pupdr_pupdr8_position)
+    .equ gpiox_pupdr_pupdr8,            (gpiox_pupdr_pupdr8_mask)
+    .equ gpiox_pupdr_pupdr8_bit0,       (0x01 << gpiox_pupdr_pupdr8_position)
+    .equ gpiox_pupdr_pupdr8_bit1,       (0x02 << gpiox_pupdr_pupdr8_position)
+
+    .equ gpiox_pupdr_pupdr9_position,   (0x12)
+    .equ gpiox_pupdr_pupdr9_mask,       (0x03 << gpiox_pupdr_pupdr9_position)
+    .equ gpiox_pupdr_pupdr9,            (gpiox_pupdr_pupdr9_mask)
+    .equ gpiox_pupdr_pupdr9_bit0,       (0x01 << gpiox_pupdr_pupdr9_position)
+    .equ gpiox_pupdr_pupdr9_bit1,       (0x02 << gpiox_pupdr_pupdr9_position)
+
+    .equ gpiox_pupdr_pupdr10_position,  (0x14)
+    .equ gpiox_pupdr_pupdr10_mask,      (0x03 << gpiox_pupdr_pupdr10_position)
+    .equ gpiox_pupdr_pupdr10,           (gpiox_pupdr_pupdr10_mask)
+    .equ gpiox_pupdr_pupdr10_bit0,      (0x01 << gpiox_pupdr_pupdr10_position)
+    .equ gpiox_pupdr_pupdr10_bit1,      (0x02 << gpiox_pupdr_pupdr10_position)
+
+    .equ gpiox_pupdr_pupdr11_position,  (0x16)
+    .equ gpiox_pupdr_pupdr11_mask,      (0x03 << gpiox_pupdr_pupdr11_position)
+    .equ gpiox_pupdr_pupdr11,           (gpiox_pupdr_pupdr11_mask)
+    .equ gpiox_pupdr_pupdr11_bit0,      (0x01 << gpiox_pupdr_pupdr11_position)
+    .equ gpiox_pupdr_pupdr11_bit1,      (0x02 << gpiox_pupdr_pupdr11_position)
+
+    .equ gpiox_pupdr_pupdr12_position,  (0x18)
+    .equ gpiox_pupdr_pupdr12_mask,      (0x03 << gpiox_pupdr_pupdr12_position)
+    .equ gpiox_pupdr_pupdr12,           (gpiox_pupdr_pupdr12_mask)
+    .equ gpiox_pupdr_pupdr12_bit0,      (0x01 << gpiox_pupdr_pupdr12_position)
+    .equ gpiox_pupdr_pupdr12_bit1,      (0x02 << gpiox_pupdr_pupdr12_position)
+
+    .equ gpiox_pupdr_pupdr13_position,  (0x1a)
+    .equ gpiox_pupdr_pupdr13_mask,      (0x03 << gpiox_pupdr_pupdr13_position)
+    .equ gpiox_pupdr_pupdr13,           (gpiox_pupdr_pupdr13_mask)
+    .equ gpiox_pupdr_pupdr13_bit0,      (0x01 << gpiox_pupdr_pupdr13_position)
+    .equ gpiox_pupdr_pupdr13_bit1,      (0x02 << gpiox_pupdr_pupdr13_position)
+
+    .equ gpiox_pupdr_pupdr14_position,  (0x1c)
+    .equ gpiox_pupdr_pupdr14_mask,      (0x03 << gpiox_pupdr_pupdr14_position)
+    .equ gpiox_pupdr_pupdr14,           (gpiox_pupdr_pupdr14_mask)
+    .equ gpiox_pupdr_pupdr14_bit0,      (0x01 << gpiox_pupdr_pupdr14_position)
+    .equ gpiox_pupdr_pupdr14_bit1,      (0x02 << gpiox_pupdr_pupdr14_position)
+
+    .equ gpiox_pupdr_pupdr15_position,  (0x1e)
+    .equ gpiox_pupdr_pupdr15_mask,      (0x03 << gpiox_pupdr_pupdr15_position)
+    .equ gpiox_pupdr_pupdr15,           (gpiox_pupdr_pupdr15_mask)
+    .equ gpiox_pupdr_pupdr15_bit0,      (0x01 << gpiox_pupdr_pupdr15_position)
+    .equ gpiox_pupdr_pupdr15_bit1,      (0x02 << gpiox_pupdr_pupdr15_position)
+
+
+@-----------------------------------------------------------------------------------------------@
