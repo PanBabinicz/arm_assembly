@@ -539,3 +539,135 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@-------------------------------- GPIOx BSRR register fields -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+    .equ gpiox_bs_bs0_position,   (0x00)
+    .equ gpiox_bs_bs0_mask,       (0x01 << gpiox_bs_bs0_position)
+    .equ gpiox_bs_bs0,            (gpiox_bs_bs0_mask)
+
+    .equ gpiox_bs_bs1_position,   (0x01)
+    .equ gpiox_bs_bs1_mask,       (0x01 << gpiox_bs_bs1_position)
+    .equ gpiox_bs_bs1,            (gpiox_bs_bs1_mask)
+
+    .equ gpiox_bs_bs2_position,   (0x02)
+    .equ gpiox_bs_bs2_mask,       (0x01 << gpiox_bs_bs2_position)
+    .equ gpiox_bs_bs2,            (gpiox_bs_bs2_mask)
+
+    .equ gpiox_bs_bs3_position,   (0x03)
+    .equ gpiox_bs_bs3_mask,       (0x01 << gpiox_bs_bs3_position)
+    .equ gpiox_bs_bs3,            (gpiox_bs_bs3_mask)
+
+    .equ gpiox_bs_bs4_position,   (0x04)
+    .equ gpiox_bs_bs4_mask,       (0x01 << gpiox_bs_bs4_position)
+    .equ gpiox_bs_bs4,            (gpiox_bs_bs4_mask)
+
+    .equ gpiox_bs_bs5_position,   (0x05)
+    .equ gpiox_bs_bs5_mask,       (0x01 << gpiox_bs_bs5_position)
+    .equ gpiox_bs_bs5,            (gpiox_bs_bs5_mask)
+
+    .equ gpiox_bs_bs6_position,   (0x06)
+    .equ gpiox_bs_bs6_mask,       (0x01 << gpiox_bs_bs6_position)
+    .equ gpiox_bs_bs6,            (gpiox_bs_bs6_mask)
+
+    .equ gpiox_bs_bs7_position,   (0x07)
+    .equ gpiox_bs_bs7_mask,       (0x01 << gpiox_bs_bs7_position)
+    .equ gpiox_bs_bs7,            (gpiox_bs_bs7_mask)
+
+    .equ gpiox_bs_bs8_position,   (0x08)
+    .equ gpiox_bs_bs8_mask,       (0x01 << gpiox_bs_bs8_position)
+    .equ gpiox_bs_bs8,            (gpiox_bs_bs8_mask)
+
+    .equ gpiox_bs_bs9_position,   (0x09)
+    .equ gpiox_bs_bs9_mask,       (0x01 << gpiox_bs_bs9_position)
+    .equ gpiox_bs_bs9,            (gpiox_bs_bs9_mask)
+
+    .equ gpiox_bs_bs10_position,  (0x0a)
+    .equ gpiox_bs_bs10_mask,      (0x01 << gpiox_bs_bs10_position)
+    .equ gpiox_bs_bs10,           (gpiox_bs_bs10_mask)
+
+    .equ gpiox_bs_bs11_position,  (0x0b)
+    .equ gpiox_bs_bs11_mask,      (0x01 << gpiox_bs_bs11_position)
+    .equ gpiox_bs_bs11,           (gpiox_bs_bs11_mask)
+
+    .equ gpiox_bs_bs12_position,  (0x0c)
+    .equ gpiox_bs_bs12_mask,      (0x01 << gpiox_bs_bs12_position)
+    .equ gpiox_bs_bs12,           (gpiox_bs_bs12_mask)
+
+    .equ gpiox_bs_bs13_position,  (0x0d)
+    .equ gpiox_bs_bs13_mask,      (0x01 << gpiox_bs_bs13_position)
+    .equ gpiox_bs_bs13,           (gpiox_bs_bs13_mask)
+
+    .equ gpiox_bs_bs14_position,  (0x0e)
+    .equ gpiox_bs_bs14_mask,      (0x01 << gpiox_bs_bs14_position)
+    .equ gpiox_bs_bs14,           (gpiox_bs_bs14_mask)
+
+    .equ gpiox_bs_bs15_position,  (0x0f)
+    .equ gpiox_bs_bs15_mask,      (0x01 << gpiox_bs_bs15_position)
+    .equ gpiox_bs_bs15,           (gpiox_bs_bs15_mask)
+
+    .equ gpiox_br_br0_position,   (0x10)
+    .equ gpiox_br_br0_mask,       (0x01 << gpiox_br_br0_position)
+    .equ gpiox_br_br0,            (gpiox_br_br0_mask)
+
+    .equ gpiox_br_br1_position,   (0x11)
+    .equ gpiox_br_br1_mask,       (0x01 << gpiox_br_br1_position)
+    .equ gpiox_br_br1,            (gpiox_br_br1_mask)
+
+    .equ gpiox_br_br2_position,   (0x12)
+    .equ gpiox_br_br2_mask,       (0x01 << gpiox_br_br2_position)
+    .equ gpiox_br_br2,            (gpiox_br_br2_mask)
+
+    .equ gpiox_br_br3_position,   (0x13)
+    .equ gpiox_br_br3_mask,       (0x01 << gpiox_br_br3_position)
+    .equ gpiox_br_br3,            (gpiox_br_br3_mask)
+
+    .equ gpiox_br_br4_position,   (0x14)
+    .equ gpiox_br_br4_mask,       (0x01 << gpiox_br_br4_position)
+    .equ gpiox_br_br4,            (gpiox_br_br4_mask)
+
+    .equ gpiox_br_br5_position,   (0x15)
+    .equ gpiox_br_br5_mask,       (0x01 << gpiox_br_br5_position)
+    .equ gpiox_br_br5,            (gpiox_br_br5_mask)
+
+    .equ gpiox_br_br6_position,   (0x16)
+    .equ gpiox_br_br6_mask,       (0x01 << gpiox_br_br6_position)
+    .equ gpiox_br_br6,            (gpiox_br_br6_mask)
+
+    .equ gpiox_br_br7_position,   (0x17)
+    .equ gpiox_br_br7_mask,       (0x01 << gpiox_br_br7_position)
+    .equ gpiox_br_br7,            (gpiox_br_br7_mask)
+
+    .equ gpiox_br_br8_position,   (0x18)
+    .equ gpiox_br_br8_mask,       (0x01 << gpiox_br_br8_position)
+    .equ gpiox_br_br8,            (gpiox_br_br8_mask)
+
+    .equ gpiox_br_br9_position,   (0x19)
+    .equ gpiox_br_br9_mask,       (0x01 << gpiox_br_br9_position)
+    .equ gpiox_br_br9,            (gpiox_br_br9_mask)
+
+    .equ gpiox_br_br10_position,  (0x1a)
+    .equ gpiox_br_br10_mask,      (0x01 << gpiox_br_br10_position)
+    .equ gpiox_br_br10,           (gpiox_br_br10_mask)
+
+    .equ gpiox_br_br11_position,  (0x1b)
+    .equ gpiox_br_br11_mask,      (0x01 << gpiox_br_br11_position)
+    .equ gpiox_br_br11,           (gpiox_br_br11_mask)
+
+    .equ gpiox_br_br12_position,  (0x1c)
+    .equ gpiox_br_br12_mask,      (0x01 << gpiox_br_br12_position)
+    .equ gpiox_br_br12,           (gpiox_br_br12_mask)
+
+    .equ gpiox_br_br13_position,  (0x1d)
+    .equ gpiox_br_br13_mask,      (0x01 << gpiox_br_br13_position)
+    .equ gpiox_br_br13,           (gpiox_br_br13_mask)
+
+    .equ gpiox_br_br14_position,  (0x1e)
+    .equ gpiox_br_br14_mask,      (0x01 << gpiox_br_br14_position)
+    .equ gpiox_br_br14,           (gpiox_br_br14_mask)
+
+    .equ gpiox_br_br15_position,  (0x1f)
+    .equ gpiox_br_br15_mask,      (0x01 << gpiox_br_br15_position)
+    .equ gpiox_br_br15,           (gpiox_br_br15_mask)
+
+@-----------------------------------------------------------------------------------------------@
