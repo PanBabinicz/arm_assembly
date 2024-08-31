@@ -741,3 +741,72 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@-------------------------------- GPIOx AFRL register fields -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+    .equ gpiox_afrl_afrl0_position,         (0x00)
+    .equ gpiox_afrl_afrl0_mask,             (0x0f << gpiox_afrl_afrl0_position)
+    .equ gpiox_afrl_afrl0,                  (gpiox_afrl_afrl0_mask)
+    .equ gpiox_afrl_afrl0_bit0,             (0x01 << gpiox_afrl_afrl0_position)
+    .equ gpiox_afrl_afrl0_bit1,             (0x02 << gpiox_afrl_afrl0_position)
+    .equ gpiox_afrl_afrl0_bit2,             (0x04 << gpiox_afrl_afrl0_position)
+    .equ gpiox_afrl_afrl0_bit3,             (0x08 << gpiox_afrl_afrl0_position)
+
+    .equ gpiox_afrl_afrl1_position,         (0x04)
+    .equ gpiox_afrl_afrl1_mask,             (0x0f << gpiox_afrl_afrl1_position)
+    .equ gpiox_afrl_afrl1,                  (gpiox_afrl_afrl1_mask)
+    .equ gpiox_afrl_afrl1_bit0,             (0x01 << gpiox_afrl_afrl1_position)
+    .equ gpiox_afrl_afrl1_bit1,             (0x02 << gpiox_afrl_afrl1_position)
+    .equ gpiox_afrl_afrl1_bit2,             (0x04 << gpiox_afrl_afrl1_position)
+    .equ gpiox_afrl_afrl1_bit3,             (0x08 << gpiox_afrl_afrl1_position)
+
+    .equ gpiox_afrl_afrl2_position,         (0x08)
+    .equ gpiox_afrl_afrl2_mask,             (0x0f << gpiox_afrl_afrl2_position)
+    .equ gpiox_afrl_afrl2,                  (gpiox_afrl_afrl2_mask)
+    .equ gpiox_afrl_afrl2_bit0,             (0x01 << gpiox_afrl_afrl2_position)
+    .equ gpiox_afrl_afrl2_bit1,             (0x02 << gpiox_afrl_afrl2_position)
+    .equ gpiox_afrl_afrl2_bit2,             (0x04 << gpiox_afrl_afrl2_position)
+    .equ gpiox_afrl_afrl2_bit3,             (0x08 << gpiox_afrl_afrl2_position)
+
+    .equ gpiox_afrl_afrl3_position,         (0x0c)
+    .equ gpiox_afrl_afrl3_mask,             (0x0f << gpiox_afrl_afrl3_position)
+    .equ gpiox_afrl_afrl3,                  (gpiox_afrl_afrl3_mask)
+    .equ gpiox_afrl_afrl3_bit0,             (0x01 << gpiox_afrl_afrl3_position)
+    .equ gpiox_afrl_afrl3_bit1,             (0x02 << gpiox_afrl_afrl3_position)
+    .equ gpiox_afrl_afrl3_bit2,             (0x04 << gpiox_afrl_afrl3_position)
+    .equ gpiox_afrl_afrl3_bit3,             (0x08 << gpiox_afrl_afrl3_position)
+
+    .equ gpiox_afrl_afrl4_position,         (0x10)
+    .equ gpiox_afrl_afrl4_mask,             (0x0f << gpiox_afrl_afrl4_position)
+    .equ gpiox_afrl_afrl4,                  (gpiox_afrl_afrl4_mask)
+    .equ gpiox_afrl_afrl4_bit0,             (0x01 << gpiox_afrl_afrl4_position)
+    .equ gpiox_afrl_afrl4_bit1,             (0x02 << gpiox_afrl_afrl4_position)
+    .equ gpiox_afrl_afrl4_bit2,             (0x04 << gpiox_afrl_afrl4_position)
+    .equ gpiox_afrl_afrl4_bit3,             (0x08 << gpiox_afrl_afrl4_position)
+
+    .equ gpiox_afrl_afrl5_position,         (0x14)
+    .equ gpiox_afrl_afrl5_mask,             (0x0f << gpiox_afrl_afrl5_position)
+    .equ gpiox_afrl_afrl5,                  (gpiox_afrl_afrl5_mask)
+    .equ gpiox_afrl_afrl5_bit0,             (0x01 << gpiox_afrl_afrl5_position)
+    .equ gpiox_afrl_afrl5_bit1,             (0x02 << gpiox_afrl_afrl5_position)
+    .equ gpiox_afrl_afrl5_bit2,             (0x04 << gpiox_afrl_afrl5_position)
+    .equ gpiox_afrl_afrl5_bit3,             (0x08 << gpiox_afrl_afrl5_position)
+
+    .equ gpiox_afrl_afrl6_position,         (0x18)
+    .equ gpiox_afrl_afrl6_mask,             (0x0f << gpiox_afrl_afrl6_position)
+    .equ gpiox_afrl_afrl6,                  (gpiox_afrl_afrl6_mask)
+    .equ gpiox_afrl_afrl6_bit0,             (0x01 << gpiox_afrl_afrl6_position)
+    .equ gpiox_afrl_afrl6_bit1,             (0x02 << gpiox_afrl_afrl6_position)
+    .equ gpiox_afrl_afrl6_bit2,             (0x04 << gpiox_afrl_afrl6_position)
+    .equ gpiox_afrl_afrl6_bit3,             (0x08 << gpiox_afrl_afrl6_position)
+
+    .equ gpiox_afrl_afrl7_position,         (0x1c)
+    .equ gpiox_afrl_afrl7_mask,             (0x0f << gpiox_afrl_afrl7_position)
+    .equ gpiox_afrl_afrl7,                  (gpiox_afrl_afrl7_mask)
+    .equ gpiox_afrl_afrl7_bit0,             (0x01 << gpiox_afrl_afrl7_position)
+    .equ gpiox_afrl_afrl7_bit1,             (0x02 << gpiox_afrl_afrl7_position)
+    .equ gpiox_afrl_afrl7_bit2,             (0x04 << gpiox_afrl_afrl7_position)
+    .equ gpiox_afrl_afrl7_bit3,             (0x08 << gpiox_afrl_afrl7_position)
+
+
+@-----------------------------------------------------------------------------------------------@
