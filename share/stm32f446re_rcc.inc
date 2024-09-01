@@ -643,20 +643,4 @@
     .equ rcc_apb2enr_sai2en,                (rcc_apb2enr_sai2en_mask)
 
 
-
-    TODO:
-    rcc_ahb1enr_gpioaen = 0x01
-    rcc_ahb1enr_gpioaen = 0x01
-
-    gpiox_moder_base = 0x40020000
-    gpiox_moder_input_5 = 0x0 << 10
-    gpiox_moder_output_5 = 0x1 << 10
-    gpiox_moder_af_5 = 0x2 << 10
-    gpiox_moder_analog_5 = 0x3 << 10
-
-    gpiox_bsrr_base = 0x40020018
-    gpiox_bsrr_bs5 = 0x1 << 5
-    gpiox_bsrr_br5 = 0x1 << 21
-
-
 @-----------------------------------------------------------------------------------------------@
