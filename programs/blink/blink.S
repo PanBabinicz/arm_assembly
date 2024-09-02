@@ -1,38 +1,68 @@
-    .syntax unified
-    .cpu cortex-m4
-    .thumb
+        .syntax unified
+        .cpu cortex-m4
+        .thumb
 
-    .include "stm32f446re_constants.inc"
+        .include "stm32f446re_rcc.inc"
+        .include "stm32f446re_gpio.inc"
 
-    blink_loop_size = 1000000
+        delay_number_of_iterations = 0x00100000
 
-    .text
-    .type _reset_handler, %function
-    .global _reset_handler
+        .text
+        .global _reset_handler
+        .type _reset_handler, %function
 _reset_handler:
-    ldr r0, =stm32_rcc_ahb1enr_base       @ RCC enable for GPIOA.
-    ldr r1, [r0]
-    orr r1, #stm32_rcc_ahb1enr_gpioaen
-    str r1, [r0]
-    ldr r0, =stm32_gpiox_moder_base       @ Set GPIOA pin5 to output.
-    ldr r1, [r0]
-    orr r1, #stm32_gpiox_moder_output_5
-    str r1, [r0]
-    ldr r0, =stm32_gpiox_bsrr_base        @ Store the constant values for setting leds on/off.
-    ldr r1, =stm32_gpiox_bsrr_bs5
-    ldr r2, =stm32_gpiox_bsrr_br5
-    ldr r3, =blink_loop_size
-blink_loop:
-    str r1, [r0]                          @ Set GPIOA pin5 output high.
-    mov r4, r3
-delay_on:
-    subs r4, #1
-    bne delay_on
-    str r2, [r0]                          @ Set GPIOA pin5 output low.
-    mov r4, r3
-delay_off:
-    subs r4, #1
-    bne delay_off
-    b blink_loop
+        bl _rcc_setup
+        bl _gpio_setup
+        ldr r0, =gpioa_moder_base               @ _blink function argument 0
+        ldr r1, =gpiox_bsrr_bs5                 @ _blink function argument 1
+        ldr r2, =gpiox_bsrr_br5                 @ _blink function argument 2
+        ldr r3, =delay_number_of_iterations     @ _blink function argument 3
+        bl _blink
+        b .                                     @ Never return.
 
-    .end
+        .text
+        .type _rcc_setup, %function
+_rcc_setup:
+        ldr r0, =rcc_ahb1enr_base
+        ldr r1, [r0, #rcc_ahb1enr_offset]
+        orr r1, #rcc_ahb1enr_gpioaen
+        str r1, [r0]
+        bx lr
+
+        .text
+        .type _gpio_setup, %function
+_gpio_setup:
+        ldr r0, =gpioa_moder_base
+        ldr r1, [r0, #gpiox_moder_offset]
+        orr r1, #gpiox_moder_moder5_bit0
+        str r1, [r0]
+        bx lr
+        ldr r1, [r0, #gpiox_bsrr_offset]
+        orr r1, #gpiox_bsrr_bs5
+        str r1, [r0, #gpiox_bsrr_offset]
+        bx lr
+
+        .text
+        .type _blink, %function
+_blink:
+        push { r4, lr }
+        mov r4, r0
+blink_loop:
+        str r1, [r4, #gpiox_bsrr_offset]
+        mov r0, r3
+        bl _blink_delay
+        str r2, [r4, #gpiox_bsrr_offset]
+        mov r0, r3
+        bl _blink_delay
+        b blink_loop
+
+        .text
+        .type _blink_delay, %function
+_blink_delay:
+loop:
+        subs r0, #1
+        cmp r0, #0
+        bne loop
+        bx lr
+
+        .end
