@@ -37,10 +37,6 @@ _gpio_setup:
         orr r1, #gpiox_moder_moder5_bit0
         str r1, [r0]
         bx lr
-        ldr r1, [r0, #gpiox_bsrr_offset]
-        orr r1, #gpiox_bsrr_bs5
-        str r1, [r0, #gpiox_bsrr_offset]
-        bx lr
 
         .text
         .type _blink, %function
