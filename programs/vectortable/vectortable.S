@@ -10,7 +10,6 @@
             .word \name
         .endm
 
-        .text
         .global _vector_table
         .section ._vector_table, "a"
         .type _vector_table, %object
