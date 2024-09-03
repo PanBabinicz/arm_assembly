@@ -13,7 +13,7 @@
 _reset_handler:
         bl _rcc_setup
         bl _gpio_setup
-        ldr r0, =gpioa_moder_base               @ _blink function argument 0
+        ldr r0, =gpioa_base                     @ _blink function argument 0
         ldr r1, =gpiox_bsrr_bs5                 @ _blink function argument 1
         ldr r2, =gpiox_bsrr_br5                 @ _blink function argument 2
         ldr r3, =delay_number_of_iterations     @ _blink function argument 3
@@ -23,19 +23,19 @@ _reset_handler:
         .text
         .type _rcc_setup, %function
 _rcc_setup:
-        ldr r0, =rcc_ahb1enr_base
+        ldr r0, =rcc_base
         ldr r1, [r0, #rcc_ahb1enr_offset]
         orr r1, #rcc_ahb1enr_gpioaen
-        str r1, [r0]
+        str r1, [r0, #rcc_ahb1enr_offset]
         bx lr
 
         .text
         .type _gpio_setup, %function
 _gpio_setup:
-        ldr r0, =gpioa_moder_base
+        ldr r0, =gpioa_base
         ldr r1, [r0, #gpiox_moder_offset]
         orr r1, #gpiox_moder_moder5_bit0
-        str r1, [r0]
+        str r1, [r0, #gpiox_moder_offset]
         bx lr
 
         .text
