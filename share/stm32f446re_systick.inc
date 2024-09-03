@@ -40,16 +40,32 @@
 @--------------------------------- SYSTICK LOAD register fields --------------------------------@
 @-----------------------------------------------------------------------------------------------@
 
-        .equ stk_load_enable_position       (0x00)
-        .equ stk_load_enable_mask           (0xffffff << stk_load_enable_position)
+        .equ stk_load_reload_position       (0x00)
+        .equ stk_load_reload_mask           (0xffffff << stk_load_reload_position)
 
 
 @-----------------------------------------------------------------------------------------------@
 @--------------------------------- SYSTICK VAL register fields ---------------------------------@
 @-----------------------------------------------------------------------------------------------@
 
-        .equ stk_val_enable_position        (0x00)
-        .equ stk_val_enable_mask            (0xffffff << stk_val_enable_position)
+        .equ stk_val_current_position       (0x00)
+        .equ stk_val_current_mask           (0xffffff << stk_val_current_position)
+
+
+@-----------------------------------------------------------------------------------------------@
+@--------------------------------- SYSTICK CALIB register fields -------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ stk_calib_tenms_position       (0x00)
+        .equ stk_calib_tenms_mask           (0xffffff << stk_calib_tenms_position)
+
+        .equ stk_calib_skew_position        (0x1e)
+        .equ stk_calib_skew_mask            (0x01 << stk_calib_skew_position)
+        .equ stk_calib_skew                 (stk_calib_skew_mask)
+
+        .equ stk_calib_noref_position       (0x1f)
+        .equ stk_calib_noref_mask           (0x01 << stk_calib_noref_position)
+        .equ stk_calib_noref                (stk_calib_noref_mask)
 
 
 @-----------------------------------------------------------------------------------------------@
