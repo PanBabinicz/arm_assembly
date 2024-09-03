@@ -7,14 +7,14 @@
 @------------------------------------ GPIO registers offsets -----------------------------------@
 @-----------------------------------------------------------------------------------------------@
 
-        .equ gpioa_moder_base,      (0x40020000)    @ GPIOA register boundary address
-        .equ gpiob_moder_base,      (0x40020400)    @ GPIOB register boundary address
-        .equ gpioc_moder_base,      (0x40020800)    @ GPIOC register boundary address
-        .equ gpiod_moder_base,      (0x40020c00)    @ GPIOD register boundary address
-        .equ gpioe_moder_base,      (0x40021000)    @ GPIOE register boundary address
-        .equ gpiof_moder_base,      (0x40021400)    @ GPIOF register boundary address
-        .equ gpiog_moder_base,      (0x40021800)    @ GPIOG register boundary address
-        .equ gpioh_moder_base,      (0x40021c00)    @ GPIOH register boundary address
+        .equ gpioa_base,            (0x40020000)    @ GPIOA register boundary address
+        .equ gpiob_base,            (0x40020400)    @ GPIOB register boundary address
+        .equ gpioc_base,            (0x40020800)    @ GPIOC register boundary address
+        .equ gpiod_base,            (0x40020c00)    @ GPIOD register boundary address
+        .equ gpioe_base,            (0x40021000)    @ GPIOE register boundary address
+        .equ gpiof_base,            (0x40021400)    @ GPIOF register boundary address
+        .equ gpiog_base,            (0x40021800)    @ GPIOG register boundary address
+        .equ gpioh_base,            (0x40021c00)    @ GPIOH register boundary address
 
         .equ gpiox_moder_offset,    (0x00)          @ GPIO port mode register
         .equ gpiox_otyper_offset,   (0x04)          @ GPIO port output type register
