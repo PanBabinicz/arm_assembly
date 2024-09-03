@@ -7,7 +7,7 @@
 @------------------------------------ RCC registers offsets ------------------------------------@
 @-----------------------------------------------------------------------------------------------@
 
-        .equ rcc_ahb1enr_base,      (0x40023830)    @ RCC register boundary address
+        .equ rcc_base,              (0x40023800)    @ RCC register boundary address
 
         .equ rcc_cr_offset,         (0x00)          @ RCC Clock control register
         .equ rcc_pllcfgr_offset,    (0x04)          @ RCC PLL configuration register
