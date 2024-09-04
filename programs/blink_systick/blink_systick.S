@@ -40,12 +40,11 @@ _gpio_setup:
         .type _stk_setup, %function
 _stk_setup:
         ldr r0, =stk_base
-        ldr r1, [r0, #stk_ctrl_offset]
-        mov r1, #(stk_ctrl_clksource | stk_ctrl_enable)
+        mov r1, #stk_ctrl_enable
         ldr r2, =stk_load_reload_value
+        mov r3, #0x00
         str r2, [r0, #stk_load_offset]
-        mov r2, #0x00
-        str r2, [r0, #stk_val_offset]
+        str r3, [r0, #stk_val_offset]
         str r1, [r0, #stk_ctrl_offset]
         bx lr
 
@@ -66,6 +65,7 @@ toggle_led_end:
         .type _check_the_stk_flag, %function
 _check_the_stk_flag:
         push { lr }
+        ldr r0, =stk_base
         ldr r1, [r0, #stk_ctrl_offset]
         tst r1, #stk_ctrl_countflag
         beq check_end
@@ -81,7 +81,6 @@ check_end:
         .type _main, %function
 _main:
         push { lr }
-        ldr r0, =stk_base
 1:
         bl _check_the_stk_flag
         b 1b
