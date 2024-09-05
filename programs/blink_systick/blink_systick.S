@@ -86,3 +86,5 @@ _main:
         b 1b
         pop { lr }          @ Should never go here.
         bx lr
+
+        .end
