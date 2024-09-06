@@ -34,8 +34,8 @@ blink_pattern_current_address:
         .word 0x00
 
         .text
-        .global _reset_handler
         .balign 4
+        .global _reset_handler
         .type _reset_handler, %function
 _reset_handler:
         bl _rcc_setup
@@ -45,8 +45,8 @@ _reset_handler:
         b .                 @ Never return.
 
         .text
-        .global _systick_handler
         .balign 4
+        .global _systick_handler
         .type _systick_handler, %function
 _systick_handler:
         push { lr }
