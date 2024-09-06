@@ -9,7 +9,7 @@
         stk_load_reload_value = 0x00100000
 
         .text
-        .baling 4
+        .balign 4
         .global _reset_handler
         .type _reset_handler, %function
 _reset_handler:
@@ -20,7 +20,7 @@ _reset_handler:
         b .             @ Never return.
 
         .text
-        .baling 4
+        .balign 4
         .global _systick_handler
         .type _systick_handler, %function
 _systick_handler:
@@ -30,7 +30,7 @@ _systick_handler:
         bx lr
 
         .text
-        .baling 4
+        .balign 4
         .type _rcc_setup, %function
 _rcc_setup:
         ldr r0, =rcc_base
@@ -40,7 +40,7 @@ _rcc_setup:
         bx lr
 
         .text
-        .baling 4
+        .balign 4
         .type _gpio_setup, %function
 _gpio_setup:
         ldr r0, =gpioa_base
@@ -50,7 +50,7 @@ _gpio_setup:
         bx lr
 
         .text
-        .baling 4
+        .balign 4
         .type _systick_setup, %function
 _systick_setup:
         ldr r0, =stk_base
@@ -64,7 +64,7 @@ _systick_setup:
         bx lr
 
         .text
-        .baling 4
+        .balign 4
         .type _toggle_led, %function
 _toggle_led:
         ldr r3, [r0, #gpiox_odr_offset]
@@ -78,7 +78,7 @@ toggle_led_end:
         bx lr
 
         .text
-        .baling 4
+        .balign 4
         .type _main, %function
 _main:
         push { lr }
