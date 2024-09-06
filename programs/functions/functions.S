@@ -1,61 +1,83 @@
-.syntax unified
-.cpu cortex-m4
-.thumb
+        .syntax unified
+        .cpu cortex-m4
+        .thumb
 
-@ Constant addresses and values
-STM32_RCC_AHB1ENR_BASE = 0x40023830
-STM32_RCC_AHB1ENR_GPIOAEN = 0x1
+        .include "stm32f446re_rcc.inc"
+        .include "stm32f446re_gpio.inc"
 
-STM32_GPIOx_MODER_BASE = 0x40020000
-STM32_GPIOx_MODER_INPUT_5 = 0x0 << 10
-STM32_GPIOx_MODER_OUTPUT_5 = 0x1 << 10
-STM32_GPIOx_MODER_AF_5 = 0x2 << 10
-STM32_GPIOx_MODER_ANALOG_5 = 0x3 << 10
+        delay_value = 0x00100000
 
-STM32_GPIOx_BSRR_BASE = 0x40020018
-STM32_GPIOx_BSRR_BS5 = 0x1 << 5
-STM32_GPIOx_BSRR_BR5 = 0x1 << 21
+        .text
+        .balign 4
+        .global _reset_handler
+        .type _reset_handler, %function
+_reset_handler:
+        bl _rcc_setup
+        bl _gpio_setup
+        bl _main
+        b .                 @ Never return.
 
-BLINK_LOOP_SIZE = 1000000
+        .text
+        .balign 4
+        .type _rcc_setup, %function
+_rcc_setup:
+        ldr r0, =rcc_base
+        ldr r1, [r0, #rcc_ahb1enr_offset]
+        orr r1, #rcc_ahb1enr_gpioaen
+        str r1, [r0, #rcc_ahb1enr_offset]
+        bx lr
 
-.text
-.type _RESET_HANDLER, %function
-.global _RESET_HANDLER
-_RESET_HANDLER:
-  bl turn_on_gpio_clock
-  bl set_gpio_mode_output
-  ldr r0, =10
-  bl blink
-  b .
-turn_on_gpio_clock:
-  ldr r0, =STM32_RCC_AHB1ENR_BASE
-  ldr r1, [r0]
-  orr r1, #STM32_RCC_AHB1ENR_GPIOAEN
-  str r1, [r0]
-  bx lr
-set_gpio_mode_output:
-  ldr r0, =STM32_GPIOx_MODER_BASE
-  ldr r1, [r0]
-  orr r1, #STM32_GPIOx_MODER_OUTPUT_5
-  str r1, [r0]
-  bx lr
-blink:
-  push { r4-r7, lr }
-  ldr r4, =STM32_GPIOx_BSRR_BASE
-  ldr r5, =STM32_GPIOx_BSRR_BS5
-  ldr r6, =STM32_GPIOx_BSRR_BR5
-  mov r7, r0
-blink_count:
-  str r5, [r4]
-  ldr r0, =BLINK_LOOP_SIZE
-  bl blink_delay
-  str r6, [r4]
-  ldr r0, =BLINK_LOOP_SIZE
-  bl blink_delay
-  subs r7, #1
-  bne blink_count
-  pop { r4-r7, pc }
-blink_delay:
-  subs r0, #1
-  bne blink_delay
-  bx lr
+        .text
+        .balign 4
+        .type _gpio_setup, %function
+_gpio_setup:
+        ldr r0, =gpioa_base
+        ldr r1, [r0, #gpiox_moder_offset]
+        orr r1, #gpiox_moder_moder5_bit0
+        str r1, [r0, #gpiox_moder_offset]
+        bx lr
+
+        .text
+        .balign 4
+        .type _led_turn_on, %function
+_led_turn_on:
+        ldr r0, =gpioa_base
+        ldr r1, =gpiox_bsrr_bs5
+        str r1, [r0, #gpiox_bsrr_offset]
+        bx lr
+
+        .text
+        .balign 4
+        .type _led_turn_off, %function
+_led_turn_off:
+        ldr r0, =gpioa_base
+        ldr r1, =gpiox_bsrr_br5
+        str r1, [r0, #gpiox_bsrr_offset]
+        bx lr
+
+        .text
+        .balign 4
+        .type _delay, %function
+_delay:
+1:
+        subs r0, #1
+        bne 1b
+        bx lr
+
+        .text
+        .balign 4
+        .type _main, %function
+_main:
+        push { lr }
+1:
+        bl _led_turn_on
+        ldr r0, =delay_value
+        bl _delay
+        bl _led_turn_off
+        ldr r0, =delay_value
+        bl _delay
+        b 1b
+        pop { lr }          @ Should never go here.
+        bx lr
+
+        .end
