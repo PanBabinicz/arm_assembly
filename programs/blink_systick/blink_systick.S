@@ -9,6 +9,7 @@
         stk_load_reload_value = 0x00100000
 
         .text
+        .balign 4
         .global _reset_handler
         .type _reset_handler, %function
 _reset_handler:
@@ -19,6 +20,7 @@ _reset_handler:
         b .                 @ Never return.
 
         .text
+        .balign 4
         .type _rcc_setup, %function
 _rcc_setup:
         ldr r0, =rcc_base
@@ -28,6 +30,7 @@ _rcc_setup:
         bx lr
 
         .text
+        .balign 4
         .type _gpio_setup, %function
 _gpio_setup:
         ldr r0, =gpioa_base
@@ -37,6 +40,7 @@ _gpio_setup:
         bx lr
 
         .text
+        .balign 4
         .type _stk_setup, %function
 _stk_setup:
         ldr r0, =stk_base
@@ -49,6 +53,7 @@ _stk_setup:
         bx lr
 
         .text
+        .balign 4
         .type _toggle_led, %function
 _toggle_led:
         ldr r3, [r0, #gpiox_odr_offset]
@@ -62,6 +67,7 @@ toggle_led_end:
         bx lr
 
         .text
+        .balign 4
         .type _check_the_stk_flag, %function
 _check_the_stk_flag:
         push { lr }
@@ -78,6 +84,7 @@ check_end:
         bx lr
 
         .text
+        .balign 4
         .type _main, %function
 _main:
         push { lr }
