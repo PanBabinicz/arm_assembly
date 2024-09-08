@@ -10,8 +10,9 @@
             .word \name
         .endm
 
-        .global _vector_table
         .section ._vector_table, "a"
+        .balign 4
+        .global _vector_table
         .type _vector_table, %object
 _vector_table:
         .word _stack_end
@@ -129,8 +130,9 @@ _vector_table:
         defisr _fmpi2c1error_handler
 
         .text
-        .type _default_handler, %function
+        .balign 4
         .global _default_handler
+        .type _default_handler, %function
 _default_handler:
         bkpt
         b.n _default_handler
