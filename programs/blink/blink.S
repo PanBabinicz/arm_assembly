@@ -8,6 +8,7 @@
         delay_number_of_iterations = 0x00100000
 
         .text
+        .balign 4
         .global _reset_handler
         .type _reset_handler, %function
 _reset_handler:
@@ -21,6 +22,7 @@ _reset_handler:
         b .                                     @ Never return.
 
         .text
+        .balign 4
         .type _rcc_setup, %function
 _rcc_setup:
         ldr r0, =rcc_base
@@ -30,6 +32,7 @@ _rcc_setup:
         bx lr
 
         .text
+        .balign 4
         .type _gpio_setup, %function
 _gpio_setup:
         ldr r0, =gpioa_base
@@ -39,6 +42,7 @@ _gpio_setup:
         bx lr
 
         .text
+        .balign 4
         .type _blink, %function
 _blink:
         push { r4, lr }
@@ -53,6 +57,7 @@ blink_loop:
         b blink_loop
 
         .text
+        .balign 4
         .type _blink_delay, %function
 _blink_delay:
 loop:
