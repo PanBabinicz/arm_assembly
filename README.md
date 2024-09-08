@@ -1,6 +1,6 @@
 # ARM-ASSEMBLY
 
-[![GitHub tag (with filter)](https://img.shields.io/github/v/tag/PanBabinicz/arm_assemlby?style=plastic&label=latest)](https://github.com/PanBabinicz/arm_assemlby/releases/latest)
+[![GitHub tag (with filter)](https://img.shields.io/github/v/tag/PanBabinicz/arm_assembly?style=plastic&label=latest)](https://github.com/PanBabinicz/arm_assembly/releases/latest)
 
 ## ❓ What is ARM-ASSEMBLY for?
 
