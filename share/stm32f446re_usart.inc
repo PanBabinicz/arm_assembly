@@ -70,3 +70,20 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@--------------------------------- USART DR register fields ------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ usart_dr_dr_position,      (0x00)
+        .equ usart_dr_dr_mask,          (0x1ff << usart_dr_dr_position)
+        .equ usart_dr_dr,               (usart_dr_dr_mask)
+        .equ usart_dr_dr_bit0,          (0x0001 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit1,          (0x0002 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit2,          (0x0004 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit3,          (0x0008 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit4,          (0x0010 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit5,          (0x0020 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit6,          (0x0040 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit7,          (0x0080 << usart_dr_dr_position)
+        .equ usart_dr_dr_bit8,          (0x0100 << usart_dr_dr_position)
+
+@-----------------------------------------------------------------------------------------------@
