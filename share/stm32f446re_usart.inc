@@ -140,3 +140,68 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@--------------------------------- USART CR1 register fields -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ usart_cr1_sbk_position,            (0x00)
+        .equ usart_cr1_sbk_mask,                (0x01 << usart_cr1_sbk_position)
+        .equ usart_cr1_sbk,                     (usart_cr1_sbk_mask)
+
+        .equ usart_cr1_rwu_position,            (0x01)
+        .equ usart_cr1_rwu_mask,                (0x01 << usart_cr1_rwu_position)
+        .equ usart_cr1_rwu,                     (usart_cr1_rwu_mask)
+
+        .equ usart_cr1_re_position,             (0x02)
+        .equ usart_cr1_re_mask,                 (0x01 << usart_cr1_re_position)
+        .equ usart_cr1_re,                      (usart_cr1_re_mask)
+
+        .equ usart_cr1_te_position,             (0x03)
+        .equ usart_cr1_te_mask,                 (0x01 << usart_cr1_te_position)
+        .equ usart_cr1_te,                      (usart_cr1_te_mask)
+
+        .equ usart_cr1_idleie_position,         (0x04)
+        .equ usart_cr1_idleie_mask,             (0x01 << usart_cr1_idleie_position)
+        .equ usart_cr1_idleie,                  (usart_cr1_idleie_mask)
+
+        .equ usart_cr1_rxneie_position,         (0x05)
+        .equ usart_cr1_rxneie_mask,             (0x01 << usart_cr1_rxneie_position)
+        .equ usart_cr1_rxneie,                  (usart_cr1_rxneie_mask)
+
+        .equ usart_cr1_tcie_position,           (0x06)
+        .equ usart_cr1_tcie_mask,               (0x01 << usart_cr1_tcie_position)
+        .equ usart_cr1_tcie,                    (usart_cr1_tcie_mask)
+
+        .equ usart_cr1_txeie_position,          (0x07)
+        .equ usart_cr1_txeie_mask,              (0x01 << usart_cr1_txeie_position)
+        .equ usart_cr1_txeie,                   (usart_cr1_txeie_mask)
+
+        .equ usart_cr1_peie_position,           (0x08)
+        .equ usart_cr1_peie_mask,               (0x01 << usart_cr1_peie_position)
+        .equ usart_cr1_peie,                    (usart_cr1_peie_mask)
+
+        .equ usart_cr1_ps_position,             (0x09)
+        .equ usart_cr1_ps_mask,                 (0x01 << usart_cr1_ps_position)
+        .equ usart_cr1_ps,                      (usart_cr1_ps_mask)
+
+        .equ usart_cr1_pce_position,            (0x0a)
+        .equ usart_cr1_pce_mask,                (0x01 << usart_cr1_pce_position)
+        .equ usart_cr1_pce,                     (usart_cr1_pce_mask)
+
+        .equ usart_cr1_wake_position,           (0x0b)
+        .equ usart_cr1_wake_mask,               (0x01 << usart_cr1_wake_position)
+        .equ usart_cr1_wake,                    (usart_cr1_wake_mask)
+
+        .equ usart_cr1_m_position,              (0x0c)
+        .equ usart_cr1_m_mask,                  (0x01 << usart_cr1_m_position)
+        .equ usart_cr1_m,                       (usart_cr1_m_mask)
+
+        .equ usart_cr1_ue_position,             (0x0d)
+        .equ usart_cr1_ue_mask,                 (0x01 << usart_cr1_ue_position)
+        .equ usart_cr1_ue,                      (usart_cr1_ue_mask)
+
+        .equ usart_cr1_over8_position,          (0x0f)
+        .equ usart_cr1_over8_mask,              (0x01 << usart_cr1_over8_position)
+        .equ usart_cr1_over8,                   (usart_cr1_over8_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
