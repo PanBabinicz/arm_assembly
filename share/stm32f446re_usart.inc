@@ -205,3 +205,50 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@--------------------------------- USART CR2 register fields -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ usart_cr2_add_position,            (0x00)
+        .equ usart_cr2_add_mask,                (0x0f << usart_cr2_add_position)
+        .equ usart_cr2_add,                     (usart_cr2_add_mask)
+        .equ usart_cr2_add_bit0,                (0x01 << usart_cr2_add_position)
+        .equ usart_cr2_add_bit1,                (0x02 << usart_cr2_add_position)
+        .equ usart_cr2_add_bit2,                (0x04 << usart_cr2_add_position)
+        .equ usart_cr2_add_bit3,                (0x08 << usart_cr2_add_position)
+
+        .equ usart_cr2_lbdl_position,           (0x05)
+        .equ usart_cr2_lbdl_mask,               (0x01 << usart_cr2_lbdl_position)
+        .equ usart_cr2_lbdl,                    (usart_cr2_lbdl_mask)
+
+        .equ usart_cr2_lbdie_position,          (0x06)
+        .equ usart_cr2_lbdie_mask,              (0x01 << usart_cr2_lbdie_position)
+        .equ usart_cr2_lbdie,                   (usart_cr2_lbdie_mask)
+
+        .equ usart_cr2_lbcl_position,           (0x08)
+        .equ usart_cr2_lbcl_mask,               (0x01 << usart_cr2_lbcl_position)
+        .equ usart_cr2_lbcl,                    (usart_cr2_lbcl_mask)
+
+        .equ usart_cr2_cpha_position,           (0x09)
+        .equ usart_cr2_cpha_mask,               (0x01 << usart_cr2_cpha_position)
+        .equ usart_cr2_cpha,                    (usart_cr2_cpha_mask)
+
+        .equ usart_cr2_cpol_position,           (0x0a)
+        .equ usart_cr2_cpol_mask,               (0x01 << usart_cr2_cpol_position)
+        .equ usart_cr2_cpol,                    (usart_cr2_cpol_mask)
+
+        .equ usart_cr2_clken_position,          (0x0b)
+        .equ usart_cr2_clken_mask,              (0x01 << usart_cr2_clken_position)
+        .equ usart_cr2_clken,                   (usart_cr2_clken_mask)
+
+        .equ usart_cr2_stop_position,           (0x0c)
+        .equ usart_cr2_stop_mask,               (0x03 << usart_cr2_stop_position)
+        .equ usart_cr2_stop,                    (usart_cr2_stop_mask)
+        .equ usart_cr2_stop_bit0,               (0x01 << usart_cr2_stop_position)
+        .equ usart_cr2_stop_bit1,               (0x02 << usart_cr2_stop_position)
+
+        .equ usart_cr2_linen_position,          (0x0e)
+        .equ usart_cr2_linen_mask,              (0x01 << usart_cr2_linen_position)
+        .equ usart_cr2_linen,                   (usart_cr2_linen_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
