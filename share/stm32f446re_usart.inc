@@ -305,3 +305,32 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@--------------------------------- USART GTPR register fields ----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ usart_gtpr_psc_position,           (0x00)
+        .equ usart_gtpr_psc_mask,               (0xff << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc,                    (usart_gtpr_psc_mask)
+        .equ usart_gtpr_psc_bit0,               (0x01 << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc_bit1,               (0x02 << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc_bit2,               (0x04 << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc_bit3,               (0x08 << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc_bit4,               (0x10 << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc_bit5,               (0x20 << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc_bit6,               (0x40 << usart_gtpr_psc_position)
+        .equ usart_gtpr_psc_bit7,               (0x80 << usart_gtpr_psc_position)
+
+        .equ usart_gtpr_gt_position,            (0x08)
+        .equ usart_gtpr_gt_mask,                (0xff << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt,                     (usart_gtpr_gt_mask)
+        .equ usart_gtpr_gt_bit0,                (0x01 << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt_bit1,                (0x02 << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt_bit2,                (0x04 << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt_bit3,                (0x08 << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt_bit4,                (0x10 << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt_bit5,                (0x20 << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt_bit6,                (0x40 << usart_gtpr_gt_position)
+        .equ usart_gtpr_gt_bit7,                (0x80 << usart_gtpr_gt_position)
+
+
+@-----------------------------------------------------------------------------------------------@
