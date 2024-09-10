@@ -252,3 +252,56 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@--------------------------------- USART CR3 register fields -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ usart_cr3_eie_position,            (0x00)
+        .equ usart_cr3_eie_mask,                (0x01 << usart_cr3_eie_position)
+        .equ usart_cr3_eie,                     (usart_cr3_eie_mask)
+
+        .equ usart_cr3_iren_position,           (0x01)
+        .equ usart_cr3_iren_mask,               (0x01 << usart_cr3_iren_position)
+        .equ usart_cr3_iren,                    (usart_cr3_iren_mask)
+
+        .equ usart_cr3_irlp_position,           (0x02)
+        .equ usart_cr3_irlp_mask,               (0x01 << usart_cr3_irlp_position)
+        .equ usart_cr3_irlp,                    (usart_cr3_irlp_mask)
+
+        .equ usart_cr3_hdsel_position,          (0x03)
+        .equ usart_cr3_hdsel_mask,              (0x01 << usart_cr3_hdsel_position)
+        .equ usart_cr3_hdsel,                   (usart_cr3_hdsel_mask)
+
+        .equ usart_cr3_nack_position,           (0x04)
+        .equ usart_cr3_nack_mask,               (0x01 << usart_cr3_nack_position)
+        .equ usart_cr3_nack,                    (usart_cr3_nack_mask)
+
+        .equ usart_cr3_scen_position,           (0x05)
+        .equ usart_cr3_scen_mask,               (0x01 << usart_cr3_scen_position)
+        .equ usart_cr3_scen,                    (usart_cr3_scen_mask)
+
+        .equ usart_cr3_dmar_position,           (0x06)
+        .equ usart_cr3_dmar_mask,               (0x01 << usart_cr3_dmar_position)
+        .equ usart_cr3_dmar,                    (usart_cr3_dmar_mask)
+
+        .equ usart_cr3_dmat_position,           (0x07)
+        .equ usart_cr3_dmat_mask,               (0x01 << usart_cr3_dmat_position)
+        .equ usart_cr3_dmat,                    (usart_cr3_dmat_mask)
+
+        .equ usart_cr3_rtse_position,           (0x08)
+        .equ usart_cr3_rtse_mask,               (0x01 << usart_cr3_rtse_position)
+        .equ usart_cr3_rtse,                    (usart_cr3_rtse_mask)
+
+        .equ usart_cr3_ctse_position,           (0x09)
+        .equ usart_cr3_ctse_mask,               (0x01 << usart_cr3_ctse_position)
+        .equ usart_cr3_ctse,                    (usart_cr3_ctse_mask)
+
+        .equ usart_cr3_ctsie_position,          (0x0a)
+        .equ usart_cr3_ctsie_mask,              (0x01 << usart_cr3_ctsie_position)
+        .equ usart_cr3_ctsie,                   (usart_cr3_ctsie_mask)
+
+        .equ usart_cr3_onebit_position,         (0x0b)
+        .equ usart_cr3_onebit_mask,             (0x01 << usart_cr3_onebit_position)
+        .equ usart_cr3_onebit,                  (usart_cr3_onebit_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
