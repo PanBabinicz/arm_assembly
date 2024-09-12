@@ -120,6 +120,32 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C OAR1 registers offsets ---------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_oar1_add0_position,        (0x00)
+        .equ i2c_oar1_add0_mask,            (0x01 << i2c_oar1_add0_position)
+        .equ i2c_oar1_add0,                 (i2c_oar1_add0_mask)
+
+        .equ i2c_oar1_add_position,         (0x01)
+        .equ i2c_oar1_add_mask,             (0x01ff << i2c_oar1_add_position)
+        .equ i2c_oar1_add,                  (i2c_oar1_add_mask)
+        .equ i2c_oar1_add_bit0,             (0x0001 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit1,             (0x0002 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit2,             (0x0004 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit3,             (0x0008 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit4,             (0x0010 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit5,             (0x0020 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit6,             (0x0040 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit7,             (0x0080 << i2c_oar1_add_position)
+        .equ i2c_oar1_add_bit8,             (0x0100 << i2c_oar1_add_position)
+
+        .equ i2c_oar1_addmode_position,     (0x0f)
+        .equ i2c_oar1_addmode_mask,         (0x01 << i2c_oar1_addmode_position)
+        .equ i2c_oar1_addmode,              (i2c_oar1_addmode_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
 @---------------------------------- I2C OAR2 registers offsets ---------------------------------@
 @-----------------------------------------------------------------------------------------------@
 
