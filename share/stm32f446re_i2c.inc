@@ -120,3 +120,23 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C OAR2 registers offsets ---------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_oar2_endual_position,      (0x00)
+        .equ i2c_oar2_endual_mask,          (0x01 << i2c_oar2_endual_position)
+        .equ i2c_oar2_endual,               (i2c_oar2_endual_mask)
+
+        .equ i2c_oar2_add2_position,        (0x01)
+        .equ i2c_oar2_add2_mask,            (0x7f << i2c_oar2_add2_position)
+        .equ i2c_oar2_add2,                 (i2c_oar2_add2_mask)
+        .equ i2c_oar2_add2_bit0,            (0x01 << i2c_oar2_add2_position)
+        .equ i2c_oar2_add2_bit1,            (0x02 << i2c_oar2_add2_position)
+        .equ i2c_oar2_add2_bit2,            (0x04 << i2c_oar2_add2_position)
+        .equ i2c_oar2_add2_bit3,            (0x08 << i2c_oar2_add2_position)
+        .equ i2c_oar2_add2_bit4,            (0x10 << i2c_oar2_add2_position)
+        .equ i2c_oar2_add2_bit5,            (0x20 << i2c_oar2_add2_position)
+        .equ i2c_oar2_add2_bit6,            (0x40 << i2c_oar2_add2_position)
+
+
+@-----------------------------------------------------------------------------------------------@
