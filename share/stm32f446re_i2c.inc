@@ -85,3 +85,38 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C CR2 registers offsets ----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_cr2_freq_position,         (0x00)
+        .equ i2c_cr2_freq_mask,             (0x3f << i2c_cr2_freq_position)
+        .equ i2c_cr2_freq,                  (i2c_cr2_freq_mask)
+        .equ i2c_cr2_freq_bit0,             (0x01 << i2c_cr2_freq_position)
+        .equ i2c_cr2_freq_bit1,             (0x02 << i2c_cr2_freq_position)
+        .equ i2c_cr2_freq_bit2,             (0x04 << i2c_cr2_freq_position)
+        .equ i2c_cr2_freq_bit3,             (0x08 << i2c_cr2_freq_position)
+        .equ i2c_cr2_freq_bit4,             (0x10 << i2c_cr2_freq_position)
+        .equ i2c_cr2_freq_bit5,             (0x20 << i2c_cr2_freq_position)
+
+        .equ i2c_cr2_iterren_position,      (0x08)
+        .equ i2c_cr2_iterren_mask,          (0x01 << i2c_cr2_iterren_position)
+        .equ i2c_cr2_iterren,               (i2c_cr2_iterren_mask)
+
+        .equ i2c_cr2_itevten_position,      (0x09)
+        .equ i2c_cr2_itevten_mask,          (0x01 << i2c_cr2_itevten_position)
+        .equ i2c_cr2_itevten,               (i2c_cr2_itevten_mask)
+
+        .equ i2c_cr2_itbufen_position,      (0x0a)
+        .equ i2c_cr2_itbufen_mask,          (0x01 << i2c_cr2_itbufen_position)
+        .equ i2c_cr2_itbufen,               (i2c_cr2_itbufen_mask)
+
+        .equ i2c_cr2_dmaen_position,        (0x0b)
+        .equ i2c_cr2_dmaen_mask,            (0x01 << i2c_cr2_dmaen_position)
+        .equ i2c_cr2_dmaen,                 (i2c_cr2_dmaen_mask)
+
+        .equ i2c_cr2_last_position,         (0x0c)
+        .equ i2c_cr2_last_mask,             (0x01 << i2c_cr2_last_position)
+        .equ i2c_cr2_last,                  (i2c_cr2_last_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
