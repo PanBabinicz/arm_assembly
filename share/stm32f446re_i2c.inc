@@ -166,3 +166,20 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C DR registers offsets -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_dr_dr_position,            (0x00)
+        .equ i2c_dr_dr_mask,                (0xff << i2c_dr_dr_position)
+        .equ i2c_dr_dr,                     (i2c_dr_dr_mask)
+        .equ i2c_dr_dr_bit0,                (0x01 << i2c_dr_dr_position)
+        .equ i2c_dr_dr_bit1,                (0x02 << i2c_dr_dr_position)
+        .equ i2c_dr_dr_bit2,                (0x04 << i2c_dr_dr_position)
+        .equ i2c_dr_dr_bit3,                (0x08 << i2c_dr_dr_position)
+        .equ i2c_dr_dr_bit4,                (0x10 << i2c_dr_dr_position)
+        .equ i2c_dr_dr_bit5,                (0x20 << i2c_dr_dr_position)
+        .equ i2c_dr_dr_bit6,                (0x40 << i2c_dr_dr_position)
+        .equ i2c_dr_dr_bit7,                (0x80 << i2c_dr_dr_position)
+
+
+@-----------------------------------------------------------------------------------------------@
