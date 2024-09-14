@@ -190,3 +190,28 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- SPI CRCPR register fields ----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ spi_crcpr_crcpoly_position,    (0x00)
+        .equ spi_crcpr_crcpoly_mask,        (0xffff << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly,             (spi_crcpr_crcpoly_mask)
+        .equ spi_crcpr_crcpoly_bit0,        (0x0001 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit1,        (0x0002 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit2,        (0x0004 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit3,        (0x0008 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit4,        (0x0010 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit5,        (0x0020 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit6,        (0x0040 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit7,        (0x0080 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit8,        (0x0100 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit9,        (0x0200 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit10,       (0x0400 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit11,       (0x0800 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit12,       (0x1000 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit13,       (0x2000 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit14,       (0x4000 << spi_crcpr_crcpoly_position)
+        .equ spi_crcpr_crcpoly_bit15,       (0x8000 << spi_crcpr_crcpoly_position)
+
+
+@-----------------------------------------------------------------------------------------------@
