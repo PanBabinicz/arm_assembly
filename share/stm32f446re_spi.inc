@@ -27,3 +27,67 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- SPI CR1 register fields ------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ spi_cr1_cpha_position,         (0x00)
+        .equ spi_cr1_cpha_mask,             (0x01 << spi_cr1_cpha_position)
+        .equ spi_cr1_cpha,                  (spi_cr1_cpha_mask)
+
+        .equ spi_cr1_cpol_position,         (0x01)
+        .equ spi_cr1_cpol_mask,             (0x01 << spi_cr1_cpol_position)
+        .equ spi_cr1_cpol,                  (spi_cr1_cpol_mask)
+
+        .equ spi_cr1_mstr_position,         (0x02)
+        .equ spi_cr1_mstr_mask,             (0x01 << spi_cr1_mstr_position)
+        .equ spi_cr1_mstr,                  (spi_cr1_mstr_mask)
+
+        .equ spi_cr1_br_position,           (0x03)
+        .equ spi_cr1_br_mask,               (0x07 << spi_cr1_br_position)
+        .equ spi_cr1_br,                    (spi_cr1_br_mask)
+        .equ spi_cr1_br_bit0,               (0x01 << spi_cr1_br_position)
+        .equ spi_cr1_br_bit1,               (0x02 << spi_cr1_br_position)
+        .equ spi_cr1_br_bit2,               (0x04 << spi_cr1_br_position)
+
+        .equ spi_cr1_spe_position,          (0x06)
+        .equ spi_cr1_spe_mask,              (0x01 << spi_cr1_spe_position)
+        .equ spi_cr1_spe,                   (spi_cr1_spe_mask)
+
+        .equ spi_cr1_lsbfirst_position,     (0x07)
+        .equ spi_cr1_lsbfirst_mask,         (0x01 << spi_cr1_lsbfirst_position)
+        .equ spi_cr1_lsbfirst,              (spi_cr1_lsbfirst_mask)
+
+        .equ spi_cr1_ssi_position,          (0x08)
+        .equ spi_cr1_ssi_mask,              (0x01 << spi_cr1_ssi_position)
+        .equ spi_cr1_ssi,                   (spi_cr1_ssi_mask)
+
+        .equ spi_cr1_ssm_position,          (0x09)
+        .equ spi_cr1_ssm_mask,              (0x01 << spi_cr1_ssm_position)
+        .equ spi_cr1_ssm,                   (spi_cr1_ssm_mask)
+
+        .equ spi_cr1_rxonly_position,       (0x0a)
+        .equ spi_cr1_rxonly_mask,           (0x01 << spi_cr1_rxonly_position)
+        .equ spi_cr1_rxonly,                (spi_cr1_rxonly_mask)
+
+        .equ spi_cr1_dff_position,          (0x0b)
+        .equ spi_cr1_dff_mask,              (0x01 << spi_cr1_dff_position)
+        .equ spi_cr1_dff,                   (spi_cr1_dff_mask)
+
+        .equ spi_cr1_crcnext_position,      (0x0c)
+        .equ spi_cr1_crcnext_mask,          (0x01 << spi_cr1_crcnext_position)
+        .equ spi_cr1_crcnext,               (spi_cr1_crcnext_mask)
+
+        .equ spi_cr1_crcen_position,        (0x0d)
+        .equ spi_cr1_crcen_mask,            (0x01 << spi_cr1_crcen_position)
+        .equ spi_cr1_crcen,                 (spi_cr1_crcen_mask)
+
+        .equ spi_cr1_bidioe_position,       (0x0e)
+        .equ spi_cr1_bidioe_mask,           (0x01 << spi_cr1_bidioe_position)
+        .equ spi_cr1_bidioe,                (spi_cr1_bidioe_mask)
+
+        .equ spi_cr1_bidimode_position,     (0x0f)
+        .equ spi_cr1_bidimode_mask,         (0x01 << spi_cr1_bidimode_position)
+        .equ spi_cr1_bidimode,              (spi_cr1_bidimode_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
