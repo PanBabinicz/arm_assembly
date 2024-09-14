@@ -165,3 +165,28 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- SPI DR register fields -------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ spi_dr_dr_position,            (0x00)
+        .equ spi_dr_dr_mask,                (0xffff << spi_dr_dr_position)
+        .equ spi_dr_dr,                     (spi_dr_dr_mask)
+        .equ spi_dr_dr_bit0,                (0x0001 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit1,                (0x0002 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit2,                (0x0004 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit3,                (0x0008 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit4,                (0x0010 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit5,                (0x0020 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit6,                (0x0040 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit7,                (0x0080 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit8,                (0x0100 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit9,                (0x0200 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit10,               (0x0400 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit11,               (0x0800 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit12,               (0x1000 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit13,               (0x2000 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit14,               (0x4000 << spi_dr_dr_position)
+        .equ spi_dr_dr_bit15,               (0x8000 << spi_dr_dr_position)
+
+
+@-----------------------------------------------------------------------------------------------@
