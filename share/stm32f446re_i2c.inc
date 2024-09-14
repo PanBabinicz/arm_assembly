@@ -244,3 +244,48 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C SR2 register fields ------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_sr2_msl_position,          (0x00)
+        .equ i2c_sr2_msl_mask,              (0x01 << i2c_sr2_msl_position)
+        .equ i2c_sr2_msl,                   (i2c_sr2_msl_mask)
+
+        .equ i2c_sr2_busy_position,         (0x01)
+        .equ i2c_sr2_busy_mask,             (0x01 << i2c_sr2_busy_position)
+        .equ i2c_sr2_busy,                  (i2c_sr2_busy_mask)
+
+        .equ i2c_sr2_tra_position,          (0x02)
+        .equ i2c_sr2_tra_mask,              (0x01 << i2c_sr2_tra_position)
+        .equ i2c_sr2_tra,                   (i2c_sr2_tra_mask)
+
+        .equ i2c_sr2_gencall_position,      (0x04)
+        .equ i2c_sr2_gencall_mask,          (0x01 << i2c_sr2_gencall_position)
+        .equ i2c_sr2_gencall,               (i2c_sr2_gencall_mask)
+
+        .equ i2c_sr2_smbdefault_position,   (0x05)
+        .equ i2c_sr2_smbdefault_mask,       (0x01 << i2c_sr2_smbdefault_position)
+        .equ i2c_sr2_smbdefault,            (i2c_sr2_smbdefault_mask)
+
+        .equ i2c_sr2_smbhost_position,      (0x06)
+        .equ i2c_sr2_smbhost_mask,          (0x01 << i2c_sr2_smbhost_position)
+        .equ i2c_sr2_smbhost,               (i2c_sr2_smbhost_mask)
+
+        .equ i2c_sr2_dualf_position,        (0x07)
+        .equ i2c_sr2_dualf_mask,            (0x01 << i2c_sr2_dualf_position)
+        .equ i2c_sr2_dualf,                 (i2c_sr2_dualf_mask)
+
+        .equ i2c_sr2_pec_position,          (0x08)
+        .equ i2c_sr2_pec_mask,              (0xff << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec,                   (i2c_sr2_pec_mask)
+        .equ i2c_sr2_pec_bit0,              (0x01 << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec_bit1,              (0x02 << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec_bit2,              (0x04 << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec_bit3,              (0x08 << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec_bit4,              (0x10 << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec_bit5,              (0x20 << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec_bit6,              (0x40 << i2c_sr2_pec_position)
+        .equ i2c_sr2_pec_bit7,              (0x80 << i2c_sr2_pec_position)
+
+
+@-----------------------------------------------------------------------------------------------@
