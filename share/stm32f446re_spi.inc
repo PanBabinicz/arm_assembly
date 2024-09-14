@@ -265,3 +265,50 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- SPI I2SCFGR register fields --------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ spi_i2scfgr_chlen_position,    (0x00)
+        .equ spi_i2scfgr_chlen_mask,        (0x01 << spi_i2scfgr_chlen_position)
+        .equ spi_i2scfgr_chlen,             (spi_i2scfgr_chlen_mask)
+
+        .equ spi_i2scfgr_datlen_position,   (0x01)
+        .equ spi_i2scfgr_datlen_mask,       (0x03 << spi_i2scfgr_datlen_position)
+        .equ spi_i2scfgr_datlen,            (spi_i2scfgr_datlen_mask)
+        .equ spi_i2scfgr_datlen_bit0,       (0x01 << spi_i2scfgr_chlen_position)
+        .equ spi_i2scfgr_datlen_bit1,       (0x02 << spi_i2scfgr_chlen_position)
+
+        .equ spi_i2scfgr_ckpol_position,    (0x03)
+        .equ spi_i2scfgr_ckpol_mask,        (0x01 << spi_i2scfgr_ckpol_position)
+        .equ spi_i2scfgr_ckpol,             (spi_i2scfgr_ckpol_mask)
+
+        .equ spi_i2scfgr_i2sstd_position,   (0x04)
+        .equ spi_i2scfgr_i2sstd_mask,       (0x03 << spi_i2scfgr_i2sstd_position)
+        .equ spi_i2scfgr_i2sstd,            (spi_i2scfgr_i2sstd_mask)
+        .equ spi_i2scfgr_i2sstd_bit0,       (0x01 << spi_i2scfgr_i2sstd_position)
+        .equ spi_i2scfgr_i2sstd_bit1,       (0x02 << spi_i2scfgr_i2sstd_position)
+
+        .equ spi_i2scfgr_pcmsync_position,  (0x07)
+        .equ spi_i2scfgr_pcmsync_mask,      (0x01 << spi_i2scfgr_pcmsync_position)
+        .equ spi_i2scfgr_pcmsync,           (spi_i2scfgr_pcmsync_mask)
+
+        .equ spi_i2scfgr_i2scfg_position,   (0x08)
+        .equ spi_i2scfgr_i2scfg_mask,       (0x03 << spi_i2scfgr_i2scfg_position)
+        .equ spi_i2scfgr_i2scfg,            (spi_i2scfgr_i2scfg_mask)
+        .equ spi_i2scfgr_i2scfg_bit0,       (0x01 << spi_i2scfgr_i2scfg_position)
+        .equ spi_i2scfgr_i2scfg_bit1,       (0x02 << spi_i2scfgr_i2scfg_position)
+
+        .equ spi_i2scfgr_i2se_position,     (0x0a)
+        .equ spi_i2scfgr_i2se_mask,         (0x01 << spi_i2scfgr_i2se_position)
+        .equ spi_i2scfgr_i2se,              (spi_i2scfgr_i2se_mask)
+
+        .equ spi_i2scfgr_i2smod_position,   (0x0b)
+        .equ spi_i2scfgr_i2smod_mask,       (0x01 << spi_i2scfgr_i2smod_position)
+        .equ spi_i2scfgr_i2smod,            (spi_i2scfgr_i2smod_mask)
+
+        .equ spi_i2scfgr_astren_position,   (0x0c)
+        .equ spi_i2scfgr_astren_mask,       (0x01 << spi_i2scfgr_astren_position)
+        .equ spi_i2scfgr_astren,            (spi_i2scfgr_astren_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
