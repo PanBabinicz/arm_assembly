@@ -318,3 +318,18 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C TRISE register fields ----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_trise_trise_position,      (0x00)
+        .equ i2c_trise_trise_mask,          (0x3f << i2c_trise_trise_position)
+        .equ i2c_trise_trise,               (i2c_trise_trise_mask)
+        .equ i2c_trise_trise_bit0,          (0x01 << i2c_trise_trise_position)
+        .equ i2c_trise_trise_bit1,          (0x02 << i2c_trise_trise_position)
+        .equ i2c_trise_trise_bit2,          (0x04 << i2c_trise_trise_position)
+        .equ i2c_trise_trise_bit3,          (0x08 << i2c_trise_trise_position)
+        .equ i2c_trise_trise_bit4,          (0x10 << i2c_trise_trise_position)
+        .equ i2c_trise_trise_bit5,          (0x20 << i2c_trise_trise_position)
+
+
+@-----------------------------------------------------------------------------------------------@
