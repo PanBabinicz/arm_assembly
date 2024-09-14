@@ -333,3 +333,20 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C FLTR register fields -----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_fltr_dnf_position,         (0x00)
+        .equ i2c_fltr_dnf_mask,             (0x0f << i2c_fltr_dnf_position)
+        .equ i2c_fltr_dnf,                  (i2c_fltr_dnf_mask)
+        .equ i2c_fltr_dnf_bit0,             (0x01 << i2c_fltr_dnf_position)
+        .equ i2c_fltr_dnf_bit1,             (0x02 << i2c_fltr_dnf_position)
+        .equ i2c_fltr_dnf_bit2,             (0x04 << i2c_fltr_dnf_position)
+        .equ i2c_fltr_dnf_bit3,             (0x08 << i2c_fltr_dnf_position)
+
+        .equ i2c_fltr_anoff_position,       (0x04)
+        .equ i2c_fltr_anoff_mask,           (0x01 << i2c_fltr_anoff_position)
+        .equ i2c_fltr_anoff,                (i2c_fltr_anoff_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
