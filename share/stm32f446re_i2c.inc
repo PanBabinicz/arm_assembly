@@ -289,3 +289,32 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C CCR register fields ------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_ccr_ccr_position,          (0x00)
+        .equ i2c_ccr_ccr_mask,              (0x0fff << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr,                   (i2c_ccr_ccr_mask)
+        .equ i2c_ccr_ccr_bit0,              (0x0001 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit1,              (0x0002 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit2,              (0x0004 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit3,              (0x0008 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit4,              (0x0010 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit5,              (0x0020 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit6,              (0x0040 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit7,              (0x0080 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit8,              (0x0100 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit9,              (0x0200 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit10,             (0x0400 << i2c_ccr_ccr_position)
+        .equ i2c_ccr_ccr_bit11,             (0x0800 << i2c_ccr_ccr_position)
+
+        .equ i2c_ccr_duty_position,         (0x0e)
+        .equ i2c_ccr_duty_mask,             (0x01 << i2c_ccr_duty_position)
+        .equ i2c_ccr_duty,                  (i2c_ccr_duty_mask)
+
+        .equ i2c_ccr_fs_position,           (0x0f)
+        .equ i2c_ccr_fs_mask,               (0x01 << i2c_ccr_fs_position)
+        .equ i2c_ccr_fs,                    (i2c_ccr_fs_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
