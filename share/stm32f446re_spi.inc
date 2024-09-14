@@ -312,3 +312,28 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- SPI I2SPR register fields ----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ spi_i2spr_i2sdiv_position,     (0x00)
+        .equ spi_i2spr_i2sdiv_mask,         (0xff << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv,              (spi_i2spr_i2sdiv_mask)
+        .equ spi_i2spr_i2sdiv_bit0,         (0x01 << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv_bit1,         (0x02 << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv_bit2,         (0x04 << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv_bit3,         (0x08 << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv_bit4,         (0x10 << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv_bit5,         (0x20 << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv_bit6,         (0x40 << spi_i2spr_i2sdiv_position)
+        .equ spi_i2spr_i2sdiv_bit7,         (0x80 << spi_i2spr_i2sdiv_position)
+
+        .equ spi_i2spr_odd_position,        (0x08)
+        .equ spi_i2spr_odd_mask,            (0x01 << spi_i2spr_odd_position)
+        .equ spi_i2spr_odd,                 (spi_i2spr_odd_mask)
+
+        .equ spi_i2spr_mckoe_position,      (0x09)
+        .equ spi_i2spr_mckoe_mask,          (0x01 << spi_i2spr_mckoe_position)
+        .equ spi_i2spr_mckoe,               (spi_i2spr_mckoe_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
