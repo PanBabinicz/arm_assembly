@@ -124,3 +124,44 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- SPI SR register fields -------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ spi_sr_rxne_position,          (0x00)
+        .equ spi_sr_rxne_mask,              (0x01 << spi_sr_rxne_position)
+        .equ spi_sr_rxne,                   (spi_sr_rxne_mask)
+
+        .equ spi_sr_txe_position,           (0x01)
+        .equ spi_sr_txe_mask,               (0x01 << spi_sr_txe_position)
+        .equ spi_sr_txe,                    (spi_sr_txe_mask)
+
+        .equ spi_sr_chside_position,        (0x02)
+        .equ spi_sr_chside_mask,            (0x01 << spi_sr_chside_position)
+        .equ spi_sr_chside,                 (spi_sr_chside_mask)
+
+        .equ spi_sr_udr_position,           (0x03)
+        .equ spi_sr_udr_mask,               (0x01 << spi_sr_udr_position)
+        .equ spi_sr_udr,                    (spi_sr_udr_mask)
+
+        .equ spi_sr_crcerr_position,        (0x04)
+        .equ spi_sr_crcerr_mask,            (0x01 << spi_sr_crcerr_position)
+        .equ spi_sr_crcerr,                 (spi_sr_crcerr_mask)
+
+        .equ spi_sr_modf_position,          (0x05)
+        .equ spi_sr_modf_mask,              (0x01 << spi_sr_modf_position)
+        .equ spi_sr_modf,                   (spi_sr_modf_mask)
+
+        .equ spi_sr_ovr_position,           (0x06)
+        .equ spi_sr_ovr_mask,               (0x01 << spi_sr_ovr_position)
+        .equ spi_sr_ovr,                    (spi_sr_ovr_mask)
+
+        .equ spi_sr_bsy_position,           (0x07)
+        .equ spi_sr_bsy_mask,               (0x01 << spi_sr_bsy_position)
+        .equ spi_sr_bsy,                    (spi_sr_bsy_mask)
+
+        .equ spi_sr_fre_position,           (0x08)
+        .equ spi_sr_fre_mask,               (0x01 << spi_sr_fre_position)
+        .equ spi_sr_fre,                    (spi_sr_fre_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
