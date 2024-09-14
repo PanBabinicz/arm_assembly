@@ -91,3 +91,36 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- SPI CR2 register fields ------------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ spi_cr2_rxdmaen_position,      (0x00)
+        .equ spi_cr2_rxdmaen_mask,          (0x01 << spi_cr2_rxdmaen_position)
+        .equ spi_cr2_rxdmaen,               (spi_cr2_rxdmaen_mask)
+
+        .equ spi_cr2_txdmaen_position,      (0x01)
+        .equ spi_cr2_txdmaen_mask,          (0x01 << spi_cr2_txdmaen_position)
+        .equ spi_cr2_txdmaen,               (spi_cr2_txdmaen_mask)
+
+        .equ spi_cr2_ssoe_position,         (0x02)
+        .equ spi_cr2_ssoe_mask,             (0x01 << spi_cr2_ssoe_position)
+        .equ spi_cr2_ssoe,                  (spi_cr2_ssoe_mask)
+
+        .equ spi_cr2_frf_position,          (0x04)
+        .equ spi_cr2_frf_mask,              (0x01 << spi_cr2_frf_position)
+        .equ spi_cr2_frf,                   (spi_cr2_frf_mask)
+
+        .equ spi_cr2_errie_position,        (0x05)
+        .equ spi_cr2_errie_mask,            (0x01 << spi_cr2_errie_position)
+        .equ spi_cr2_errie,                 (spi_cr2_errie_mask)
+
+        .equ spi_cr2_rxneie_position,       (0x06)
+        .equ spi_cr2_rxneie_mask,           (0x01 << spi_cr2_rxneie_position)
+        .equ spi_cr2_rxneie,                (spi_cr2_rxneie_mask)
+
+        .equ spi_cr2_txeie_position,        (0x07)
+        .equ spi_cr2_txeie_mask,            (0x01 << spi_cr2_txeie_position)
+        .equ spi_cr2_txeie,                 (spi_cr2_txeie_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
