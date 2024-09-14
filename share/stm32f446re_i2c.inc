@@ -183,3 +183,64 @@
 
 
 @-----------------------------------------------------------------------------------------------@
+@---------------------------------- I2C SR1 registers offsets ----------------------------------@
+@-----------------------------------------------------------------------------------------------@
+
+        .equ i2c_sr1_sb_position,           (0x00)
+        .equ i2c_sr1_sb_mask,               (0x01 << i2c_sr1_sb_position)
+        .equ i2c_sr1_sb,                    (i2c_sr1_sb_mask)
+
+        .equ i2c_sr1_addr_position,         (0x01)
+        .equ i2c_sr1_addr_mask,             (0x01 << i2c_sr1_addr_position)
+        .equ i2c_sr1_addr,                  (i2c_sr1_addr_mask)
+
+        .equ i2c_sr1_btf_position,          (0x02)
+        .equ i2c_sr1_btf_mask,              (0x01 << i2c_sr1_btf_position)
+        .equ i2c_sr1_btf,                   (i2c_sr1_btf_mask)
+
+        .equ i2c_sr1_add10_position,        (0x03)
+        .equ i2c_sr1_add10_mask,            (0x01 << i2c_sr1_add10_position)
+        .equ i2c_sr1_add10,                 (i2c_sr1_add10_mask)
+
+        .equ i2c_sr1_stopf_position,        (0x04)
+        .equ i2c_sr1_stopf_mask,            (0x01 << i2c_sr1_stopf_position)
+        .equ i2c_sr1_stopf,                 (i2c_sr1_stopf_mask)
+
+        .equ i2c_sr1_rxne_position,         (0x06)
+        .equ i2c_sr1_rxne_mask,             (0x01 << i2c_sr1_rxne_position)
+        .equ i2c_sr1_rxne,                  (i2c_sr1_rxne_mask)
+
+        .equ i2c_sr1_txe_position,          (0x07)
+        .equ i2c_sr1_txe_mask,              (0x01 << i2c_sr1_txe_position)
+        .equ i2c_sr1_txe,                   (i2c_sr1_txe_mask)
+
+        .equ i2c_sr1_berr_position,         (0x08)
+        .equ i2c_sr1_berr_mask,             (0x01 << i2c_sr1_berr_position)
+        .equ i2c_sr1_berr,                  (i2c_sr1_berr_mask)
+
+        .equ i2c_sr1_arlo_position,         (0x09)
+        .equ i2c_sr1_arlo_mask,             (0x01 << i2c_sr1_arlo_position)
+        .equ i2c_sr1_arlo,                  (i2c_sr1_arlo_mask)
+
+        .equ i2c_sr1_af_position,           (0x0a)
+        .equ i2c_sr1_af_mask,               (0x01 << i2c_sr1_af_position)
+        .equ i2c_sr1_af,                    (i2c_sr1_af_mask)
+
+        .equ i2c_sr1_ovr_position,          (0x0b)
+        .equ i2c_sr1_ovr_mask,              (0x01 << i2c_sr1_ovr_position)
+        .equ i2c_sr1_ovr,                   (i2c_sr1_ovr_mask)
+
+        .equ i2c_sr1_pecerr_position,       (0x0c)
+        .equ i2c_sr1_pecerr_mask,           (0x01 << i2c_sr1_pecerr_position)
+        .equ i2c_sr1_pecerr,                (i2c_sr1_pecerr_mask)
+
+        .equ i2c_sr1_timeout_position,      (0x0e)
+        .equ i2c_sr1_timeout_mask,          (0x01 << i2c_sr1_timeout_position)
+        .equ i2c_sr1_timeout,               (i2c_sr1_timeout_mask)
+
+        .equ i2c_sr1_smbalert_position,     (0x0f)
+        .equ i2c_sr1_smbalert_mask,         (0x01 << i2c_sr1_smbalert_position)
+        .equ i2c_sr1_smbalert,              (i2c_sr1_smbalert_mask)
+
+
+@-----------------------------------------------------------------------------------------------@
