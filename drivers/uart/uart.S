@@ -4,6 +4,12 @@
 
         .include "stm32f446re_usart.inc"
 
+        .section .rodata
+        .balign 4
+        .type hello_world_message, %object
+hello_world_message:
+        .asciz "Hello, World!"
+
         .text
         .balign 4
         .global _reset_handler
@@ -11,6 +17,8 @@
 _reset_handler:
         ldr r0, =usart2_base
         bl _usart_init
+        ldr r1, =hello_world_message
+        bl _usart_send_data
         b .
 
         .text
@@ -73,10 +81,42 @@ _usart_set_baud_rate:
 
         .text
         .balign 4
+        .type _usart_set_idle_frame, %function
+_usart_set_idle_frame:
+        ldr r1, [r0, #usart_cr1_offset]
+        orr r1, #usart_cr1_te
+        str r1, [r0, #usart_cr1_offset]
+        bx lr
+
+        .text
+        .balign 4
+        .type _usart_send_data, %function
+        @ Argument in r0: usart base address
+        @ Argument in r1: address of the message
+_usart_send_data:
+1:
+        ldrb r2, [r1], #1
+        cmp r2, #0x00
+        beq usart_send_end
+        strb r2, [r0, #usart_dr_offset]
+2:
+        ldr r3, [r0, #usart_sr_offset]
+        tst r3, #usart_sr_txe
+        beq 2b
+        b 1b
+usart_send_end:
+        ldr r3, [r0, #usart_sr_offset]
+        tst r3, #usart_sr_tc
+        beq usart_send_end
+        bx lr
+
+        .text
+        .balign 4
         .global _usart_init
         .type _usart_init, %function
         @ Argument in r0: usart base address
 _usart_init:
+        push { lr }
         bl _usart_enable        @ Argument in r0 is usart base address.
         mov r1, #0x00
         bl _usart_set_m_bit
@@ -85,6 +125,8 @@ _usart_init:
         mov r1, #0x00
         mov r2, #0x0271
         bl _usart_set_baud_rate
+        bl _usart_set_idle_frame
+        pop { lr }
         bx lr
 
         .end
