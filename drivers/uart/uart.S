@@ -12,17 +12,6 @@ hello_world_message:
 
         .text
         .balign 4
-        .global _reset_handler
-        .type _reset_handler, %function
-_reset_handler:
-        ldr r0, =usart2_base
-        bl _usart_init
-        ldr r1, =hello_world_message
-        bl _usart_send_data
-        b .
-
-        .text
-        .balign 4
         .type _usart_enable, %function
         @ Argument in r0: usart base address
 _usart_enable:
@@ -73,6 +62,10 @@ _usart_set_stop_bits:
         @ For 9600 baudrate and 96MHz clock the mantissa has to be
         @ set to 625, it is calculated in the following way:
         @ 1. USARTDIV = fpclk1/(16*9600) = 96MHz/(16*9600) = 625
+        @ NOTE: the PLL can be not turned on, so SYSCLK will be 16MHz
+        @ 1. USARTDIV = 16MHz/(16*9600) = 104.1667
+        @ 2. mantissa = 104 (0x68)
+        @ 3. fraction = 0.1667 * 16 = 2.667 = 3 (0x03)
 _usart_set_baud_rate:
         lsl r2, #usart_brr_divmantissa_position
         orr r2, r1
@@ -122,8 +115,8 @@ _usart_init:
         bl _usart_set_m_bit
         mov r1, #0x00
         bl _usart_set_stop_bits
-        mov r1, #0x00
-        mov r2, #0x0271
+        mov r1, #0x03
+        mov r2, #0x68
         bl _usart_set_baud_rate
         bl _usart_set_idle_frame
         pop { lr }
