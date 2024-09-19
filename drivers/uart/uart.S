@@ -4,12 +4,6 @@
 
         .include "stm32f446re_usart.inc"
 
-        .section .rodata
-        .balign 4
-        .type hello_world_message, %object
-hello_world_message:
-        .asciz "Hello, World!"
-
         .text
         .balign 4
         .type _usart_enable, %function
@@ -83,6 +77,7 @@ _usart_set_idle_frame:
 
         .text
         .balign 4
+        .global _usart_send_data
         .type _usart_send_data, %function
         @ Argument in r0: usart base address
         @ Argument in r1: address of the message
@@ -109,7 +104,8 @@ usart_send_end:
         .type _usart_init, %function
         @ Argument in r0: usart base address
 _usart_init:
-        push { lr }
+        push { lr }             @ Push only 4 bytes.
+        sub sp, sp, #4          @ Adjust to maintain 8-byte alignment.
         bl _usart_enable        @ Argument in r0 is usart base address.
         mov r1, #0x00
         bl _usart_set_m_bit
@@ -119,6 +115,7 @@ _usart_init:
         mov r2, #0x68
         bl _usart_set_baud_rate
         bl _usart_set_idle_frame
+        add sp, sp, #4          @ Restore stack pointer before returning.
         pop { lr }
         bx lr
 
