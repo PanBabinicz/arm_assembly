@@ -10,6 +10,7 @@ SECTIONS {
 
   .text : {
     *(.text)
+    *(.rodata)
   } >flash
 
   .data (NOLOAD) : {
