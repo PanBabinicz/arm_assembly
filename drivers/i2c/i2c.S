@@ -22,7 +22,12 @@ _i2c_configure_rise_time:
         .text
         .balign 4
         .type _i2c_enable, %function
+        @ Argument in r0: i2c base address
 _i2c_enable:
+        ldr r1, [r0, #i2c_cr1_offset]
+        orr r1, #i2c_cr1_pe
+        str r1, [r0, #i2c_cr1_offset]
+        bx lr
 
         .text
         .balign 4
