@@ -21,7 +21,11 @@ _i2c_configure_clock:
         .text
         .balign 4
         .type _i2c_configure_rise_time, %function
+        @ Argument in r0: i2c base address
+        @ Argument in r1: i2c rise time value
 _i2c_configure_rise_time:
+        str r1, [r0, #i2c_trise_offset]
+        bx lr
 
         .text
         .balign 4
