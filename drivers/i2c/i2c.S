@@ -7,7 +7,11 @@
         .text
         .balign 4
         .type _i2c_set_peripheral_input_clock, %function
+        @ Argument in r0: i2c base address
+        @ Argument in r1: i2c clock frequency
 _i2c_set_peripheral_input_clock:
+        str r1, [r0, #i2c_cr2_offset]
+        bx lr
 
         .text
         .balign 4
