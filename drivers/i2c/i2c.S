@@ -16,7 +16,37 @@ _i2c_set_peripheral_input_clock:
         .text
         .balign 4
         .type _i2c_configure_clock, %function
+        @ Argument in r0: i2c base address
+        @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
+        @ Argument in r2: i2c scl frequency (0, 100kHz) or (100kHz, 400kHz)
 _i2c_configure_clock:
+        ldr r3, =0x001e8480     @ 2MHz
+        cmp r1, r3
+        it lo
+        blo i2c_configure_clock_exit
+        ldr r3, =0x02faf080     @ 50MHz
+        cmp r1, r3
+        it hi
+        bhi i2c_configure_clock_exit
+        ldr r3, =0x00           @ 0Hz
+        cmp r2, r3
+        it eq
+        beq i2c_configure_clock_exit
+        ldr r3, =0x000186a0     @ 100kHz
+        cmp r2, r3
+        it hi
+        bhi i2c_configure_clock_check_fm
+        mov r3, #0x00           @ Standard mode
+        b i2c_configure_clock_calculate_ccr
+i2c_configure_clock_check_fm:
+        ldr r3, =0x00061a80     @ 400kHz
+        cmp r2, r3
+        it hi
+        bhi i2c_configure_clock_exit
+        mov r3, #0x01           @ Fast mode
+i2c_configure_clock_calculate_ccr:
+i2c_configure_clock_exit:
+        bx lr
 
         .text
         .balign 4
