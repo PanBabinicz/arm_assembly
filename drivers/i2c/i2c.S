@@ -24,10 +24,10 @@ _i2c_configure_clock:
         lsl r4, r2, #0x01       @ 2*fscl
         ldr r3, =0x000186a0     @ 100kHz
         cmp r2, r3
-        itt hi
+        itte hi
         addhi r4, r2            @ 3*fscl
         movhi r5, #0x01         @ Fast mode
-        mov r5, #0x00           @ Standard mode
+        movls r5, #0x00         @ Standard mode
         udiv r6, r1, r4         @ fpclk / x*fscl
         lsl r5, #0x0f           @ shift f/s bit on 15th position
         orr r6, r5
