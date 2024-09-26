@@ -102,39 +102,45 @@ i2c_check_arguments_exit:
 
         .text
         .balign 4
-        .type _i2c_send_byte, %function
+        .type _i2c_transmit_byte, %function
         @ Argument in r0: i2c base address
         @ Argument in r1: data byte
-_i2c_send_byte:
+_i2c_transmit_byte:
         ldrb r2, [r1], #1
         strb r2, [r0, #i2c_dr_offset]
         bx lr
 
         .text
         .balign 4
-        .global _i2c_send
-        .type _i2c_send, %function
+        .global _i2c_transmit
+        .type _i2c_transmit, %function
         @ Argument in r0: i2c base address / i2c init status
         @ Argument in r1: data
-_i2c_send:
+_i2c_transmit:
         push { lr }
         sub sp, sp, #0x04
-i2c_send_next_byte:
+i2c_transmit_next_byte:
         cmp r1, #0x00
         it eq
         beq i2c_send_exit
         bl _i2c_send_byte
-i2c_send_is_empty:
+i2c_transmit_is_empty:
         ldr r2, [r0, #i2c_sr1_offset]
         tst r2, #i2c_sr1_txe
         it ne
         bne i2c_send_next_byte
         it eq
         beq i2c_send_is_empty
-i2c_send_exit:
+i2c_transmit_exit:
         add sp, sp, #0x04
         pop { lr }
         bx lr
+
+        .text
+        .balign 4
+        .global _i2c_receive
+        .type _i2c_receive, %function
+_i2c_receive:
 
         .text
         .balign 4
