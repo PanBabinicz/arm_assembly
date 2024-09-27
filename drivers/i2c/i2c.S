@@ -129,7 +129,7 @@ i2c_master_transmit_check_sb:
         it eq
         beq i2c_master_transmit_check_sb
         lsl r2, #0x01                   @ Shift the address, lsb signals the mode
-        orr r2, #0x01                   @ Enter the transmitter mode
+        bic r2, #0x01                   @ Enter the transmitter mode
         strb r2, [r0, #i2c_dr_offset]
 i2c_master_transmit_check_addr:
         ldr r3, [r0, #i2c_sr1_offset]
@@ -163,18 +163,43 @@ i2c_master_transmit_check_btf:
 
         .text
         .balign 4
+        .global _i2c_master_receive
+        .type _i2c_master_receive, %function
+        @ Argument in r0: i2c base address / i2c init status
+        @ Argument in r1: data buffer address
+        @ Argument in r2: slave address
+_i2c_master_receive:
+        push { lr }
+        sub sp, sp, #0x04
+        ldr r3, [r0, #i2c_cr1_offset]
+        orr r3, #i2c_cr1_start
+        str r3, [r0, #i2c_cr1_offset]   @ Start generation
+i2c_master_receive_check_sb:
+        ldr r3, [r0, #i2c_sr1_offset]
+        tst r3, #i2c_sr1_sb
+        it eq
+        beq i2c_master_receive_check_sb
+        lsl r2, #0x01                   @ Shift the address, lsb signals the mode
+        orr r2, #0x01                   @ Enter the receiver mode
+        strb r2, [r0, #i2c_dr_offset]
+i2c_master_receive_check_addr:
+        ldr r3, [r0, #i2c_sr1_offset]
+        tst r3, #i2c_sr1_addr
+        it eq
+        beq i2c_master_receive_check_addr
+        ldr r3, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
+        add sp, sp, #0x04
+        pop { lr }
+        bx lr
+
+        .text
+        .balign 4
         .global _i2c_slave_transmit
         .type _i2c_slave_transmit, %function
         @ Argument in r0: i2c base address / i2c init status
         @ Argument in r1: data
         @ Argument in r2: slave address
 _i2c_slave_transmit:
-
-        .text
-        .balign 4
-        .global _i2c_master_receive
-        .type _i2c_master_receive, %function
-_i2c_master_receive:
 
         .text
         .balign 4
