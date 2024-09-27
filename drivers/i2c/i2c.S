@@ -163,9 +163,9 @@ i2c_master_transmit_check_btf:
 
         .text
         .balign 4
-        .global _i2c_receive
-        .type _i2c_receive, %function
-_i2c_receive:
+        .global _i2c_master_receive
+        .type _i2c_master_receive, %function
+_i2c_master_receive:
 
         .text
         .balign 4
