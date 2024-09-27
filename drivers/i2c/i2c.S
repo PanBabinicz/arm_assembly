@@ -102,58 +102,58 @@ i2c_check_arguments_exit:
 
         .text
         .balign 4
-        .type _i2c_transmit_byte, %function
+        .type _i2c_master_transmit_byte, %function
         @ Argument in r0: i2c base address
         @ Argument in r1: data byte
-_i2c_transmit_byte:
+_i2c_master_transmit_byte:
         ldrb r2, [r1], #1
         strb r2, [r0, #i2c_dr_offset]
         bx lr
 
         .text
         .balign 4
-        .global _i2c_transmit
-        .type _i2c_transmit, %function
+        .global _i2c_master_transmit
+        .type _i2c_master_transmit, %function
         @ Argument in r0: i2c base address / i2c init status
         @ Argument in r1: data
         @ Argument in r2: slave address
-_i2c_transmit:
+_i2c_master_transmit:
         push { lr }
         sub sp, sp, #0x04
         ldr r3, [r0, #i2c_cr1_offset]
         orr r3, #i2c_cr1_start
         str r3, [r0, #i2c_cr1_offset]   @ Start generation
-i2c_transmit_check_sb:
+i2c_master_transmit_check_sb:
         ldr r3, [r0, #i2c_sr1_offset]
         tst r3, #i2c_sr1_sb
         it eq
-        beq i2c_transmit_check_sb
+        beq i2c_master_transmit_check_sb
         lsl r2, #0x01                   @ Shift the address, lsb signals the mode
         orr r2, #0x01                   @ Enter the transmitter mode
         strb r2, [r0, #i2c_dr_offset]
-i2c_transmit_check_addr:
+i2c_master_transmit_check_addr:
         ldr r3, [r0, #i2c_sr1_offset]
         tst r3, #i2c_sr1_addr
         it eq
-        beq i2c_transmit_check_addr
+        beq i2c_master_transmit_check_addr
         ldr r3, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
-i2c_transmit_next_byte:
+i2c_master_transmit_next_byte:
         cmp r1, #0x00
         it eq
-        beq i2c_transmit_check_btf
-        bl _i2c_transmit_byte
-i2c_transmit_is_empty:
+        beq i2c_master_transmit_check_btf
+        bl _i2c_master_transmit_byte
+i2c_master_transmit_is_empty:
         ldr r3, [r0, #i2c_sr1_offset]
         tst r3, #i2c_sr1_txe
         it ne
-        bne i2c_transmit_next_byte
+        bne i2c_master_transmit_next_byte
         it eq
-        beq i2c_transmit_is_empty
-i2c_transmit_check_btf:
+        beq i2c_master_transmit_is_empty
+i2c_master_transmit_check_btf:
         ldr r3, [r0, #i2c_sr1_offset]
         tst r3, #i2c_sr1_btf
         it eq
-        beq i2c_transmit_check_btf
+        beq i2c_master_transmit_check_btf
         ldr r3, [r0, #i2c_cr1_offset]
         orr r3, #i2c_cr1_stop
         str r3, [r0, #i2c_cr1_offset]
