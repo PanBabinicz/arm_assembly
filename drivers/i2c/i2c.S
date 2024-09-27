@@ -163,9 +163,24 @@ i2c_master_transmit_check_btf:
 
         .text
         .balign 4
+        .global _i2c_slave_transmit
+        .type _i2c_slave_transmit, %function
+        @ Argument in r0: i2c base address / i2c init status
+        @ Argument in r1: data
+        @ Argument in r2: slave address
+_i2c_slave_transmit:
+
+        .text
+        .balign 4
         .global _i2c_master_receive
         .type _i2c_master_receive, %function
 _i2c_master_receive:
+
+        .text
+        .balign 4
+        .global _i2c_slave_receive
+        .type _i2c_slave_receive, %function
+_i2c_slave_receive:
 
         .text
         .balign 4
