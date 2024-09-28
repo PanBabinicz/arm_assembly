@@ -112,14 +112,23 @@ _i2c_master_transmit_byte:
 
         .text
         .balign 4
+        .type _i2c_master_receive_byte, %function
+        @ Argument in r0: i2c base address
+        @ Argument in r1: data buffer address
+_i2c_master_receive_byte:
+        ldrb r2, [r0, #i2c_dr_offset]
+        strb r2, [r1], #1
+        bx lr
+
+        .text
+        .balign 4
         .global _i2c_master_transmit
         .type _i2c_master_transmit, %function
         @ Argument in r0: i2c base address / i2c init status
         @ Argument in r1: data
         @ Argument in r2: slave address
 _i2c_master_transmit:
-        push { lr }
-        sub sp, sp, #0x04
+        push { r4, lr }
         ldr r3, [r0, #i2c_cr1_offset]
         orr r3, #i2c_cr1_start
         str r3, [r0, #i2c_cr1_offset]   @ Start generation
@@ -141,7 +150,7 @@ i2c_master_transmit_next_byte:
         cmp r1, #0x00
         it eq
         beq i2c_master_transmit_check_btf
-        bl _i2c_master_transmit_byte
+        bl _i2c_master_transmit_byte    @ Don't need to save r2 because I dont use it anymore
 i2c_master_transmit_is_empty:
         ldr r3, [r0, #i2c_sr1_offset]
         tst r3, #i2c_sr1_txe
@@ -157,8 +166,7 @@ i2c_master_transmit_check_btf:
         ldr r3, [r0, #i2c_cr1_offset]
         orr r3, #i2c_cr1_stop
         str r3, [r0, #i2c_cr1_offset]
-        add sp, sp, #0x04
-        pop { lr }
+        pop { r4, lr }
         bx lr
 
         .text
@@ -167,29 +175,54 @@ i2c_master_transmit_check_btf:
         .type _i2c_master_receive, %function
         @ Argument in r0: i2c base address / i2c init status
         @ Argument in r1: data buffer address
-        @ Argument in r2: slave address
+        @ Argument in r2: data buffer size
+        @ Argument in r3: slave address
 _i2c_master_receive:
-        push { lr }
+        push { r4-r5, lr }
         sub sp, sp, #0x04
-        ldr r3, [r0, #i2c_cr1_offset]
-        orr r3, #i2c_cr1_start
-        str r3, [r0, #i2c_cr1_offset]   @ Start generation
+        mov r5, r2                      @ Save the data buffer size
+        ldr r4, [r0, #i2c_cr1_offset]
+        orr r4, #i2c_cr1_start
+        str r4, [r0, #i2c_cr1_offset]   @ Start generation
 i2c_master_receive_check_sb:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_sb
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_sb
         it eq
         beq i2c_master_receive_check_sb
-        lsl r2, #0x01                   @ Shift the address, lsb signals the mode
-        orr r2, #0x01                   @ Enter the receiver mode
-        strb r2, [r0, #i2c_dr_offset]
+        lsl r3, #0x01                   @ Shift the address, lsb signals the mode
+        orr r3, #0x01                   @ Enter the receiver mode
+        strb r3, [r0, #i2c_dr_offset]
 i2c_master_receive_check_addr:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_addr
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_addr
         it eq
         beq i2c_master_receive_check_addr
-        ldr r3, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
+        ldr r4, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
+i2c_master_receive_next_byte:
+1:
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_rxne
+        it eq
+        beq 1b                          @ Wait for the data to be available in buffer
+        subs r5, #0x01
+        bl _i2c_master_receive_byte
+        cmp r5, #0x01
+        it ne
+        bne i2c_master_receive_next_byte
+        ldr r4, [r0, #i2c_cr1_offset]   @ Prepare the NACK
+        bic r4, #i2c_cr1_ack
+        str r4, [r0, #i2c_cr1_offset]
+2:
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_rxne
+        it eq
+        beq 2b                          @ Wait for the data to be available in buffer
+        bl _i2c_master_receive_byte     @ Receive the last byte
+        ldr r4, [r0, #i2c_cr1_offset]
+        orr r4, #i2c_cr1_stop           @ Set STOP
+        str r4, [r0, #i2c_cr1_offset]
         add sp, sp, #0x04
-        pop { lr }
+        pop { r4-r5, lr }
         bx lr
 
         .text
