@@ -2,7 +2,7 @@
         .cpu cortex-m4
         .thumb
 
-        .include "stm32446re_i2c.inc"
+        .include "stm32f446re_i2c.inc"
 
         .text
         .balign 4
@@ -45,7 +45,8 @@ i2c_configure_clock_exit:
 _i2c_configure_rise_time:
         push { r4 }
         sub sp, sp, #0x04
-        cmp r2, #0x000186a0             @ 100kHz
+        ldr r3, =0x000186a0             @ 100kHz
+        cmp r2, r3
         ittt hi
         movhi r3, #0x012c               @ 300ns
         mulhi r4, r1, r3                @ trise = clock_frequency * r3
