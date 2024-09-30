@@ -107,7 +107,7 @@ i2c_check_arguments_exit:
         @ Argument in r0: i2c base address
         @ Argument in r1: data byte
 _i2c_master_transmit_byte:
-        ldrb r2, [r1], #1
+        ldrb r2, [r1], #0x01
         strb r2, [r0, #i2c_dr_offset]
         bx lr
 
@@ -119,6 +119,16 @@ _i2c_master_transmit_byte:
 _i2c_master_receive_byte:
         ldrb r2, [r0, #i2c_dr_offset]
         strb r2, [r1], #1
+        bx lr
+
+        .text
+        .balign 4
+        .type _i2c_slave_transmit_byte, %function
+        @ Argument in r0: i2c base address
+        @ Argument in r1: data buffer address
+_i2c_slave_transmit_byte:
+        ldrb r2, [r1], #0x01
+        strb r2, [r0, #i2c_dr_offset]
         bx lr
 
         .text
@@ -234,8 +244,8 @@ i2c_master_receive_next_byte:
         @ Argument in r1: data buffer
         @ Argument in r2: data size
 _i2c_slave_transmit:
-        push { lr }
-        sub sp, sp, #0x04
+        push { r4, lr }
+        mov r4, r2
 1:
         ldr r3, [r0, #i2c_sr1_offset]
         tst r3, #i2c_sr1_addr           @ Check if addr flag is set (the received address matched)
@@ -248,7 +258,7 @@ i2c_slave_transmit_next_byte:
         tst r3, #i2c_sr1_txe
         it eq
         beq 2b
-        subs r2, #0x01
+        subs r4, #0x01
         bl _i2c_slave_transmit_byte
         it ne
         bne i2c_slave_transmit_next_byte
@@ -265,8 +275,7 @@ i2c_slave_transmit_check_stop_af:
         str r3, [r0, #i2c_cr1_offset]   @ Clear the STOPF flag
         mov r3, #0x00
         str r3, [r0, #i2c_sr1_offset]   @ Clear the AF flag
-        add sp, sp, #0x04
-        pop { lr }
+        pop { r4, lr }
         bx lr
 
         .text
