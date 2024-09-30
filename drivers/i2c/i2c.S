@@ -270,7 +270,7 @@ i2c_slave_transmit_check_stop_af:
         tst r3, #i2c_sr1_af
         it eq
         beq i2c_slave_transmit_check_stop_af
-i2c_slave_transmit_check_stop_af:
+i2c_slave_transmit_stop_af_detected:
         ldr r3, [r0, #i2c_cr1_offset]
         str r3, [r0, #i2c_cr1_offset]   @ Clear the STOPF flag
         mov r3, #0x00
