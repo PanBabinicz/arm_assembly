@@ -103,40 +103,20 @@ i2c_check_arguments_exit:
 
         .text
         .balign 4
-        .type _i2c_master_transmit_byte, %function
+        .type _i2c_transmit_byte, %function
         @ Argument in r0: i2c base address
         @ Argument in r1: data byte
-_i2c_master_transmit_byte:
+_i2c_transmit_byte:
         ldrb r2, [r1], #0x01
         strb r2, [r0, #i2c_dr_offset]
         bx lr
 
         .text
         .balign 4
-        .type _i2c_master_receive_byte, %function
+        .type _i2c_receive_byte, %function
         @ Argument in r0: i2c base address
         @ Argument in r1: data buffer address
-_i2c_master_receive_byte:
-        ldrb r2, [r0, #i2c_dr_offset]
-        strb r2, [r1], #0x01
-        bx lr
-
-        .text
-        .balign 4
-        .type _i2c_slave_transmit_byte, %function
-        @ Argument in r0: i2c base address
-        @ Argument in r1: data buffer address
-_i2c_slave_transmit_byte:
-        ldrb r2, [r1], #0x01
-        strb r2, [r0, #i2c_dr_offset]
-        bx lr
-
-        .text
-        .balign 4
-        .type _i2c_slave_receive_byte, %function
-        @ Argument in r0: i2c base address
-        @ Argument in r1: data buffer address
-_i2c_slave_receive_byte:
+_i2c_receive_byte:
         ldrb r2, [r0, #i2c_dr_offset]
         strb r2, [r1], #0x01
         bx lr
@@ -171,7 +151,7 @@ i2c_master_transmit_next_byte:
         cmp r1, #0x00
         it eq
         beq i2c_master_transmit_check_btf
-        bl _i2c_master_transmit_byte    @ Don't need to save r2 because I dont use it anymore
+        bl _i2c_transmit_byte           @ Don't need to save r2 because I dont use it anymore
 i2c_master_transmit_is_empty:
         ldr r3, [r0, #i2c_sr1_offset]
         tst r3, #i2c_sr1_txe
@@ -226,7 +206,7 @@ i2c_master_receive_next_byte:
         it eq
         beq 1b                          @ Wait for the data to be available in buffer
         subs r5, #0x01
-        bl _i2c_master_receive_byte
+        bl _i2c_receive_byte
         cmp r5, #0x01
         it ne
         bne i2c_master_receive_next_byte
@@ -238,7 +218,7 @@ i2c_master_receive_next_byte:
         tst r4, #i2c_sr1_rxne
         it eq
         beq 2b                          @ Wait for the data to be available in buffer
-        bl _i2c_master_receive_byte     @ Receive the last byte
+        bl _i2c_receive_byte            @ Receive the last byte
         ldr r4, [r0, #i2c_cr1_offset]
         orr r4, #i2c_cr1_stop           @ Set STOP
         str r4, [r0, #i2c_cr1_offset]
@@ -269,7 +249,7 @@ i2c_slave_transmit_next_byte:
         it eq
         beq 2b
         subs r4, #0x01
-        bl _i2c_slave_transmit_byte
+        bl _i2c_transmit_byte
         it ne
         bne i2c_slave_transmit_next_byte
 i2c_slave_transmit_check_stopf_af:
@@ -311,7 +291,7 @@ i2c_slave_receive_next_byte:
         it eq
         beq 2b
         subs r4, #0x01
-        bl _i2c_slave_receive_byte
+        bl _i2c_receive_byte
         it ne
         bne i2c_slave_receive_next_byte
 i2c_slave_receive_check_stopf:
