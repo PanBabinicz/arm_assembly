@@ -2,6 +2,10 @@
         .cpu cortex-m4
         .thumb
 
+        .include "stm32f446re_rcc.inc"
+        .include "stm32f446re_gpio.inc"
+        .include "stm32f446re_i2c.inc"
+
         i2c1_base_address    = i2c1_base
         i2c1_clock_frequency = 0x02625a00       @ 40MHz
         i2c1_scl_frequency   = 0x000493e0       @ 300kHz
@@ -35,12 +39,29 @@ _reset_handler:
         .balign 4
         .type _rcc_setup, %function
 _rcc_setup:
+        ldr r0, =rcc_base
+        ldr r1, [r0, #rcc_apb1enr_offset]
+        orr r1, #rcc_apb1enr_i2c1en
+        str r1, [r0, #rcc_apb1enr_offset]       @ Set the clock on i2c1
+        ldr r1, [r0, #rcc_ahb1enr_offset]
+        orr r1, #rcc_ahb1enr_gpioben
+        str r1, [r0, #rcc_ahb1enr_offset]       @ Set the clock on gpiob
         bx lr
 
         .text
         .balign 4
         .type _gpio_setup, %function
 _gpio_setup:
+        ldr r0, =gpiob_base
+        ldr r1, [r0, #gpiox_moder_offset]
+        orr r1, #(gpiox_moder_moder8_bit1 | gpiox_moder_moder9_bit1)
+        str r1, [r0, #gpiox_moder_offset]
+        ldr r1, [r0, #gpiox_pupdr_offset]
+        orr r1, #(gpiox_pupdr_pupdr8_bit0 | gpiox_pupdr_pupdr9_bit0)
+        str r1, [r0, #gpiox_pupdr_offset]
+        ldr r1, [r0, #gpiox_afrh_offset]
+        orr r1, #(gpiox_afrh_afrh8_bit2 | gpiox_afrh_afrh9_bit2)
+        str r1, [r0, #gpiox_afrh_offset]
         bx lr
 
         .text
