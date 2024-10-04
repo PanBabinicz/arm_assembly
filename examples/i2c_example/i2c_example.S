@@ -6,8 +6,11 @@
         .include "stm32f446re_gpio.inc"
         .include "stm32f446re_i2c.inc"
 
+        .global _i2c_init
+        .global _i2c_master_transmit
+
         i2c1_base_address    = i2c1_base
-        i2c1_clock_frequency = 0x02625a00       @ 40MHz
+        i2c1_clock_frequency = 0x00f42400       @ 16MHz
         i2c1_scl_frequency   = 0x000493e0       @ 300kHz
 
         i2c_slave_address    = 0x62             @ Slave address
