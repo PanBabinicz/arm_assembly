@@ -10,6 +10,8 @@
         @ Argument in r0: i2c base address
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
 _i2c_set_peripheral_input_clock:
+        ldr r3, =0x000f4240             @ 1000000
+        udiv r1, r1, r3
         str r1, [r0, #i2c_cr2_offset]
         bx lr
 
@@ -19,7 +21,7 @@ _i2c_set_peripheral_input_clock:
         @ Argument in r0: i2c base address
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
         @ Argument in r2: i2c scl frequency (0, 100kHz) or (100kHz, 400kHz)
-_i2c_configure_clock:
+_i2c_configure_clock:                   @ TODO: Check the math here
         push { r4-r7 }
         lsl r4, r2, #0x01               @ 2*fscl
         ldr r3, =0x000186a0             @ 100kHz
@@ -42,7 +44,7 @@ i2c_configure_clock_exit:
         @ Argument in r0: i2c base address
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
         @ Argument in r2: i2c scl frequency (0, 100kHz) or (100kHz, 400kHz)
-_i2c_configure_rise_time:
+_i2c_configure_rise_time:               @ TODO: Bug in this function
         push { r4 }
         sub sp, sp, #0x04
         ldr r3, =0x000186a0             @ 100kHz
@@ -312,19 +314,23 @@ i2c_slave_receive_check_stopf:
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
         @ Argument in r2: i2c scl frequency (0, 100kHz) or (100kHz, 400kHz)
 _i2c_init:
-        push { r4, lr }
+        push { r4-r5, lr }
+        sub sp, sp, #0x04
         mov r4, r0
+        mov r5, r1
         bl _i2c_check_arguments
         cmp r0, #0x00
         it ne
         bne i2c_init_exit
         mov r0, r4
         bl _i2c_set_peripheral_input_clock
+        mov r1, r5
         bl _i2c_configure_clock
         bl _i2c_configure_rise_time
         bl _i2c_enable
 i2c_init_exit:
-        pop { r4, lr }
+        add sp, sp, #0x04
+        pop { r4-r5, lr }
         bx lr
 
         .end
