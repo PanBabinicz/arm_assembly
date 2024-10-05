@@ -6,6 +6,22 @@
 
         .text
         .balign 4
+        .type _i2c_software_reset, %function
+_i2c_software_reset:
+1:
+        ldr r1, [r0, #i2c_cr1_offset]
+        orr r1, #i2c_cr1_swrst
+        str r1, [r0, #i2c_cr1_offset]
+        ldr r1, [r0, #i2c_cr1_offset]
+        tst r1, #i2c_cr1_swrst
+        it eq
+        beq 1b
+        bic r1, #i2c_cr1_swrst
+        str r1, [r0, #i2c_cr1_offset]
+        bx lr
+
+        .text
+        .balign 4
         .type _i2c_set_peripheral_input_clock, %function
         @ Argument in r0: i2c base address
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
@@ -33,6 +49,7 @@ _i2c_configure_clock:                   @ TODO: Check the math here
         udiv r6, r1, r4                 @ fpclk / x*fscl
         lsl r5, #0x0f                   @ shift f/s bit on 15th position
         orr r6, r5
+        bic r6, #(0x01 << 14)           @ duty is 0
         str r6, [r0, #i2c_ccr_offset]
 i2c_configure_clock_exit:
         pop { r4-r7 }
@@ -323,6 +340,9 @@ _i2c_init:
         it ne
         bne i2c_init_exit
         mov r0, r4
+        bl _i2c_software_reset
+        mov r0, r4
+        mov r1, r5
         bl _i2c_set_peripheral_input_clock
         mov r1, r5
         bl _i2c_configure_clock
