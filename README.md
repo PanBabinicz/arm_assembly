@@ -14,6 +14,9 @@
 ## Usage
 
 > **debugger**  - arm-none-eabi-gdb <binary>
+
 > **openOCD**   - openocd -f <interface-config> -f <board-config>
+
 > **assembler** - arm-none-eabi-as -g -I <include-path> <source-file> -o <object-file>
+
 > **linker**    - arm-none-eabi-ld <object-files> -o <binary-file> -T <linkerscript>
