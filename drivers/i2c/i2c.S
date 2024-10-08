@@ -145,48 +145,52 @@ _i2c_receive_byte:
         .global _i2c_master_transmit
         .type _i2c_master_transmit, %function
         @ Argument in r0: i2c base address
-        @ Argument in r1: data
-        @ Argument in r2: slave address
+        @ Argument in r1: data buffer address
+        @ Argument in r2: data size size
+        @ Argument in r3: slave address
 _i2c_master_transmit:
-        push { r4, lr }
-        ldr r3, [r0, #i2c_cr1_offset]
-        orr r3, #i2c_cr1_start
-        str r3, [r0, #i2c_cr1_offset]   @ Start generation
+        push { r4-r5, lr }
+        mov r5, r2
+        sub sp, sp, #0x04
+        ldr r4, [r0, #i2c_cr1_offset]
+        orr r4, #i2c_cr1_start
+        str r4, [r0, #i2c_cr1_offset]   @ Start generation
 i2c_master_transmit_check_sb:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_sb
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_sb
         it eq
         beq i2c_master_transmit_check_sb
-        lsl r2, #0x01                   @ Shift the address, lsb signals the mode
-        bic r2, #0x01                   @ Enter the transmitter mode
-        strb r2, [r0, #i2c_dr_offset]
+        lsl r3, #0x01                   @ Shift the address, lsb signals the mode
+        bic r3, #0x01                   @ Enter the transmitter mode
+        strb r3, [r0, #i2c_dr_offset]
 i2c_master_transmit_check_addr:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_addr
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_addr
         it eq
         beq i2c_master_transmit_check_addr
-        ldr r3, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
+        ldr r4, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
 i2c_master_transmit_next_byte:
-        cmp r1, #0x00
+        bl _i2c_transmit_byte           @ Don't need to save r2 because I dont use it anymore
+        subs r5, #0x01
         it eq
         beq i2c_master_transmit_check_btf
-        bl _i2c_transmit_byte           @ Don't need to save r2 because I dont use it anymore
 i2c_master_transmit_is_empty:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_txe
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_txe
         it ne
         bne i2c_master_transmit_next_byte
         it eq
         beq i2c_master_transmit_is_empty
 i2c_master_transmit_check_btf:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_btf
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_btf
         it eq
         beq i2c_master_transmit_check_btf
-        ldr r3, [r0, #i2c_cr1_offset]
-        orr r3, #i2c_cr1_stop
-        str r3, [r0, #i2c_cr1_offset]
-        pop { r4, lr }
+        ldr r4, [r0, #i2c_cr1_offset]
+        orr r4, #i2c_cr1_stop
+        str r4, [r0, #i2c_cr1_offset]
+        add sp, sp, #0x04
+        pop { r4-r5, lr }
         bx lr
 
         .text
