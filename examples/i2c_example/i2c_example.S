@@ -14,15 +14,23 @@
         i2c1_scl_frequency   = 0x000493e0       @ 300kHz
 
         i2c_slave_address    = 0x76             @ Slave address
-        i2c_data_size        = 0x02             @ Size of the data buffer
+        i2c_frame_reset_size = 0x02             @ Size of the reset frame
+        i2c_frame_id_size    = 0x01             @ Size of the id frame
 
         .section .rodata
         .balign 4
-        .type i2c_data_start, %object
-        @ This data resets the bme280 sensor
-i2c_data_start:
+        .type i2c_frame_reset_start, %object
+        @ This frame resets the bme280 sensor
+i2c_frame_reset_start:
         .byte 0xe0
         .byte 0xb6
+
+        .section .rodata
+        .balign 4
+        .type i2c_frame_id_start, %object
+        @ This frame gets the bme280 sensor id
+i2c_frame_id_start:
+        .byte 0xd0
 
         .text
         .balign 4
@@ -73,10 +81,14 @@ _main:
         ldr r1, =i2c1_clock_frequency
         ldr r2, =i2c1_scl_frequency
         bl _i2c_init
-        ldr r1, =i2c_data_start
-        ldr r2, =i2c_data_size
+        ldr r1, =i2c_frame_reset_start
+        ldr r2, =i2c_frame_reset_size
         ldr r3, =i2c_slave_address
         bl _i2c_master_transmit
+        ldr r1, =i2c_frame_id_start
+        ldr r2, =i2c_frame_id_size
+        ldr r3, =i2c_slave_address
+        bl _i2c_master_receive
 1:
         wfi
         b 1b
