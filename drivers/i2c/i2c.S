@@ -230,7 +230,9 @@ i2c_master_receive_next_byte:
         beq 1b                          @ Wait for the data to be available in buffer
         subs r5, #0x01
         bl _i2c_receive_byte
-        cmp r5, #0x01
+        ite ne
+        cmpne r5, #0x01
+        beq 3f
         it ne
         bne i2c_master_receive_next_byte
         ldr r4, [r0, #i2c_cr1_offset]   @ Prepare the NACK
@@ -242,6 +244,7 @@ i2c_master_receive_next_byte:
         it eq
         beq 2b                          @ Wait for the data to be available in buffer
         bl _i2c_receive_byte            @ Receive the last byte
+3:
         ldr r4, [r0, #i2c_cr1_offset]
         orr r4, #i2c_cr1_stop           @ Set STOP
         str r4, [r0, #i2c_cr1_offset]
