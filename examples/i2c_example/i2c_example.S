@@ -9,13 +9,13 @@
         .global _i2c_init
         .global _i2c_master_transmit
 
-        i2c1_base_address    = i2c1_base
-        i2c1_clock_frequency = 0x00f42400       @ 16MHz
-        i2c1_scl_frequency   = 0x000493e0       @ 300kHz
+        i2c1_base_address       = i2c1_base
+        i2c1_clock_frequency    = 0x00f42400    @ 16MHz
+        i2c1_scl_frequency      = 0x000493e0    @ 300kHz
 
-        i2c_slave_address    = 0x76             @ Slave address
-        i2c_frame_reset_size = 0x02             @ Size of the reset frame
-        i2c_frame_id_size    = 0x01             @ Size of the id frame
+        i2c_slave_address       = 0x76          @ Slave address
+        i2c_frame_reset_size    = 0x02          @ Size of the reset frame
+        i2c_frame_id_size       = 0x01          @ Size of the id frame
 
         .section .rodata
         .balign 4
@@ -31,6 +31,13 @@ i2c_frame_reset_start:
         @ This frame gets the bme280 sensor id
 i2c_frame_id_start:
         .byte 0xd0
+
+        .data
+        .balign 4
+        .type i2c_receive_data_buffer_start, %object
+        @ This frame gets the bme280 sensor id
+i2c_receive_data_buffer_start:
+        .byte 0x00
 
         .text
         .balign 4
@@ -86,9 +93,13 @@ _main:
         ldr r3, =i2c_slave_address
         bl _i2c_master_transmit
         ldr r1, =i2c_frame_id_start
-        ldr r2, =i2c_frame_id_size
+        mov r2, #i2c_frame_id_size
         ldr r3, =i2c_slave_address
-        bl _i2c_master_receive
+        bl _i2c_master_transmit                 @ Write the address of the register
+        ldr r1, =i2c_receive_data_buffer_start
+        mov r2, #0x01
+        ldr r3, =i2c_slave_address
+        bl _i2c_master_receive                  @ Read from this register
 1:
         wfi
         b 1b
