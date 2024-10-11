@@ -6,10 +6,28 @@
 
         .text
         .balign 4
+        .type _i2c_software_reset, %function
+_i2c_software_reset:
+1:
+        ldr r1, [r0, #i2c_cr1_offset]
+        orr r1, #i2c_cr1_swrst
+        str r1, [r0, #i2c_cr1_offset]
+        ldr r1, [r0, #i2c_cr1_offset]
+        tst r1, #i2c_cr1_swrst
+        it eq
+        beq 1b
+        bic r1, #i2c_cr1_swrst
+        str r1, [r0, #i2c_cr1_offset]
+        bx lr
+
+        .text
+        .balign 4
         .type _i2c_set_peripheral_input_clock, %function
         @ Argument in r0: i2c base address
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
 _i2c_set_peripheral_input_clock:
+        ldr r3, =0x000f4240             @ 1000000
+        udiv r1, r1, r3
         str r1, [r0, #i2c_cr2_offset]
         bx lr
 
@@ -19,7 +37,7 @@ _i2c_set_peripheral_input_clock:
         @ Argument in r0: i2c base address
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
         @ Argument in r2: i2c scl frequency (0, 100kHz) or (100kHz, 400kHz)
-_i2c_configure_clock:
+_i2c_configure_clock:                   @ TODO: Check the math here
         push { r4-r7 }
         lsl r4, r2, #0x01               @ 2*fscl
         ldr r3, =0x000186a0             @ 100kHz
@@ -31,6 +49,7 @@ _i2c_configure_clock:
         udiv r6, r1, r4                 @ fpclk / x*fscl
         lsl r5, #0x0f                   @ shift f/s bit on 15th position
         orr r6, r5
+        bic r6, #(0x01 << 14)           @ duty is 0
         str r6, [r0, #i2c_ccr_offset]
 i2c_configure_clock_exit:
         pop { r4-r7 }
@@ -42,7 +61,7 @@ i2c_configure_clock_exit:
         @ Argument in r0: i2c base address
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
         @ Argument in r2: i2c scl frequency (0, 100kHz) or (100kHz, 400kHz)
-_i2c_configure_rise_time:
+_i2c_configure_rise_time:               @ TODO: Bug in this function
         push { r4 }
         sub sp, sp, #0x04
         ldr r3, =0x000186a0             @ 100kHz
@@ -126,48 +145,52 @@ _i2c_receive_byte:
         .global _i2c_master_transmit
         .type _i2c_master_transmit, %function
         @ Argument in r0: i2c base address
-        @ Argument in r1: data
-        @ Argument in r2: slave address
+        @ Argument in r1: data buffer address
+        @ Argument in r2: data size size
+        @ Argument in r3: slave address
 _i2c_master_transmit:
-        push { r4, lr }
-        ldr r3, [r0, #i2c_cr1_offset]
-        orr r3, #i2c_cr1_start
-        str r3, [r0, #i2c_cr1_offset]   @ Start generation
+        push { r4-r5, lr }
+        mov r5, r2
+        sub sp, sp, #0x04
+        ldr r4, [r0, #i2c_cr1_offset]
+        orr r4, #i2c_cr1_start
+        str r4, [r0, #i2c_cr1_offset]   @ Start generation
 i2c_master_transmit_check_sb:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_sb
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_sb
         it eq
         beq i2c_master_transmit_check_sb
-        lsl r2, #0x01                   @ Shift the address, lsb signals the mode
-        bic r2, #0x01                   @ Enter the transmitter mode
-        strb r2, [r0, #i2c_dr_offset]
+        lsl r3, #0x01                   @ Shift the address, lsb signals the mode
+        bic r3, #0x01                   @ Enter the transmitter mode
+        strb r3, [r0, #i2c_dr_offset]
 i2c_master_transmit_check_addr:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_addr
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_addr
         it eq
         beq i2c_master_transmit_check_addr
-        ldr r3, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
+        ldr r4, [r0, #i2c_sr2_offset]   @ Read sr2 after sr1 to clear the addr
 i2c_master_transmit_next_byte:
-        cmp r1, #0x00
+        bl _i2c_transmit_byte           @ Don't need to save r2 because I dont use it anymore
+        subs r5, #0x01
         it eq
         beq i2c_master_transmit_check_btf
-        bl _i2c_transmit_byte           @ Don't need to save r2 because I dont use it anymore
 i2c_master_transmit_is_empty:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_txe
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_txe
         it ne
         bne i2c_master_transmit_next_byte
         it eq
         beq i2c_master_transmit_is_empty
 i2c_master_transmit_check_btf:
-        ldr r3, [r0, #i2c_sr1_offset]
-        tst r3, #i2c_sr1_btf
+        ldr r4, [r0, #i2c_sr1_offset]
+        tst r4, #i2c_sr1_btf
         it eq
         beq i2c_master_transmit_check_btf
-        ldr r3, [r0, #i2c_cr1_offset]
-        orr r3, #i2c_cr1_stop
-        str r3, [r0, #i2c_cr1_offset]
-        pop { r4, lr }
+        ldr r4, [r0, #i2c_cr1_offset]
+        orr r4, #i2c_cr1_stop
+        str r4, [r0, #i2c_cr1_offset]
+        add sp, sp, #0x04
+        pop { r4-r5, lr }
         bx lr
 
         .text
@@ -207,7 +230,9 @@ i2c_master_receive_next_byte:
         beq 1b                          @ Wait for the data to be available in buffer
         subs r5, #0x01
         bl _i2c_receive_byte
-        cmp r5, #0x01
+        ite ne
+        cmpne r5, #0x01
+        beq 3f
         it ne
         bne i2c_master_receive_next_byte
         ldr r4, [r0, #i2c_cr1_offset]   @ Prepare the NACK
@@ -219,6 +244,7 @@ i2c_master_receive_next_byte:
         it eq
         beq 2b                          @ Wait for the data to be available in buffer
         bl _i2c_receive_byte            @ Receive the last byte
+3:
         ldr r4, [r0, #i2c_cr1_offset]
         orr r4, #i2c_cr1_stop           @ Set STOP
         str r4, [r0, #i2c_cr1_offset]
@@ -312,19 +338,26 @@ i2c_slave_receive_check_stopf:
         @ Argument in r1: i2c clock frequency (2MHz, 50MHz)
         @ Argument in r2: i2c scl frequency (0, 100kHz) or (100kHz, 400kHz)
 _i2c_init:
-        push { r4, lr }
+        push { r4-r5, lr }
+        sub sp, sp, #0x04
         mov r4, r0
+        mov r5, r1
         bl _i2c_check_arguments
         cmp r0, #0x00
         it ne
         bne i2c_init_exit
         mov r0, r4
+        bl _i2c_software_reset
+        mov r0, r4
+        mov r1, r5
         bl _i2c_set_peripheral_input_clock
+        mov r1, r5
         bl _i2c_configure_clock
         bl _i2c_configure_rise_time
         bl _i2c_enable
 i2c_init_exit:
-        pop { r4, lr }
+        add sp, sp, #0x04
+        pop { r4-r5, lr }
         bx lr
 
         .end
