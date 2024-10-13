@@ -69,23 +69,37 @@ spi_configure_clock_phase_exit:
 
         .text
         .balign 4
-        .type _spi_configure_duplex, %function
+        .type _spi_configure_full_duplex, %function
         @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: half-duplex (1) or full-duplex (0)
-_spi_configure_duplex:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x01
-        itt hi
-        movhi r0, spi_configure_result_error
-        bhi spi_configure_duplex_exit
-        ldr r2, [r0, #spi_cr1_offset]
-        ite eq                                   @ If r1 is 0
-        biceq r2, #(spi_cr1_bidimode | spi_cr1_rxonly)
-        orrne r2, #(spi_cr1_bidimode | spi_cr1_rxonly)
-        str r2, [r0, #spi_cr1_offset]
+_spi_configure_full_duplex:
+        ldr r1, [r0, #spi_cr1_offset]
+        bic r1, #(spi_cr1_bidimode | spi_cr1_rxonly)
+        str r1, [r0, #spi_cr1_offset]
         mov r0, spi_configure_result_success
-spi_configure_duplex_exit:
+        bx lr
+
+        .text
+        .balign 4
+        .type _spi_configure_half_duplex_master, %function
+        @ Argument in r0: spi base address / spi configure status
+_spi_configure_half_duplex_master:
+        ldr r1, [r0, #spi_cr1_offset]
+        orr r1, #(spi_cr1_bidimode | spi_cr1_bidioe)
+        bic r1, #spi_cr1_rxonly
+        str r1, [r0, #spi_cr1_offset]
+        mov r0, spi_configure_result_success
+        bx lr
+
+        .text
+        .balign 4
+        .type _spi_configure_half_duplex_slave, %function
+        @ Argument in r0: spi base address / spi configure status
+_spi_configure_half_duplex_slave:
+        ldr r1, [r0, #spi_cr1_offset]
+        orr r1, #(spi_cr1_bidimode | spi_cr1_rxonly)
+        bic r1, #spi_cr1_bidioe
+        str r1, [r0, #spi_cr1_offset]
+        mov r0, spi_configure_result_success
         bx lr
 
         .text
