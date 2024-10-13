@@ -104,8 +104,26 @@ _spi_configure_half_duplex_slave:
 
         .text
         .balign 4
-        .type _spi_configure_simplex, %function
-_spi_configure_simplex:
+        .type _spi_configure_simplex_master, %function
+        @ Argument in r0: spi base address / spi configure status
+_spi_configure_simplex_master:
+        ldr r1, [r0, #spi_cr1_offset]
+        bic r1, #(spi_cr1_bidimode | spi_cr1_rxonly)
+        orr r1, spi_cr1_bidioe
+        str r1, [r0, #spi_cr1_offset]
+        mov r0, spi_configure_result_success
+        bx lr
+
+        .text
+        .balign 4
+        .type _spi_configure_simplex_slave, %function
+        @ Argument in r0: spi base address / spi configure status
+_spi_configure_simplex_slave:
+        ldr r1, [r0, #spi_cr1_offset]
+        bic r1, #(spi_cr1_bidimode | spi_cr1_bidioe)
+        orr r1, spi_cr1_rxonly
+        str r1, [r0, #spi_cr1_offset]
+        mov r0, spi_configure_result_success
         bx lr
 
         .text
