@@ -38,19 +38,33 @@ _spi_configure_clock_polarity:
         cmphi r1, #0x01
         itt hi
         movhi r0, #spi_configure_result_error
-        bhi spi_configure_clock_polarity
+        bhi spi_configure_clock_polarity_exit
         ldr r2, [r0, #spi_cr1_offset]
         lsl r1, #spi_cr1_cpol_position
         orr r2, r1
         str r2, [r0, #spi_cr1_offset]
         mov r0, #spi_configure_result_success
-spi_configure_clock_polarity:
+spi_configure_clock_polarity_exit:
         bx lr
 
         .text
         .balign 4
         .type _spi_configure_clock_phase, %function
+        @ Argument in r0: spi base address / spi configure status
+        @ Argument in r1: clock phase (1 bit value)
 _spi_configure_clock_phase:
+        cmp r1, #0x00
+        it hi
+        cmphi r1, #0x01
+        itt hi
+        movhi r0, spi_configure_result_error
+        bhi spi_configure_clock_phase_exit
+        ldr r2, [r0, #spi_cr1_offset]
+        lsl r1, #spi_cr1_cpha_position
+        orr r2, r1
+        str r2, [r0, #spi_cr1_offset]
+        mov r0, spi_configure_result_success
+spi_configure_clock_phase_exit:
         bx lr
 
         .text
