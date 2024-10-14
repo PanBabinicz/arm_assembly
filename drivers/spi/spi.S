@@ -154,14 +154,44 @@ _spi_configure_crc:
 
         .text
         .balign 4
+        @ Argument in r0: spi base address / spi configure status
+        @ Argument in r1: software slave management (disabled 0, enabled 1)
         .type _spi_configure_ssm, %function
 _spi_configure_ssm:
+        cmp r1, #0x00
+        it hi
+        cmphi r1, #0x01
+        itt hi
+        movhi r0, #spi_configure_result_error
+        bhi spi_configure_ssm_exit
+        ldr r2, [r0, #spi_cr1_offset]
+        lsl r1, #spi_cr1_ssm_position
+        orr r2, r1
+        str r2, [r0, #spi_cr1_offset]
+        mov r0, #spi_configure_result_success
+spi_configure_ssm_exit:
         bx lr
 
         .text
         .balign 4
         .type _spi_configure_ssi, %function
+        @ Argument in r0: spi base address / spi configure status
+        @ Argument in r1: internal slave select (works only when ssm is set)
+        @ NOTE: The value of this bit is forced onto the NSS pin and the IO value of
+        @       the NSS pin is ignored
 _spi_configure_ssi:
+        cmp r1, #0x00
+        it hi
+        cmphi r1, #0x01
+        itt hi
+        movhi r0, #spi_configure_result_error
+        bhi spi_configure_ssi_exit
+        ldr r2, [r0, #spi_cr1_offset]
+        lsl r1, #spi_cr1_ssi_position
+        orr r2, r1
+        str r2, [r0, #spi_cr1_offset]
+        mov r0, #spi_configure_result_success
+spi_configure_ssi_exit:
         bx lr
 
         .text
