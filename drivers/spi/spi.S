@@ -214,6 +214,27 @@ _spi_configure_ssoe:
 
         .text
         .balign 4
+        .type _spi_configure_frf, %function
+        @ Argument in r0: spi base address / spi configure status
+        @ Argument in r1: FRF bit value ( Motorola mode 0, TI mode 1)
+        @ NOTE: If TI protocol is required
+_spi_configure_frf:
+        cmp r1, #0x00
+        it hi
+        cmphi r1, #0x01
+        itt hi
+        movhi r0, #spi_configure_result_error
+        bhi spi_configure_frf_exit
+        ldr r2, [r0, #spi_cr2_offset]
+        lsl r1, #spi_cr2_frf_position
+        orr r2, r1
+        str r2, [r0, #spi_cr2_offset]
+        mov r0, #spi_configure_result_success
+spi_configure_frf_exit:
+        bx lr
+
+        .text
+        .balign 4
         .global _spi_init_slave
         .type _spi_init_slave, %function
         @ Argument in r0: spi base address / spi init status
