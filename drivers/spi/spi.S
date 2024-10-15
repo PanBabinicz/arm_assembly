@@ -9,257 +9,84 @@
 
         .text
         .balign 4
-        .type _spi_configure_serial_clock_baudrate, %function
-        @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: serial clock baud rate (3 bit value)
-_spi_configure_serial_clock_baudrate:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x07
-        itt hi
-        movhi r0, #spi_configure_result_error
-        bhi spi_configure_serial_clock_baudrate_exit
+        .global _spi_configure_cr1
+        .type _spi_configure_cr1, %function
+        @ Argument in r0: spi base address
+        @ Argument in r1: spi cr1 configuration
+        @ NOTE:
+        @ a) Configure the serial clock baud rate using the BR[2:0] bits:
+        @       - Eight possible configurations (0 to 7)
+        @ b) Configure CPOL and CPHA bits combination to define one of the four
+        @    relationships between the data transfer and the serial clock
+        @ c) Select simplex, half-duplex or full-duplex by configuring:
+        @       - RXONLY
+        @       - BIDIMODE
+        @       - BDIOE
+        @ d) Configure the LSBFIRST bit to define the frame format
+        @ e) Configure the CRC if needed
+        @ f) Configure SSM and SSI ( When the SSM bit is set, the NSS pin input is
+        @    replaced with the value from the SSI bit)
+        @ g) Configure MSTR bit
+        @ h) Set the DFF bit to configure the data frame format (8 or 16 bits)
+_spi_configure_cr1:
         ldr r2, [r0, #spi_cr1_offset]
-        lsl r1, #spi_cr1_br_position
         orr r2, r1
         str r2, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-spi_configure_serial_clock_baudrate_exit:
         bx lr
 
         .text
         .balign 4
-        .type _spi_configure_clock_polarity, %function
-        @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: clock polarity (1 bit value)
-_spi_configure_clock_polarity:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x01
-        itt hi
-        movhi r0, #spi_configure_result_error
-        bhi spi_configure_clock_polarity_exit
-        ldr r2, [r0, #spi_cr1_offset]
-        lsl r1, #spi_cr1_cpol_position
-        orr r2, r1
-        str r2, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-spi_configure_clock_polarity_exit:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_clock_phase, %function
-        @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: clock phase (1 bit value)
-_spi_configure_clock_phase:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x01
-        itt hi
-        movhi r0, #spi_configure_result_error
-        bhi spi_configure_clock_phase_exit
-        ldr r2, [r0, #spi_cr1_offset]
-        lsl r1, #spi_cr1_cpha_position
-        orr r2, r1
-        str r2, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-spi_configure_clock_phase_exit:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_full_duplex, %function
-        @ Argument in r0: spi base address / spi configure status
-_spi_configure_full_duplex:
-        ldr r1, [r0, #spi_cr1_offset]
-        bic r1, #(spi_cr1_bidimode | spi_cr1_rxonly)
-        str r1, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_half_duplex_master, %function
-        @ Argument in r0: spi base address / spi configure status
-_spi_configure_half_duplex_master:
-        ldr r1, [r0, #spi_cr1_offset]
-        orr r1, #(spi_cr1_bidimode | spi_cr1_bidioe)
-        bic r1, #spi_cr1_rxonly
-        str r1, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_half_duplex_slave, %function
-        @ Argument in r0: spi base address / spi configure status
-_spi_configure_half_duplex_slave:
-        ldr r1, [r0, #spi_cr1_offset]
-        orr r1, #(spi_cr1_bidimode | spi_cr1_rxonly)
-        bic r1, #spi_cr1_bidioe
-        str r1, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_simplex_master, %function
-        @ Argument in r0: spi base address / spi configure status
-_spi_configure_simplex_master:
-        ldr r1, [r0, #spi_cr1_offset]
-        bic r1, #(spi_cr1_bidimode | spi_cr1_rxonly)
-        orr r1, #spi_cr1_bidioe
-        str r1, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_simplex_slave, %function
-        @ Argument in r0: spi base address / spi configure status
-_spi_configure_simplex_slave:
-        ldr r1, [r0, #spi_cr1_offset]
-        bic r1, #(spi_cr1_bidimode | spi_cr1_bidioe)
-        orr r1, #spi_cr1_rxonly
-        str r1, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_frame_format, %function
-        @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: frame format (msb first 0, lsb first 1)
-_spi_configure_frame_format:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x01
-        itt hi
-        movhi r0, #spi_configure_result_error
-        bhi spi_configure_frame_format_exit
-        ldr r2, [r0, #spi_cr1_offset]
-        lsl r1, #spi_cr1_lsbfirst_position
-        orr r2, r1
-        str r2, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-spi_configure_frame_format_exit:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_crc, %function
-_spi_configure_crc:
-        bx lr
-
-        .text
-        .balign 4
-        @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: software slave management (disabled 0, enabled 1)
-        .type _spi_configure_ssm, %function
-_spi_configure_ssm:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x01
-        itt hi
-        movhi r0, #spi_configure_result_error
-        bhi spi_configure_ssm_exit
-        ldr r2, [r0, #spi_cr1_offset]
-        lsl r1, #spi_cr1_ssm_position
-        orr r2, r1
-        str r2, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-spi_configure_ssm_exit:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_ssi, %function
-        @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: internal slave select (works only when ssm is set)
-        @ NOTE: The value of this bit is forced onto the NSS pin and the IO value of
-        @       the NSS pin is ignored
-_spi_configure_ssi:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x01
-        itt hi
-        movhi r0, #spi_configure_result_error
-        bhi spi_configure_ssi_exit
-        ldr r2, [r0, #spi_cr1_offset]
-        lsl r1, #spi_cr1_ssi_position
-        orr r2, r1
-        str r2, [r0, #spi_cr1_offset]
-        mov r0, #spi_configure_result_success
-spi_configure_ssi_exit:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_mode, %function
-_spi_configure_mode:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_data_frame_format, %function
-_spi_configure_data_frame_format:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_ssoe, %function
-_spi_configure_ssoe:
-        bx lr
-
-        .text
-        .balign 4
-        .type _spi_configure_frf, %function
-        @ Argument in r0: spi base address / spi configure status
-        @ Argument in r1: FRF bit value ( Motorola mode 0, TI mode 1)
-        @ NOTE: If TI protocol is required
-_spi_configure_frf:
-        cmp r1, #0x00
-        it hi
-        cmphi r1, #0x01
-        itt hi
-        movhi r0, #spi_configure_result_error
-        bhi spi_configure_frf_exit
+        .global _spi_configure_cr2
+        .type _spi_configure_cr2, %function
+        @ Argument in r0: spi base address
+        @ Argument in r1: spi cr2 configuration
+        @ NOTE:
+        @ a) Configure SSOE
+        @ b) Set the FRF bit if the TI protocol is required
+_spi_configure_cr2:
         ldr r2, [r0, #spi_cr2_offset]
-        lsl r1, #spi_cr2_frf_position
         orr r2, r1
         str r2, [r0, #spi_cr2_offset]
-        mov r0, #spi_configure_result_success
-spi_configure_frf_exit:
         bx lr
 
         .text
         .balign 4
-        .global _spi_init_slave
-        .type _spi_init_slave, %function
-        @ Argument in r0: spi base address / spi init status
-        @ Argument in r1:
-        @ Argument in r2:
-_spi_init_slave:
-        push { lr }
-        sub sp, sp, #0x04
-        add sp, sp, #0x04
-        pop { lr }
+        .global _spi_configure_crcpr
+        .type _spi_configure_crcpr, %function
+        @ Argument in r0: spi base address
+        @ Argument in r1: spi crcpr configuration
+_spi_configure_crcpr:
+        ldr r2, [r0, #spi_crcpr_offset]
+        orr r2, r1
+        str r2, [r0, #spi_crcpr_offset]
         bx lr
 
         .text
         .balign 4
-        .global _spi_init_master
-        .type _spi_init_master, %function
-        @ Argument in r0: spi base address / spi init status
-        @ Argument in r1:
-        @ Argument in r2:
-_spi_init_master:
-        push { lr }
-        sub sp, sp, #0x04
-        bl _spi_configure_serial_clock_baudrate
-        add sp, sp, #0x04
-        pop { lr }
+        .global _spi_configure_dma
+        .type _spi_configure_dma, %function
+        @ Argument in r0: spi base address
+        @ Argument in r1: dma base address
+        @ NOTE:
+        @ 1) Enable DMA Rx buffer in the RXDMAEN bit in the SPI_CR2 register,
+        @    if DMA Rx is used
+        @ 2) Enable DMA streams for Tx and Rx in DMA registers, if the streams
+        @    are used
+        @ 3) Enable DMA Tx buffer in the TXDMAEN bit in the SPI_CR2 register,
+        @    if DMA Tx is used
+        @ 4) Enable the SPI by setting the SPE bit
+_spi_configure_dma:
+        bx lr
+
+        .text
+        .balign 4
+        .global _spi_enable
+        .type _spi_enable, %function
+        @ Argument in r0: spi base address
+_spi_enable:
+        ldr r1, [r0, #spi_cr1_offset]
+        orr r1, #spi_cr1_spe
+        str r1, [r0, #spi_cr1_offset]
         bx lr
 
         .end
