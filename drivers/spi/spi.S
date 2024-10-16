@@ -89,4 +89,24 @@ _spi_enable:
         str r1, [r0, #spi_cr1_offset]
         bx lr
 
+        .text
+        .balign 4
+        .global _spi_send
+        .type _spi_send, %function
+        @ Argument in r0: spi base address
+        @ Argument in r1:
+        @ Argument in r2:
+_spi_send:
+        bx lr
+
+        .text
+        .balign 4
+        .global _spi_receive
+        .type _spi_receive, %function
+        @ Argument in r0: spi base address
+        @ Argument in r1:
+        @ Argument in r2:
+_spi_receive:
+        bx lr
+
         .end
