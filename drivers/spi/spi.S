@@ -91,6 +91,17 @@ _spi_enable:
 
         .text
         .balign 4
+        .global _spi_disable
+        .type _spi_disable, %function
+        @ Argument in r0: spi base address
+_spi_disable:
+        ldr r1, [r0, #spi_cr1_offset]
+        bic r1, #spi_cr1_spe
+        str r1, [r0, #spi_cr1_offset]
+        bx lr
+
+        .text
+        .balign 4
         .global _spi_send
         .type _spi_send, %function
         @ Argument in r0: spi base address
