@@ -102,22 +102,22 @@ _spi_disable:
 
         .text
         .balign 4
-        .global _spi_send
-        .type _spi_send, %function
+        .global _spi_send_master
+        .type _spi_send_master, %function
         @ Argument in r0: spi base address
-        @ Argument in r1:
-        @ Argument in r2:
-_spi_send:
+        @ Argument in r1: spi data address
+        @ Argument in r2: spi data length
+_spi_send_master:
         bx lr
 
         .text
         .balign 4
-        .global _spi_receive
-        .type _spi_receive, %function
+        .global _spi_receive_master
+        .type _spi_receive_master, %function
         @ Argument in r0: spi base address
-        @ Argument in r1:
-        @ Argument in r2:
-_spi_receive:
+        @ Argument in r1: spi data address
+        @ Argument in r2: spi data length
+_spi_receive_master:
         bx lr
 
         .end
